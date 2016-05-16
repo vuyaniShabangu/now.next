@@ -1,0 +1,16 @@
+Introducing the team (Aiden)
+
+Scope of Project (Aiden)
+
+Software Architecture Design:
+Architectural Requirement (Sello)
+
+Architectural Design (Banele)
+
+Prototypes (feature, unit) (Sibusiso)
+{not a lot here, will just show code}
+
+Planning, Strategy and Methodology (Vuyani)
+-meeting plan
+-agile; scrum methodolgy
+-bi-weekely meetings
