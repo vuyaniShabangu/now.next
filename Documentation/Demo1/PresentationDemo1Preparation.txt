@@ -11,6 +11,8 @@ Prototypes (feature, unit) (Sibusiso)
 {not a lot here, will just show code}
 
 PLANNING, STRATEGY AND METHODOLOGY (Vuyani)
+
+Methodology
 For the development of this project, we have adopted the Scrum framework of the Agile Methodology.
 In our initial meeting with the client last week, we discussed broadly the full scope of the project and formed a Product Backlog. Throughout the course of this project we will be having bi-weekly meetings which will serve as Sprint planning sessions. Our first sprint planning sessions will be this Friday (later today) and where we will go in depth on a certain portion of the functionality (web portal). 
 
@@ -23,10 +25,21 @@ What each person did yesterday?
 What each person is doing today?
 Any challenges/problems that anyone is facing.
 
+{picture of daily timetable}
+
 We will be using Waffle.io for our chanson chart as well as burndown chart.
 
 To keep to the spirit of agile, which is close interaction with the client, we have invited the client to watch out git repository, as well as our Waffle.io charts.
 We have also invited them to our Slack group where we talk to them frequently on progress and other issues.
+Project Planning.
+We aim to complete this project well before the deadline so that any underlying issues can be solved in time. 
+{Gannt Chart)
+Each member of the team has been assigned a research topic of some of the more technically demanding aspects of the project such as
+-Drone auto-pilot control
+-Image recognition
+-Drone control
+-Orthophotography
+
 
 
 -agile; scrum methodolgy
