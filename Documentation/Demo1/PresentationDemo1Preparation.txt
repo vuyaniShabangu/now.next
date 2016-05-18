@@ -10,7 +10,24 @@ Architectural Design (Banele)
 Prototypes (feature, unit) (Sibusiso)
 {not a lot here, will just show code}
 
-Planning, Strategy and Methodology (Vuyani)
--meeting plan
+PLANNING, STRATEGY AND METHODOLOGY (Vuyani)
+For the development of this project, we have adopted the Scrum framework of the Agile Methodology.
+In our initial meeting with the client last week, we discussed broadly the full scope of the project and formed a Product Backlog. Throughout the course of this project we will be having bi-weekly meetings which will serve as Sprint planning sessions. Our first sprint planning sessions will be this Friday (later today) and where we will go in depth on a certain portion of the functionality (web portal). 
+
+We plan on starting with the easier tasks to give us more time to research on the technologies of the more complicated tasks.
+
+As a development team we will be meeting everyday to code together for a period of atlas 2  to 4 hours. Individual coding can be done after that but it is important to have these group coding sessions to ensure that we are still on the same page. This is taken from experience from our mini project.
+
+These daily sessions will start of with a 15 minute Scrum meeting, where we will discuss:
+What each person did yesterday?
+What each person is doing today?
+Any challenges/problems that anyone is facing.
+
+We will be using Waffle.io for our chanson chart as well as burndown chart.
+
+To keep to the spirit of agile, which is close interaction with the client, we have invited the client to watch out git repository, as well as our Waffle.io charts.
+We have also invited them to our Slack group where we talk to them frequently on progress and other issues.
+
+
 -agile; scrum methodolgy
 -bi-weekely meetings
