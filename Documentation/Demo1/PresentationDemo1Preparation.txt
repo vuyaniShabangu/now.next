@@ -38,7 +38,7 @@ Each member of the team has been assigned a research topic of some of the more t
 -Drone auto-pilot control
 -Image recognition
 -Drone control
--Orthophotography
+-Orthorectifying
 -point-cloud from image
 
 Technical Challenges
