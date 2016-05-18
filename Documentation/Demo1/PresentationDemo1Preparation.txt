@@ -33,14 +33,16 @@ To keep to the spirit of agile, which is close interaction with the client, we h
 We have also invited them to our Slack group where we talk to them frequently on progress and other issues.
 Project Planning.
 We aim to complete this project well before the deadline so that any underlying issues can be solved in time. 
-{Gannt Chart)
+{Gannt Chart}
 Each member of the team has been assigned a research topic of some of the more technically demanding aspects of the project such as
 -Drone auto-pilot control
 -Image recognition
 -Drone control
 -Orthophotography
+-point-cloud from image
 
+Technical Challenges
+Integrating with a lot of hardware such as Pixhawk autopilot will be a challenge but we are solving it by playing around with the it now before the actual Sprint. So that by the time the Sprint comes we have some code that will show some understanding as well as a proper understanding of how it works.
 
-
--agile; scrum methodolgy
--bi-weekely meetings
+New Technology platform 
+Heroic will be our server for this project. None of us have worked with Heroku, therefore we have spent the last week learning the learning about it and playing with it.
