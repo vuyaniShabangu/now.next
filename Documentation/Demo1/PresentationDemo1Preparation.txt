@@ -37,10 +37,10 @@ D) Architectural constraints
 
 Architectural Design (Banele)
 
-Prototypes (feature, unit) (Sibusiso)
+Prototypes (feature, unit) (Vuyani)
 {not a lot here, will just show code}
 
-PLANNING, STRATEGY AND METHODOLOGY (Vuyani)
+PLANNING, STRATEGY AND METHODOLOGY (Sibusiso)
 
 Methodology
 For the development of this project, we have adopted the Scrum framework of the Agile Methodology.
