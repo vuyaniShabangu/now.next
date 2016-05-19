@@ -1,6 +1,7 @@
 Introducing the team (Aiden)
-
+First and foremost our teams name is now.next(). We are in charge of the Drone Mission Control with Retro Rabbit as our client. We have Aiden Malan, Sello , Sibusiso Masemola, Banele Nxumalo and Vuyani Shabangu as our assigned group leader.
 Scope of Project (Aiden)
+The project is based around drone imaging technology which can be used by customers who do not even need to know how to operate a drone. The drones are kept by people who know how to operate drones and clients who would like specific pictures of sites can request that drones be flown out at specific times at specific locations. Thats where we come in. We are the middle men between the client and the drone operator. We take all the details of the clients requests and send them through to a portal where drone operators can accept requests or jobs and then send us back relevant code to operate the drone. The pictures will be taken by the drone and sent back to us where we can deliver it back to the client in a safe and very secure manner. All this communication will be dealt with through a website and possibly an android app.
 
 Software Architecture Design:
 Architectural Requirement (Sello)
