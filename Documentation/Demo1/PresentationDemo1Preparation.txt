@@ -4,6 +4,35 @@ Scope of Project (Aiden)
 
 Software Architecture Design:
 Architectural Requirement (Sello)
+A) Architectural scope
+There should be a user portal where users can perform activities such as order missions, track the progress of these missions and view the results from missions.
+There should be a database which stores all user data.
+
+B) Quality Requirements
+
+Stability
+The system and the connection between the system and the drone should be robust so that the system doesnt crash while
+managing the drone as the drone could get damaged.
+The system should have fail-safes in place in case the system or the network does crash while the drone is in-flight.
+
+Performance
+The system should figure out the most efficient way to carry out missions and report back to the user with the results.
+	
+Privacy
+The system should make sure that drones don't fly over areas that they aren't permitted to fly.
+	
+Security
+User data should be unaccessible to everyone except the system and the user. The system should also make sure that the drone
+doesnt perform any missions that could put other drones or people in harms way.
+	
+Scalability
+The system should be able to work with as many different types of drones as possible.
+
+C) Integration and access channel requirements
+The web portal will be linked to ardupilot which communicates with the drone
+
+D) Architectural constraints
+
 
 Architectural Design (Banele)
 
