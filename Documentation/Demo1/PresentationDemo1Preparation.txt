@@ -7,6 +7,7 @@ Architectural Requirement (Sello)
 A) Architectural scope
 There should be a user portal where users can perform activities such as order missions, track the progress of these missions and view the results from missions.
 There should be a database which stores all user data.
+A server should manage communication between the user portal and the drone.
 
 B) Quality Requirements
 
