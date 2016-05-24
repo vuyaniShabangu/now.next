@@ -1,4 +1,4 @@
-\documentclass[hidelinks,a4paper,12pt]{article}
+\documentclass{article}
 \addtolength{\oddsidemargin}{-1.cm}
 \addtolength{\textwidth}{2cm}
 \addtolength{\topmargin}{-2cm}
@@ -10,6 +10,18 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{makeidx}
 \usepackage{hyperref}
+
+
+
+\usepackage{changepage,lipsum,titlesec}% http://ctan.org/pkg/{changepage,lipsum,titlesec}
+\titleformat{\section}[block]{\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}[block]{}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[block]{}{\thesubsubsection}{1em}{}
+\titlespacing*{\subsection} {2em}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsubsection} {3em}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\setlength\parindent{74pt}
+ 
 \hypersetup{
 	colorlinks=true,
 	linkcolor=black,
@@ -19,7 +31,7 @@
 
 
 % define the title
-\author{Team Kilo}
+\author{Team now.next}
 \title{ Software Requirements Specification}
 \begin{document}
 	\setlength{\parskip}{6pt}
@@ -139,14 +151,21 @@
 	\newpage
 	
 	\section{Architecture Requirements}%Header
-	\subsection{Architectural Scope}%%Aiden
-	%Here just talk about overview of the architecural requirements. Just broadly what the quality of the product must be.
-	\subsection{Quality Requirements}%%Vuyani
-	
-	\subsection{Integration and Access Channel Requirements}%%Sello
-	%Here just speak about what the system is expected to integrate with. Write about how it is suppose to be accessable to web for 	%users and operators.  It must also be able to interact with different types of drones.
-	\subsection{Architectural Constraints }%%Banele
-	%Talk about the constraints that we might have in producing the architecture that they have asked for.
+		\subsection{Architectural Scope}%%Aiden
+		%Here just talk about overview of the architectural requirements. Just broadly what the quality of the product must be.
+		
+			\setlength{\leftskip}{45px}
+				\lipsum[2]
+
+		\subsection{Quality Requirements}%%Vuyani
+			The following is a list of quality requirements that have been established by the product owner that the system must posses.
+			\subsubsection{Stability}
+				\setlength{\leftskip}{61px}
+			 	
+		\subsection{Integration and Access Channel Requirements}%%Sello
+		%Here just speak about what the system is expected to integrate with. Write about how it is suppose to be accessable to 			%web for users and operators.  It must also be able to interact with different types of drones.
+		\subsection{Architectural Constraints }%%Banele
+		%Talk about the constraints that we might have in producing the architecture that they have asked for.
 	\section{Architectural patterns}%%Sibusiso MVC, layered
 	%Write that we are using a hybrid of MVC and Layered pattern (MVC to support the web part of the system, and layered to 		%support the intergability required by the part of the system that talks to the drones)
 	\section{Architectural Tactics}%%Banele
