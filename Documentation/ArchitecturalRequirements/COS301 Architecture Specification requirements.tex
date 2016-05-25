@@ -164,6 +164,10 @@
 			 	
 		\subsection{Integration and Access Channel Requirements}%%Sello
 		%Here just speak about what the system is expected to integrate with. Write about how it is suppose to be accessable to 			%web for users and operators.  It must also be able to interact with different types of drones.
+		\subsubsection{Integration}
+		The system has to work with the ArduPilot system. This ArduPilot system has to be conected to the PixHawk flight controller hardware. The drone operating system should be able to deploy missions to as many different drones as possible.
+		\subsubsection{Access Channels}
+		The system is supposed to have a portal for drone users and operators which should be accessible through the internet. In the later stages of development, after completion of the web version of the system, the system could also possibly be made into an Android application.
 		\subsection{Architectural Constraints }%%Banele
 		%Talk about the constraints that we might have in producing the architecture that they have asked for.
 	\section{Architectural patterns}%%Sibusiso MVC, layered
@@ -172,6 +176,9 @@
 	%use the same tactics that we spoke about in the presentation, discuss them more in detail
 	\section{Access and Integration channels}%%Sello
 	%This time, you are writing about the how we will meet the intergration requirements that you wrote about earlier. Write about how 	%we will use a HTTPS REST API to interact with the web portal. Talk about our layered approach to interacting with the drones; 	%our system->drone interfacing object -> adrupilot -> pixhawk -> drone.
+	\subsection{Integration Channels}
+	\subsection{Access Channels}
+	RESTful API will be used to handle the communication between the web client ( the drone user or operator portal ) and the web server. 
 	\section{Technologies}%%Sibusiso
 	%List and describe all the technologies we will be using, including why we are using them. Make sure for each one you mention 	%how it solves an architectural requirement.
 	%MEAN Stack (Mongo, ExpressJS, AngualrJS, NodeJS), Mongoose (for ORM), Heroku Server, Travis for CI... and others
