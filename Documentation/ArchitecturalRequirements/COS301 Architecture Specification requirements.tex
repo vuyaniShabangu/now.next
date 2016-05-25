@@ -161,7 +161,35 @@
 			The following is a list of quality requirements that have been established by the product owner that the system must posses.
 			\subsubsection{Stability}
 				\setlength{\leftskip}{61px}
-			 	
+			 	In order to avoid costly damage to the drones, the system must be stable in that it must not be susceptible to failure. Should the system controlling the drone fail, the system should be able to guarantee the safe landing of a drone.
+				
+			\subsubsection{Performance}
+			All non-reporting operations such as user registration, user login, mission submission, mission display, operator mission setup should not take longer than 0.5 seconds.
+			
+			The reporting operation where a report is given to the user after the drone has performed a mission should not take longer than 5 seconds after the report data has been made available to the system.
+			
+			Network overhead has not been included in these figures because that is beyond the control of the system.
+			
+			\subsubsection{Privacy}
+			Drone missions should only be permitted in areas that are allowed by South African legislation pertaining to the flying of Unmanned Aerial Vehicles.
+			
+			The missions performed by the drones must also be permitted by South African legislation.
+			
+			\subsubsection{Security}
+			It is important that this system adheres to the highest security standards because it will be storing personal user information such as physical addresses, as well as allowing for the control of drones which are expensive and can be dangerous if in the wrong hands. Therefore the system has ensure that:
+			\begin{itemize}
+				\item Personal user data such as password is encrypted to remain hidden from unauthorised users and operators.
+				\item Only authentified users are able to access the system
+				\item Users only perform what they are authorised to do (e.g. users can only see their own mission information, users cannot perform operator operations).
+				\item Data sent between web portal client and server should be encrypted.
+				\item Connectivity to drones should only be limited to authorised and authentified users and system components
+			\end{itemize}
+			
+			\subsubsection{Scalability}
+			The system should scale up in order to be able to support a growing number of users, drone missions (which may be simultaneous), and drones. It should also scale as the data (user data, drone data and reporting data) held by the system increases.
+			
+			\subsubsection{Integration}
+			The system must be able to interface with different drones.
 		\subsection{Integration and Access Channel Requirements}%%Sello
 		%Here just speak about what the system is expected to integrate with. Write about how it is suppose to be accessable to 			%web for users and operators.  It must also be able to interact with different types of drones.
 		\subsubsection{Integration}
