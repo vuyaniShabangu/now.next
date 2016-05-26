@@ -205,8 +205,9 @@
 	\section{Access and Integration channels}%%Sello
 	%This time, you are writing about the how we will meet the intergration requirements that you wrote about earlier. Write about how 	%we will use a HTTPS REST API to interact with the web portal. Talk about our layered approach to interacting with the drones; 	%our system->drone interfacing object -> adrupilot -> pixhawk -> drone.
 	\subsection{Integration Channels}
+	The drone user or operator portal will generate a text file. From this text file, an external drone operator will read the contents of the text file and enter the mission details into the ArduPilot software. The PixHawk flight controller hardware needs to be physically connected to the computer running the ArduPilot software via USB. The PixHawk flight controller keeps a stack of all ordered missions. The flight controller will then send the mission instructions to the drone via a wireless connection.
 	\subsection{Access Channels}
-	RESTful API will be used to handle the communication between the web client ( the drone user or operator portal ) and the web server. 
+	A HTTPS RESTful API will be used to handle the communication between the web client (the drone user or operator portal) and the web server. 
 	\section{Technologies}%%Sibusiso
 	%List and describe all the technologies we will be using, including why we are using them. Make sure for each one you mention 	%how it solves an architectural requirement.
 	%MEAN Stack (Mongo, ExpressJS, AngualrJS, NodeJS), Mongoose (for ORM), Heroku Server, Travis for CI... and others
