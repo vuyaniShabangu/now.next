@@ -1,0 +1,79 @@
+Introducing the team (Aiden)
+First and foremost our teams name is now.next(). We are in charge of the Drone Mission Control with Retro Rabbit as our client. We have Aiden Malan, Sello , Sibusiso Masemola, Banele Nxumalo and Vuyani Shabangu as our assigned group leader.
+Scope of Project (Aiden)
+The project is based around drone imaging technology which can be used by customers who do not even need to know how to operate a drone. The drones are kept by people who know how to operate drones and clients who would like specific pictures of sites can request that drones be flown out at specific times at specific locations. Thats where we come in. We are the middle men between the client and the drone operator. We take all the details of the clients requests and send them through to a portal where drone operators can accept requests or jobs and then send us back relevant code to operate the drone. The pictures will be taken by the drone and sent back to us where we can deliver it back to the client in a safe and very secure manner. All this communication will be dealt with through a website and possibly an android app.
+
+Software Architecture Design:
+Architectural Requirement (Sello)
+A) Architectural scope
+There should be a user portal where users can perform activities such as order missions, track the progress of these missions and view the results from missions.
+There should be a database which stores all user data.
+A server should manage communication between the user portal and the drone.
+
+B) Quality Requirements
+
+Stability
+The system and the connection between the system and the drone should be robust so that the system doesnt crash while
+managing the drone as the drone could get damaged.
+The system should have fail-safes in place in case the system or the network does crash while the drone is in-flight.
+
+Performance
+The system should figure out the most efficient way to carry out missions and report back to the user with the results.
+	
+Privacy
+The system should make sure that drones don't fly over areas that they aren't permitted to fly.
+	
+Security
+User data should be unaccessible to everyone except the system and the user. The system should also make sure that the drone
+doesnt perform any missions that could put other drones or people in harms way.
+	
+Scalability
+The system should be able to work with as many different types of drones as possible.
+
+C) Integration and access channel requirements
+The web portal will be linked to ardupilot which communicates with the drone
+
+D) Architectural constraints
+
+
+Architectural Design (Banele)
+
+Prototypes (feature, unit) (Vuyani)
+{not a lot here, will just show code}
+
+PLANNING, STRATEGY AND METHODOLOGY (Sibusiso)
+
+Methodology
+For the development of this project, we have adopted the Scrum framework of the Agile Methodology.
+In our initial meeting with the client last week, we discussed broadly the full scope of the project and formed a Product Backlog. Throughout the course of this project we will be having bi-weekly meetings which will serve as Sprint planning sessions. Our first sprint planning sessions will be this Friday (later today) and where we will go in depth on a certain portion of the functionality (web portal). 
+
+We plan on starting with the easier tasks to give us more time to research on the technologies of the more complicated tasks.
+
+As a development team we will be meeting everyday to code together for a period of atlas 2  to 4 hours. Individual coding can be done after that but it is important to have these group coding sessions to ensure that we are still on the same page. This is taken from experience from our mini project.
+
+These daily sessions will start of with a 15 minute Scrum meeting, where we will discuss:
+What each person did yesterday?
+What each person is doing today?
+Any challenges/problems that anyone is facing.
+
+{picture of daily timetable}
+
+We will be using Waffle.io for our chanson chart as well as burndown chart.
+
+To keep to the spirit of agile, which is close interaction with the client, we have invited the client to watch out git repository, as well as our Waffle.io charts.
+We have also invited them to our Slack group where we talk to them frequently on progress and other issues.
+Project Planning.
+We aim to complete this project well before the deadline so that any underlying issues can be solved in time. 
+{Gannt Chart}
+Each member of the team has been assigned a research topic of some of the more technically demanding aspects of the project such as
+-Drone auto-pilot control
+-Image recognition
+-Drone control
+-Orthorectifying
+-point-cloud from image
+
+Technical Challenges
+Integrating with a lot of hardware such as Pixhawk autopilot will be a challenge but we are solving it by playing around with the it now before the actual Sprint. So that by the time the Sprint comes we have some code that will show some understanding as well as a proper understanding of how it works.
+
+New Technology platform 
+Heroic will be our server for this project. None of us have worked with Heroku, therefore we have spent the last week learning the learning about it and playing with it.
