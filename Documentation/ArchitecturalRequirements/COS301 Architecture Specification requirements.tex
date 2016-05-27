@@ -44,6 +44,9 @@
 			% Upper part of the page       
 			
 			\textsc{\LARGE Department of Computer Science}\\[1.5cm]
+			
+			\includegraphics{images/up-logo}
+			
 			\textsc{\Large COS 301 - Software Engineering}\\[0.5cm]
 			% Title
 			\HRule \\[0.4cm]
@@ -140,14 +143,14 @@
 	
 	\newpage %Aiden malan
 	\section{Introduction} 
-	The architectural requirements of the drone mission project will be discussed in this specification. There are number of quality control, safety and legal requirements that will be discussed in the following sections and the possible plans to implement them. It is important to understand the system inside and out so that we can create a system where all parties are covered and have some form of insurance in case of unforeseen circumstances and to prevent some these circumstances from occurring.
+	The architectural requirements of the drone mission project will be discussed in this specification. There are number of quality control, safety and legal requirements that will be discussed in the following sections and the possible plans to implement them. It is important to understand the system inside and out so that we can create a system where all parties are covered and have some form of insurance in case of unforeseen circumstances and to prevent some of these circumstances from occurring.
 	\begin{itemize} 
 		\item The vision.
 		\item The background.
 	\end{itemize}
 	
 	\section{Vision}%%aiden
-	The project aims to equip people who see a need for the drone. Without having to own a very expensive drone or have the expertise to operate the drone which can be as expensive to acquire. With the Drone Mission Project in full effect customers can achieve maximum output out of every mission while the business continues to reap in the rewards of the service portal we provide.
+	The project aims to equip people who see a need for a drone. Without having to own a very expensive drone or have the expertise to operate the drone which can be as expensive to acquire. With the Drone Mission Project in full effect customers can achieve maximum output out of every mission while the business continues to reap in the rewards of the service portal we provide.
 	
 	
 	\section{Background} %%aiden
@@ -160,8 +163,7 @@
 	%Here just talk about overview of the architectural requirements. Just broadly what the quality of the product must be.
 	
 	\setlength{\leftskip}{45px}
-	\lipsum[2]
-	
+		
 	\subsection{Quality Requirements}%%Vuyani
 	The following is a list of quality requirements that have been established by the product owner that the system must posses.
 	\subsubsection{Stability}
@@ -198,7 +200,7 @@
 	\subsection{Integration and Access Channel Requirements}%%Sello
 	%Here just speak about what the system is expected to integrate with. Write about how it is suppose to be accessable to 			%web for users and operators.  It must also be able to interact with different types of drones.
 	\subsubsection{Integration}
-	The system has to work with the ArduPilot system. This ArduPilot system has to be conected to the PixHawk flight controller hardware. The drone operating system should be able to deploy missions to as many different drones as possible.
+	The system has to work with the ArduPilot system, which is the the auto-pilot system for the drones. This ArduPilot system has to be connected to the PixHawk flight controller hardware, which is the hardware that is attached to and has physical control of the drones. The drone operating system should be able to deploy missions to as many different drones as possible.
 	\subsubsection{Access Channels}
 	The system is supposed to have a portal for drone users and operators which should be accessible through the internet. In the later stages of development, after completion of the web version of the system, the system could also possibly be made into an Android application.
 	\subsection{Architectural Constraints }%%Banele
@@ -224,11 +226,13 @@
 	\item Layered architectural pattern
 	
 	
+	 A hybrid architecture of MVC and the layered architecture has been adopted for this project. The MVC will be used to built the web application component of the system that interfaces with the users and operators. MVC was adopted because of how it easily facilitates good team work in web projects through the separation of concerns. 
 	 
+	 The Layered architecture will be used in component of the system that interact with the drones. It will consist of the same persistence resources used in the model of the MVC component, then the business layer and access layer will be built on top of that. This architecture has been chosen to fulfil the integration requirement which states that the system must be able to interface with different types of drones. This layered approach will allow us to encapsulate the control of different drone types and provide a consistent interface to the system.
 	
 	\includegraphics{images/MVCLayered}
 	
-	Figure 1. MVC-Layered pattern
+	Figure 1. Hybrid of MVC-Layered pattern
 	
 	\end{itemize}
 	
@@ -239,18 +243,18 @@
 	%use the same tactics that we spoke about in the presentation, discuss them more in detail
 	\subsection{Scalability/Performance }
 	Performance is an indication of how responsive a system is and how it goes about in executing specific actions in a given time and interval. It can be measured by in terms of latency and throughput.
-	Latency is the time taken to respond to any event. Throughput is the number of events that take place in a given amount of time. Performance thus effects scalability , if the performance of application is high , then the scalability will be high as well. Performance can be achieved by the following tactics:
+	Latency is the time taken to respond to any event. Throughput is the number of events that take place in a given amount of time. Performance thus effects scalability, if the performance of application is high , then the scalability will be high as well. Performance can be achieved by the following tactics:
 	\subsubsection{Increase Processing Power}
-	Increasing processing power can be achieved by increasing number of Dynos on Heroku. A dyno is a lightweight Linux container that runs a single user-specified command. Dynos can be used to handle multiple jobs of the application . Dinos are like threads that can be assigned different jobs and each dyno can run a single process of the application.
+	Increasing processing power can be achieved by increasing number of Dynos on Heroku. A dyno is a lightweight Linux container that runs a single user-specified command. Dynos can be used to handle multiple jobs of the application . Dynos are like threads that can be assigned different jobs and each dyno can run a single process of the application.
 	\subsection{Security}
-	Security is about keeping user data secure and prevent illicit access to another user’s mission details.In order security to be achieved , certain goals must be met like confidentiality, integrity and assurance.Security tactic can be broken down into the following architectural tactics: 
+	Security is about keeping user data secure and prevent illicit access to another user's mission details. In order security to be achieved , certain goals must be met like confidentiality, integrity and assurance.Security tactic can be broken down into the following architectural tactics: 
 	\subsubsection{Authentication}
 	It is about giving the right people access to the system. SSH certificates and passwords will provide authentication. The portal will provide the opportunity for users to enter login details and the details will then be authenticated by the system. 
-	\subsubsection{Authorization}
+	\subsubsection{Authorisation}
 	Giving the authenticated people authority over only what they can do (Privacy). It is also about ensuring that an authenticated user has the rights to access and modify either data or services which includes selecting type of mission for the drone ,selecting the area by the drone and the date for the mission.
 	
 	\subsection{Integrability}
-	Integrability is the ability to make the separately developed components of the system work correctly together.The drone management server should be able to interface with and control real drones . The drone operator must communicate well with web server to ensure that the drones do specific missions approriately. In order to provide access to other components of the system, the following tactic can be user:
+	Integrability is the ability to make the separately developed components of the system work correctly together. The drone management server should be able to interface with and control real drones. The drone operator must communicate well with web the server to ensure that the drones do specific missions appropriately. In order to provide access to other components of the system, the following tactic can be user:
 	
 	\subsubsection{Support Standard Communication Protocals}
 	The system will make use of RESTful HTTP API.
@@ -262,6 +266,11 @@
 	The drone user or operator portal will generate a text file. From this text file, an external drone operator will read the contents of the text file and enter the mission details into the ArduPilot software. The PixHawk flight controller hardware needs to be physically connected to the computer running the ArduPilot software via USB. The PixHawk flight controller keeps a stack of all ordered missions. The flight controller will then send the mission instructions to the drone via a wireless connection.
 	\subsection{Access Channels}
 	A HTTPS RESTful API will be used to handle the communication between the web client (the drone user or operator portal) and the web server. 
+	
+	\section{Frameworks}
+	We have chosen to use the MEAN Stack framework which is a fullstack javascript framework which intuitively combines MongoDB , Express.js, AngularJS, NodeJS. We have chosen it because it perfectly puts together the technologies we have chosen for this project. and also fits in with the MVC architectural pattern that we had chosen. Each of the technologies bundled in the MEAN Stack are explained in the section below.
+	
+	
 	\section{Technologies}%%Sibusiso
 	%List and describe all the technologies we will be using, including why we are using them. Make sure for each one you mention 	%how it solves an architectural requirement.
 	%MEAN Stack (Mongo, ExpressJS, AngualrJS, NodeJS), Mongoose (for ORM), Heroku Server, Travis for CI... and others
@@ -275,22 +284,23 @@
 	 	
 	 	\item MongoDB - For the Database, MongoBD is a Cross-platform database, classified as a NoSQL database, This will be used to enter and store flexible data in document form in our database. flexible data will be needed in the system, it will allow to store wide range of mission types or a combination of them.
 	 	
-	 	
+	 	Having a NoSQL database will benefit us since our database structure will be changing quite frequently based on frequent change and addition of requirements fro the client. MongoDB's ability to scale up when certain operations are requested frequently was another reason why we chose it as our primary persistence resource.
+		
 	 	\item Express - As the web framework, Express provides set of robust features for multi-page web development. Great for Accessibility as it consists of HTTP utility methods, it will help create a RESTFUL API in the system.
 	 	
 	 	
-	 	\item AngularJS - As the front-end framework, AngularJs will be used for fast, efficient form validation on user side, aiding to easy server communication in the MEAN Stack, scaling up performance of system.     
+	 	\item AngularJS - As the front-end framework, AngularJs will be used for fast, efficient form validation on user side, aiding to easy server communication in the MEAN Stack, scaling up performance of system. AngularJS will allow us to focus on developing very user-friendly interfaces easily.
+	 	
+	 	\item NodeJS - The server platform, will be used for validating passed data before its passed on to be stored on database. command line  tool that will cater for  communication with MongoDb, the server, providing persistent connection from browser client to the server. in effect the system will be able to handle concurrent requests easier.
+	 	
+		We have chosen NodeJS because of it's asynchronous abilities which will be useful to fulfil the requirement that certain mission will have to be executed simultaneously. The fact that NodeJS was built on the V8 Javascript Engine which was built by Google for the Chromium Project gives us confidence in its high performance.
+		
+	 	\item Mongoose - This will be our Object Relational Mapping tool which will allow us to intuitively persist objects straight into the database. Mongoose will take care of mongoDB validation, casting and business logic side of the system. Catering for converting data between incompatible types, this promotes privacy and performance of the system.  
 	 	
 	 	
-	 	\item NodeJS - The server platform, will be used for validating passed data before its passed on to be stored on database. commandline  tool that will cater for  communication with MongoDb, the server, providing persistent connection from browser client to the server. in effect the system will be able to handle concurrent requests easier.
-	 	
-	 	\item Mongoose - for Persisting the database accordingly, Mongoose will take care of mongoDB validation, casting and business logic side of the system. catering for converting data between incompatible types, this promotes privacy and performance of the system.  
-	 	
-	 	
-	 	\item Heroku Cloud Server - Hosting server, For cloud application platform, heroku will be used for deployment, version control, and accessibility to the latest version from anywhere as dyno, which can scale up for multiple processing, since background and web applications are independently processed.
+	 	\item Heroku Cloud Server - Hosting server, For cloud application platform, Heroku will be used for deployment, version control, and accessibility to the latest version from anywhere. Heroku provides a Platform-as-a-Service and we chose it specificically because of the ability to increase Dynos, which can scale up for multiple processing, since background and web applications are independently processed.
 	 	
 	 	\item Travis CI - for testing, this technology will be used to build and test the system, continuously; thus not allowing for any incorrect functionality to be incoporated to the system. aiding to the stability of the system as a whole.   
-	 	
 	 	
 	 \end{itemize}
 	 
