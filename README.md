@@ -11,3 +11,4 @@ A Malan - 12265731
 
 MS Thosago - 13062060
 
+[![Stories in Ready](https://badge.waffle.io/vuyaniShabangu/now.next.svg?label=ready&title=Ready)](http://waffle.io/vuyaniShabangu/now.next)
