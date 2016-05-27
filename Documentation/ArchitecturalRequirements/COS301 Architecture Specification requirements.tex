@@ -201,10 +201,36 @@
 		The system is supposed to have a portal for drone users and operators which should be accessible through the internet. In the later stages of development, after completion of the web version of the system, the system could also possibly be made into an Android application.
 		\subsection{Architectural Constraints }%%Banele
 		%Talk about the constraints that we might have in producing the architecture that they have asked for.
+		\begin{itemize}
+			\item	The platform of the system will  be namely web application since we dealing with portal 
+			\item	The database that will be used is mongoDB which favours JSON-like documents instead of table-based relation DB structure.
+			\item 	Since the drones are built on an open source platform, the system will make use of Pixhawk autopilot for autonomous flight and Ardupilot mission planning software for command and control
+			\item 	Since it is a website , HTML and javascript (both client and server side) will be used to built web application
+		\end{itemize}
+
 	\section{Architectural patterns}%%Sibusiso MVC, layered
 	%Write that we are using a hybrid of MVC and Layered pattern (MVC to support the web part of the system, and layered to 		%support the intergability required by the part of the system that talks to the drones)
 	\section{Architectural Tactics}%%Banele
 	%use the same tactics that we spoke about in the presentation, discuss them more in detail
+	\subsection{Scalability/Performance }
+		Performance is an indication of how responsive a system is and how it goes about in executing specific actions in a given time and interval. It can be measured by in terms of latency and throughput.
+		 Latency is the time taken to respond to any event. Throughput is the number of events that take place in a given amount of time. Performance thus effects scalability , if the performance of application is high , then the scalability will be high as well. Performance can be achieved by the following tactics:
+			\subsubsection{Increase Processing Power}
+			Increasing processing power can be achieved by increasing number of Dynos on Heroku. A dyno is a lightweight Linux container that runs a single user-specified command. Dynos can be used to handle multiple jobs of the application . Dinos are like threads that can be assigned different jobs and each dyno can run a single process of the application.
+		\subsection{Security}
+		Security is about keeping user data secure and prevent illicit access to another user’s mission details.In order security to be achieved , certain goals must be met like confidentiality, integrity and assurance.Security tactic can be broken down into the following architectural tactics: 
+		\subsubsection{Authentication}
+		It is about giving the right people access to the system. SSH certificates and passwords will provide authentication. The portal will provide the opportunity for users to enter login details and the details will then be authenticated by the system. 
+			\subsubsection{Authorization}
+			Giving the authenticated people authority over only what they can do (Privacy). It is also about ensuring that an authenticated user has the rights to access and modify either data or services which includes selecting type of mission for the drone ,selecting the area by the drone and the date for the mission.
+		
+		\subsection{Integrability}
+		Integrability is the ability to make the separately developed components of the system work correctly together.The drone management server should be able to interface with and control real drones . The drone operator must communicate well with web server to ensure that the drones do specific missions approriately. In order to provide access to other components of the system, the following tactic can be user:
+		
+		\subsubsection{Support Standard Communication Protocals}
+		The system will make use of RESTful HTTP API.
+		REST will ensure that the communication between the client which is the operator portal or the user portal and the server is well handled.
+		
 	\section{Access and Integration channels}%%Sello
 	%This time, you are writing about the how we will meet the intergration requirements that you wrote about earlier. Write about how 	%we will use a HTTPS REST API to interact with the web portal. Talk about our layered approach to interacting with the drones; 	%our system->drone interfacing object -> adrupilot -> pixhawk -> drone.
 	\subsection{Integration Channels}
