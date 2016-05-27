@@ -10,7 +10,8 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{makeidx}
 \usepackage{hyperref}
-
+\usepackage{graphicx}
+\graphicspath{ {images/}}
 
 
 \usepackage{changepage,lipsum,titlesec}% http://ctan.org/pkg/{changepage,lipsum,titlesec}
@@ -21,7 +22,7 @@
 \titlespacing*{\subsubsection} {3em}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 \setlength\parindent{74pt}
- 
+
 \hypersetup{
 	colorlinks=true,
 	linkcolor=black,
@@ -41,7 +42,7 @@
 		
 		\begin{center}
 			% Upper part of the page       
-		
+			
 			\textsc{\LARGE Department of Computer Science}\\[1.5cm]
 			\textsc{\Large COS 301 - Software Engineering}\\[0.5cm]
 			% Title
@@ -153,84 +154,107 @@
 	\newpage
 	
 	\section{Architecture Requirements}%Header
-		\subsection{Architectural Scope}%%Aiden
-			There are numerous quality requirements required from the system in order to operate the drones correctly to ensure safety of user, drone, client and organisation as a whole. These quality requirements range from the legal factors, safety of the drone in case of failure of any sort, client details protection and data safety and last but not least the safety of everyone around the use of the drone.
-		%Here just talk about overview of the architectural requirements. Just broadly what the quality of the product must be.
-		
-			\setlength{\leftskip}{45px}
-				\lipsum[2]
-
-		\subsection{Quality Requirements}%%Vuyani
-			The following is a list of quality requirements that have been established by the product owner that the system must posses.
-			\subsubsection{Stability}
-				\setlength{\leftskip}{61px}
-			 	In order to avoid costly damage to the drones, the system must be stable in that it must not be susceptible to failure. Should the system controlling the drone fail, the system should be able to guarantee the safe landing of a drone.
-				
-			\subsubsection{Performance}
-			All non-reporting operations such as user registration, user login, mission submission, mission display, operator mission setup should not take longer than 0.5 seconds.
-			
-			The reporting operation where a report is given to the user after the drone has performed a mission should not take longer than 5 seconds after the report data has been made available to the system.
-			
-			Network overhead has not been included in these figures because that is beyond the control of the system.
-			
-			\subsubsection{Privacy}
-			Drone missions should only be permitted in areas that are allowed by South African legislation pertaining to the flying of Unmanned Aerial Vehicles.
-			
-			The missions performed by the drones must also be permitted by South African legislation.
-			
-			\subsubsection{Security}
-			It is important that this system adheres to the highest security standards because it will be storing personal user information such as physical addresses, as well as allowing for the control of drones which are expensive and can be dangerous if in the wrong hands. Therefore the system has ensure that:
-			\begin{itemize}
-				\item Personal user data such as password is encrypted to remain hidden from unauthorised users and operators.
-				\item Only authentified users are able to access the system
-				\item Users only perform what they are authorised to do (e.g. users can only see their own mission information, users cannot perform operator operations).
-				\item Data sent between web portal client and server should be encrypted.
-				\item Connectivity to drones should only be limited to authorised and authentified users and system components
-			\end{itemize}
-			
-			\subsubsection{Scalability}
-			The system should scale up in order to be able to support a growing number of users, drone missions (which may be simultaneous), and drones. It should also scale as the data (user data, drone data and reporting data) held by the system increases.
-			
-			\subsubsection{Integration}
-			The system must be able to interface with different drones.
-		\subsection{Integration and Access Channel Requirements}%%Sello
-		%Here just speak about what the system is expected to integrate with. Write about how it is suppose to be accessable to 			%web for users and operators.  It must also be able to interact with different types of drones.
-		\subsubsection{Integration}
-		The system has to work with the ArduPilot system. This ArduPilot system has to be conected to the PixHawk flight controller hardware. The drone operating system should be able to deploy missions to as many different drones as possible.
-		\subsubsection{Access Channels}
-		The system is supposed to have a portal for drone users and operators which should be accessible through the internet. In the later stages of development, after completion of the web version of the system, the system could also possibly be made into an Android application.
-		\subsection{Architectural Constraints }%%Banele
-		%Talk about the constraints that we might have in producing the architecture that they have asked for.
-		\begin{itemize}
-			\item	The platform of the system will  be namely web application since we dealing with portal 
-			\item	The database that will be used is mongoDB which favours JSON-like documents instead of table-based relation DB structure.
-			\item 	Since the drones are built on an open source platform, the system will make use of Pixhawk autopilot for autonomous flight and Ardupilot mission planning software for command and control
-			\item 	Since it is a website , HTML and javascript (both client and server side) will be used to built web application
-		\end{itemize}
-
+	\subsection{Architectural Scope}%%Aiden
+	There are numerous quality requirements required from the system in order to operate the drones correctly to ensure safety of user, drone, client and organisation as a whole. These quality requirements range from the legal factors, safety of the drone in case of failure of any sort, client details protection and data safety and last but not least the safety of everyone around the use of the drone.
+	%Here just talk about overview of the architectural requirements. Just broadly what the quality of the product must be.
+	
+	\setlength{\leftskip}{45px}
+	\lipsum[2]
+	
+	\subsection{Quality Requirements}%%Vuyani
+	The following is a list of quality requirements that have been established by the product owner that the system must posses.
+	\subsubsection{Stability}
+	\setlength{\leftskip}{61px}
+	In order to avoid costly damage to the drones, the system must be stable in that it must not be susceptible to failure. Should the system controlling the drone fail, the system should be able to guarantee the safe landing of a drone.
+	
+	\subsubsection{Performance}
+	All non-reporting operations such as user registration, user login, mission submission, mission display, operator mission setup should not take longer than 0.5 seconds.
+	
+	The reporting operation where a report is given to the user after the drone has performed a mission should not take longer than 5 seconds after the report data has been made available to the system.
+	
+	Network overhead has not been included in these figures because that is beyond the control of the system.
+	
+	\subsubsection{Privacy}
+	Drone missions should only be permitted in areas that are allowed by South African legislation pertaining to the flying of Unmanned Aerial Vehicles.
+	
+	The missions performed by the drones must also be permitted by South African legislation.
+	
+	\subsubsection{Security}
+	It is important that this system adheres to the highest security standards because it will be storing personal user information such as physical addresses, as well as allowing for the control of drones which are expensive and can be dangerous if in the wrong hands. Therefore the system has ensure that:
+	\begin{itemize}
+		\item Personal user data such as password is encrypted to remain hidden from unauthorised users and operators.
+		\item Only authentified users are able to access the system
+		\item Users only perform what they are authorised to do (e.g. users can only see their own mission information, users cannot perform operator operations).
+		\item Data sent between web portal client and server should be encrypted.
+		\item Connectivity to drones should only be limited to authorised and authentified users and system components
+	\end{itemize}
+	
+	\subsubsection{Scalability}
+	The system should scale up in order to be able to support a growing number of users, drone missions (which may be simultaneous), and drones. It should also scale as the data (user data, drone data and reporting data) held by the system increases.
+	
+	\subsubsection{Integration}
+	The system must be able to interface with different drones.
+	\subsection{Integration and Access Channel Requirements}%%Sello
+	%Here just speak about what the system is expected to integrate with. Write about how it is suppose to be accessable to 			%web for users and operators.  It must also be able to interact with different types of drones.
+	\subsubsection{Integration}
+	The system has to work with the ArduPilot system. This ArduPilot system has to be conected to the PixHawk flight controller hardware. The drone operating system should be able to deploy missions to as many different drones as possible.
+	\subsubsection{Access Channels}
+	The system is supposed to have a portal for drone users and operators which should be accessible through the internet. In the later stages of development, after completion of the web version of the system, the system could also possibly be made into an Android application.
+	\subsection{Architectural Constraints }%%Banele
+	%Talk about the constraints that we might have in producing the architecture that they have asked for.
+	\begin{itemize}
+		\item	The platform of the system will  be namely web application since we dealing with portal 
+		\item	The database that will be used is mongoDB which favours JSON-like documents instead of table-based relation DB structure.
+		\item 	Since the drones are built on an open source platform, the system will make use of Pixhawk autopilot for autonomous flight and Ardupilot mission planning software for command and control
+		\item 	Since it is a website , HTML and javascript (both client and server side) will be used to built web application
+	\end{itemize}
+	
 	\section{Architectural patterns}%%Sibusiso MVC, layered
 	%Write that we are using a hybrid of MVC and Layered pattern (MVC to support the web part of the system, and layered to 		%support the intergability required by the part of the system that talks to the drones)
+	
+	\begin{itemize}
+	
+	\item Architectural pattern:
+	MVC architectural pattern
+	Model - nodeJS/mongoose
+	View - portal/operator
+	Controller- angularJS
+	
+	\item Layered architectural pattern
+	
+	
+	 
+	
+	\includegraphics{MVCLayered}
+	
+	Figure 1. MVC-Layered pattern
+	
+	\end{itemize}
+	
+	
+	
+	
 	\section{Architectural Tactics}%%Banele
 	%use the same tactics that we spoke about in the presentation, discuss them more in detail
 	\subsection{Scalability/Performance }
-		Performance is an indication of how responsive a system is and how it goes about in executing specific actions in a given time and interval. It can be measured by in terms of latency and throughput.
-		 Latency is the time taken to respond to any event. Throughput is the number of events that take place in a given amount of time. Performance thus effects scalability , if the performance of application is high , then the scalability will be high as well. Performance can be achieved by the following tactics:
-			\subsubsection{Increase Processing Power}
-			Increasing processing power can be achieved by increasing number of Dynos on Heroku. A dyno is a lightweight Linux container that runs a single user-specified command. Dynos can be used to handle multiple jobs of the application . Dinos are like threads that can be assigned different jobs and each dyno can run a single process of the application.
-		\subsection{Security}
-		Security is about keeping user data secure and prevent illicit access to another user’s mission details.In order security to be achieved , certain goals must be met like confidentiality, integrity and assurance.Security tactic can be broken down into the following architectural tactics: 
-		\subsubsection{Authentication}
-		It is about giving the right people access to the system. SSH certificates and passwords will provide authentication. The portal will provide the opportunity for users to enter login details and the details will then be authenticated by the system. 
-			\subsubsection{Authorization}
-			Giving the authenticated people authority over only what they can do (Privacy). It is also about ensuring that an authenticated user has the rights to access and modify either data or services which includes selecting type of mission for the drone ,selecting the area by the drone and the date for the mission.
-		
-		\subsection{Integrability}
-		Integrability is the ability to make the separately developed components of the system work correctly together.The drone management server should be able to interface with and control real drones . The drone operator must communicate well with web server to ensure that the drones do specific missions approriately. In order to provide access to other components of the system, the following tactic can be user:
-		
-		\subsubsection{Support Standard Communication Protocals}
-		The system will make use of RESTful HTTP API.
-		REST will ensure that the communication between the client which is the operator portal or the user portal and the server is well handled.
-		
+	Performance is an indication of how responsive a system is and how it goes about in executing specific actions in a given time and interval. It can be measured by in terms of latency and throughput.
+	Latency is the time taken to respond to any event. Throughput is the number of events that take place in a given amount of time. Performance thus effects scalability , if the performance of application is high , then the scalability will be high as well. Performance can be achieved by the following tactics:
+	\subsubsection{Increase Processing Power}
+	Increasing processing power can be achieved by increasing number of Dynos on Heroku. A dyno is a lightweight Linux container that runs a single user-specified command. Dynos can be used to handle multiple jobs of the application . Dinos are like threads that can be assigned different jobs and each dyno can run a single process of the application.
+	\subsection{Security}
+	Security is about keeping user data secure and prevent illicit access to another user’s mission details.In order security to be achieved , certain goals must be met like confidentiality, integrity and assurance.Security tactic can be broken down into the following architectural tactics: 
+	\subsubsection{Authentication}
+	It is about giving the right people access to the system. SSH certificates and passwords will provide authentication. The portal will provide the opportunity for users to enter login details and the details will then be authenticated by the system. 
+	\subsubsection{Authorization}
+	Giving the authenticated people authority over only what they can do (Privacy). It is also about ensuring that an authenticated user has the rights to access and modify either data or services which includes selecting type of mission for the drone ,selecting the area by the drone and the date for the mission.
+	
+	\subsection{Integrability}
+	Integrability is the ability to make the separately developed components of the system work correctly together.The drone management server should be able to interface with and control real drones . The drone operator must communicate well with web server to ensure that the drones do specific missions approriately. In order to provide access to other components of the system, the following tactic can be user:
+	
+	\subsubsection{Support Standard Communication Protocals}
+	The system will make use of RESTful HTTP API.
+	REST will ensure that the communication between the client which is the operator portal or the user portal and the server is well handled.
+	
 	\section{Access and Integration channels}%%Sello
 	%This time, you are writing about the how we will meet the intergration requirements that you wrote about earlier. Write about how 	%we will use a HTTPS REST API to interact with the web portal. Talk about our layered approach to interacting with the drones; 	%our system->drone interfacing object -> adrupilot -> pixhawk -> drone.
 	\subsection{Integration Channels}
@@ -241,7 +265,34 @@
 	%List and describe all the technologies we will be using, including why we are using them. Make sure for each one you mention 	%how it solves an architectural requirement.
 	%MEAN Stack (Mongo, ExpressJS, AngualrJS, NodeJS), Mongoose (for ORM), Heroku Server, Travis for CI... and others
 	
-	
+	 
+	 The system will be Web based, so the technologies that will guide with building of the mentioned are:
+	 
+	 \begin{itemize}
+	 	
+	 	
+	 	
+	 	\item MongoDB - For the Database, MongoBD is a Cross-platform database, classified as a NoSQL database, This will be used to enter and store flexible data in document form in our database. flexible data will be needed in the system, it will allow to store wide range of mission types or a combination of them.
+	 	
+	 	
+	 	\item Express - As the web framework, Express provides set of robust features for multi-page web development. Great for Accessibility as it consists of HTTP utility methods, it will help create a RESTFUL API in the system.
+	 	
+	 	
+	 	\item AngularJS - As the front-end framework, AngularJs will be used for fast, efficient form validation on user side, aiding to easy server communication in the MEAN Stack, scaling up performance of system.     
+	 	
+	 	
+	 	\item NodeJS - The server platform, will be used for validating passed data before its passed on to be stored on database. commandline  tool that will cater for  communication with MongoDb, the server, providing persistent connection from browser client to the server. in effect the system will be able to handle concurrent requests easier.
+	 	
+	 	\item Mongoose - for Persisting the database accordingly, Mongoose will take care of mongoDB validation, casting and business logic side of the system. catering for converting data between incompatible types, this promotes privacy and performance of the system.  
+	 	
+	 	
+	 	\item Heroku Cloud Server - Hosting server, For cloud application platform, heroku will be used for deployment, version control, and accessibility to the latest version from anywhere as dyno, which can scale up for multiple processing, since background and web applications are independently processed.
+	 	
+	 	\item Travis CI - for testing, this technology will be used to build and test the system, continuously; thus not allowing for any incorrect functionality to be incoporated to the system. aiding to the stability of the system as a whole.   
+	 	
+	 	
+	 \end{itemize}
+	 
 	
 	
 	
