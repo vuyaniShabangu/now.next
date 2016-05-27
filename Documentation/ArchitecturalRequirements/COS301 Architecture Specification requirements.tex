@@ -146,12 +146,14 @@
 	\section{Vision}%%aiden
 	
 	
+	
 	\section{Background} %%aiden
-
+	The Drone Mission project is aimed at equipping a client that would need the services of the drone but does not own a drone or the expertise to control the drone. The client or user would register to the website service and request the details of his mission such as time, place and if it is a recurring mission every hour, day, week, etc. The system would process all details and a drone operator will send information back to system to fly the drone. Information is captured and sent to the client efficiently.
 	\newpage
 	
 	\section{Architecture Requirements}%Header
 		\subsection{Architectural Scope}%%Aiden
+			There are numerous quality requirements required from the system in order to operate the drones correctly to ensure safety of user, drone, client and organisation as a whole. These quality requirements range from the legal factors, safety of the drone in case of failure of any sort, client details protection and data safety and last but not least the safety of everyone around the use of the drone.
 		%Here just talk about overview of the architectural requirements. Just broadly what the quality of the product must be.
 		
 			\setlength{\leftskip}{45px}
@@ -212,34 +214,8 @@
 	%List and describe all the technologies we will be using, including why we are using them. Make sure for each one you mention 	%how it solves an architectural requirement.
 	%MEAN Stack (Mongo, ExpressJS, AngualrJS, NodeJS), Mongoose (for ORM), Heroku Server, Travis for CI... and others
 	
-	 
-	 
-	 The system will be Web based, so the technologies that will guide with building of the mentioned are:
-	 
-	\begin{itemize}
-	 
-	 
-	
-	\item MongoDB - For the Database, MongoBD is a Cross-platform database, classified as a NoSQL database, This will be used to enter and store flexible data in document form in our database. flexible data will be needed in the system, it will allow to store wide range of mission types or a combination of them.
 	
 	
-	\item Express - As the web framework, Express provides set of robust features for multi-page web development. Great for Accessibility as it consists of HTTP utility methods, it will help create a RESTFUL API in the system.
-	
-	
-	\item AngularJS - As the front-end framework, AngularJs will be used for fast, efficient form validation on user side, aiding to easy server communication in the MEAN Stack, scaling up performance of system.     
-	
-	
-	\item NodeJS - The server platform, will be used for validating passed data before its passed on to be stored on database. commandline  tool that will cater for  communication with MongoDb, the server, providing persistent connection from browser client to the server. in effect the system will be able to handle concurrent requests easier.
-	
-	\item Mongoose - for Persisting the database accordingly, Mongoose will take care of mongoDB validation, casting and business logic side of the system. catering for converting data between incompatible types, this promotes privacy and performance of the system.  
-	
-	
-	\item Heroku Cloud Server - Hosting server, For cloud application platform, heroku will be used for deployment, version control, and accessibility to the latest version from anywhere as dyno, which can scale up for multiple processing, since background and web applications are independently processed.
-	
-	\item Travis CI - for testing, this technology will be used to build and test the system, continuously; thus not allowing for any incorrect functionality to be incoporated to the system. aiding to the stability of the system as a whole.   
-	
-	
-	\end{itemize}
 	
 	
 	
