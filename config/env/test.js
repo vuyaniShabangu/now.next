@@ -6,8 +6,8 @@ module.exports = {
   db: {
     uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'ds011374.mlab.com:11374/heroku_9s70v4j8') + '/mean-test',
     options: {
-      user: '',
-      pass: ''
+      user: 'root',
+      pass: 'root'
     },
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
