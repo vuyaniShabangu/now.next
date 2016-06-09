@@ -44,6 +44,22 @@ var UserSchema = new Schema({
     type: String,
     trim: true
   },
+
+
+  phoneNumber: {
+    type: String,
+    trim: true
+     validate: [validateLocalStrategyProperty, 'Please fill in your Phone number']
+  },
+
+
+  role: {
+    type: String,
+    trim: true
+         validate: [validateLocalStrategyProperty, 'Please Select your role']
+  },
+
+
   email: {
     type: String,
     index: {
