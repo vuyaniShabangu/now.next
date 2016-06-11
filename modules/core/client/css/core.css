@@ -41,3 +41,8 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
+
+#dronePic{
+	height: 100%;
+	width: 100%;
+}
