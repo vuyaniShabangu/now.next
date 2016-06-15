@@ -5,10 +5,39 @@ block content
     h3 Sign up
   form.form-horizontal(id='signup-form', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
+
+    .form-group
+      label.col-sm-3.control-label(for='name') Name
+      .col-sm-7
+        input.form-control(type='text', name='name', id='name', placeholder='Name', autofocus, required)
+
+    .form-group
+      label.col-sm-3.control-label(for='surname') Surname
+      .col-sm-7
+        input.form-control(type='text', name='surname', id='surname', placeholder='Surname', autofocus, required)
+
+    .form-group
+      label.col-sm-3.control-label(for='username') User name
+      .col-sm-7
+        input.form-control(type='text', name='username', id='username', placeholder='User name', autofocus, required)
+
+    .form-group
+      label.col-sm-3.control-label(for='phonenumber') Phone Number
+      .col-sm-7
+        input.form-control(type='text', name='phonenumber', id='phonenumber', placeholder='Phone Number', autofocus, required)
+
+    .form-group
+      label.col-sm-3.control-label(for="role") Role
+      .col-sm-3
+      select#role.form-control(type='text',.col-sm-3, name='role', placeholder='Role', required='')
+        option(value='Normal')  Normal  
+        option(value='Operator')  Operator 
+
     .form-group
       label.col-sm-3.control-label(for='email') Email
       .col-sm-7
         input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
+
     .form-group
       label.col-sm-3.control-label(for='password') Password
       .col-sm-7

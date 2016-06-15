@@ -74,6 +74,12 @@ exports.getSignup = (req, res) => {
  * Create a new local account.
  */
 exports.postSignup = (req, res, next) => {
+  
+  req.assert('name', 'Please Enter valid name').len(1);
+  req.assert('surname', 'Please Enter valid surname').len(1);
+  req.assert('username', 'Please Enter valid username').len(1);
+  req.assert('phonenumber', 'Please Enter valid phone number').len(9);
+   req.assert('role', 'Please Select Role').len(1);
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('password', 'Password must be at least 4 characters long').len(4);
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
@@ -88,7 +94,12 @@ exports.postSignup = (req, res, next) => {
 
   const user = new User({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    name: req.body.name,
+    surname: req.body.surname,
+    username: req.body.username,
+    phonenumber: req.body.phonenumber,
+    role: req.body.role 
   });
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
@@ -137,6 +148,10 @@ exports.postUpdateProfile = (req, res, next) => {
     if (err) { return next(err); }
     user.email = req.body.email || '';
     user.profile.name = req.body.name || '';
+    user.profile.surname = req.body.surname|| '';
+    user.profile.username = req.body.username || '';
+    user.profile.phonenumber = req.body.phonenumber || '';
+    user.profile.role = req.body.role || '';
     user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
