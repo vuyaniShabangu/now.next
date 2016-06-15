@@ -27,11 +27,11 @@ block content
         input.form-control(type='text', name='phonenumber', id='phonenumber', placeholder='Phone Number', autofocus, required)
 
     .form-group
-      label.col-sm-3.control-label(for="role") Role
-      .col-sm-3
-      select#role.form-control(type='text',.col-sm-3, name='role', placeholder='Role', required='')
-        option(value='Normal')  Normal  
-        option(value='Operator')  Operator 
+      label.col-sm-3.control-label(for='role') Role
+      .col-sm-7
+        select#role.form-control(type='text', name='role', placeholder='Role', required='')
+          option(value='Normal')  Normal User 
+          option(value='Operator')  Drone Operator 
 
     .form-group
       label.col-sm-3.control-label(for='email') Email
