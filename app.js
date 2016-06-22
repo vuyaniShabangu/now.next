@@ -31,6 +31,8 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
+const addController = require('./controllers/add-drone');
+const manageController = require('./controllers/manage-drones');
 
 /**
  * API keys and Passport configuration.
@@ -114,6 +116,9 @@ app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/contact', contactController.getContact);
+app.get('/add-drone',passportConfig.isAuthenticated, addController.getAddDrone);
+app.post('/add-drone',passportConfig.isAuthenticated, addController.postNewDrone);
+app.get('/manage-drones',passportConfig.isAuthenticated, manageController.getMyDrones);
 app.post('/contact', contactController.postContact);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
