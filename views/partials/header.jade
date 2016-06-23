@@ -7,15 +7,21 @@
         span.icon-bar
         span.icon-bar
       a.navbar-brand(href='/')
-        i.fa.fa-cube
-        | dronr
+        img(src='logo.jpg', alt='logo' style='width:100%;height:100%')
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(class=(title == 'Home') ? 'active' : undefined)
-          a(href='/') Home
         if user
           li(class=(title == 'Contact') ? 'active' : undefined)
             a(href='/contact') Missions
+        if user
+          li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
+            a.dropdown-toggle(href='#', data-toggle='dropdown') Operator Dashboard 
+            ul.dropdown-menu
+              li 
+                a(href='/add-drone') Add Drone
+              li.divider
+              li 
+                a(href='manage-drones') Manage Drones
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)
