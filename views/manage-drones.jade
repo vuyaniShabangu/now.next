@@ -1,21 +1,19 @@
+
 extends layout
 
 block content
-	.page-header
-		h3 Manage Drones
+  .page-header
+    h3 Manage Drones
 
-	.container
-		table.table.table-striped
-			thead
-				tr
-					th Drone
-			tbody
-				tr
-					td Eve
-					|	     
-					td Jackson 94
-					|   
-				tr
-					td John
-					|     
-					td Doe 80
+  .container
+
+    button.btn.btn-primary.btn-sm(type='button') Delete
+    table.table.table-striped
+      thead
+        tr
+          th Drone
+      tbody
+
+    ul
+      for tmp in docs
+        li #{tmp.fModel}
