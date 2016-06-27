@@ -3,7 +3,7 @@ const Drone = require('../models/Drone');
 const User = require('../models/User');
 var tmpEmail = User.email;
 var listDrones;
-var mongoos = require('mongoose'), DroneRead = mongoose.model('Drone');
+var mongoose = require('mongoose'), DroneRead = mongoose.model('Drone');
 
 module.exports = {
 	all:function(req,res){
