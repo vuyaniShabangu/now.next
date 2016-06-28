@@ -14,7 +14,7 @@ exports.getMyDrones = (req, res) => {
 };
 */
 exports.getMyDrones = (req, res) => {
-	Drone.find((err,docs)=> {
+	Drone.find({fUser:tmpEmail},(err,docs)=> {
 	res.render('manage-drones', {
 	droneList:docs
 	});
