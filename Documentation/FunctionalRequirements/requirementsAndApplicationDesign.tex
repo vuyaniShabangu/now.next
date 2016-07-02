@@ -128,85 +128,72 @@ If it is found that this system succeeds as an improvement over the old system, 
 In order to represent all of the use cases associated with the system we have divided the system up into sections that will indicate all of the use cases associated with each and how they include or expand upon other use cases.
 	
 
-	%Vuyani Shabangu
-\subsection{Research Group subsystem}
+\subsection{Operator subsystem}
 	\subsubsection{Use cases}
 
-		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/ResearchGroupUseCaseDiagram.jpg}  \\
-			\caption{Use Case Diagram : Research Group}
-		\end{figure}
 		\begin{flushleft}
 			\textbf{Critical}
 				\begin{itemize}
-	  				\item Add research group
-	  				\item Remove research group
+	  				\item Add drone
+	  				\item Remove drone
 					\item Assign research group leader
 					\item View research group unit score
 				\end{itemize}
 
-			\textbf{Important}
-				\begin{itemize}
-	  				\item View number of publications
-	  				\item View progress on all publications
-					\item Add researcher to group
-				\end{itemize}
-
 			\textbf{Nice-To-Have}
 				\begin{itemize}
-	  				\item Search research group
+	  				\item Edit drone
 				\end{itemize}
 		\end{flushleft}
 
 	\subsubsection{Services Contracts}
 
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/servicesContractAddResearchGroup.jpg}  \\
-			\caption{Services Contract : addResearchGroup}
+			\includegraphics[width=\textwidth]{SC_add.png}  \\
+			\caption{Services Contract : addDrone}
 		\end{figure}
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/servicesContractRemoveResearchGroup.jpg}  \\
-			\caption{Services Contract : removeResearchGroup}
+			\includegraphics[width=\textwidth]{sc_delete.png}  \\
+			\caption{Services Contract : removeDrone}
 		\end{figure}
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/servicesContractAssignGroupLeader.jpg}  \\
-			\caption{Services Contract : assignGroupLeader}
-		\end{figure}
-		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/servicesContractViewgroupUnit.jpg}  \\
-			\caption{Services Contract : viewGroupUnit}
+			\includegraphics[width=\textwidth]{sc_edit.png}  \\
+			\caption{Services Contract : editDrone}
 		\end{figure}
 
 	\subsubsection{Required functionality}
 	
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/RequiredFunctionalityRemoveResearchGroup.jpg}  \\
-			\caption{Functional Requirements : removeResearchGroup}
+			\includegraphics[width=\textwidth]{rf_add.png}  \\
+			\caption{Functional Requirements : addDrone}
 		\end{figure}
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/RequiredFunctionalityAssignGroupLeader.jpg}  \\
-			\caption{Functional Requirements : assignGroupLeader}
+			\includegraphics[width=\textwidth]{rf_remove.png}  \\
+			\caption{Functional Requirements : removeDrone}
 		\end{figure}
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/RequiredFunctionalityAddResearcherToGroup.jpg}  \\
-			\caption{Functional Requirements : addResearcherToGroup}
+			\includegraphics[width=\textwidth]{rf.png}  \\
+			\caption{Functional Requirements : editDrone}
 		\end{figure}
 	
 
 	\subsubsection{Process specifications}
 	
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/addResearchGroupProcess Specification.jpg}  \\
-			\caption{Process Specification : addResearchGroup}
+			\includegraphics[width=\textwidth]{ps_add.png}  \\
+			\caption{Process Specification : addDrone}
 		\end{figure}
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{Vuyani_Diagrams/assignGroupLeaderProcessSpecification.jpg}  \\
-			\caption{Process Specification : assignGroupLeader}
+			\includegraphics[width=\textwidth]{ps_edit.png}  \\
+			\caption{Process Specification : editDrone}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{ps_delete.png}  \\
+			\caption{Process Specification : removeDrone}
 		\end{figure}
 		%To include diagrams for process specifications here.
 		
 	
-	% End - Vuyani Shabangu
 	
 \newpage
 
