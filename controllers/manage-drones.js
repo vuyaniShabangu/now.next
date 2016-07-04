@@ -5,6 +5,14 @@ var tmpEmail = User.email;
 var listDrones;
 
 /*
+Drone.find().where('fUser').eq(tmpEmail).exec(function(err,drns){
+	listDrones = drns;
+});
+
+exports.getMyDrones = (req, res) => {
+	res.render('manage-drones', {title: 'Manage Drones'},{droneList:listDrones});
+};
+*/
 exports.getMyDrones = (req, res) => {
 	Drone.find({fUser:tmpEmail},(err,docs)=> {
 	res.render('manage-drones', {
@@ -12,11 +20,4 @@ exports.getMyDrones = (req, res) => {
 	});
 });
 };
-*/
 
-Drone.find({fUser:{$eq: tmpEmail}},function(err,drns){
-	listDrones = drns;
-});
-exports.getMyDrones = (req, res) => {
-	res.render('manage-drones', {title: 'Manage Drones',docs:listDrones});
-};
