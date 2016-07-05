@@ -15,7 +15,7 @@ exports.getMyDrones = (req, res) => {
 */
 exports.getMyDrones= (req, res) => {
   Drone.find((err, docs) => {
-    res.render('drones', { drones: docs });
+    res.render('manage-drones', { drones: docs });
   });
 };
 
