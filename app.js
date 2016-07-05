@@ -31,6 +31,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
+const missionController = require('./controllers/missions');
 const addController = require('./controllers/add-drone');
 const manageController = require('./controllers/manage-drones');
 
@@ -105,6 +106,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
+ app.get('/missions', missionController.getmissions);
 app.get('/', homeController.index);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
@@ -119,6 +121,7 @@ app.get('/contact', contactController.getContact);
 app.get('/add-drone',passportConfig.isAuthenticated, addController.getAddDrone);
 app.post('/add-drone',passportConfig.isAuthenticated, addController.postNewDrone);
 app.get('/manage-drones',passportConfig.isAuthenticated, manageController.getMyDrones);
+
 app.post('/contact', contactController.postContact);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
