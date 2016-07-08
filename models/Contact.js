@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+  userID:String,
   mtype: String,
   mdesc: String,
   mdatetime: String,
@@ -11,6 +12,6 @@ const userSchema = new mongoose.Schema({
 
 
 
-const Contact = mongoose.model('Contact', userSchema);
+const Contact = mongoose.model('contacts', userSchema);
 
 module.exports = Contact;
