@@ -25,6 +25,7 @@ exports.getContact = (req, res) => {
 exports.postContact = (req, res) => {
     
 const cont = new Contact({
+    userEmail:req.user.email,
     mtype: req.body.missiontype,
     mdesc: req.body.missiondesc,
     mdatetime: req.body.missiondate,

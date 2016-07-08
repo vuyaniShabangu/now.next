@@ -11,13 +11,13 @@ block content
           p="----------------------------------------------------------------------------------------------------------------------------------------------------------------------"
           | Posted On
           p=cont.mdatetime
-          p="By:  "+cont.email
+          p="By:  "+cont.userEmail
           li=cont.mtype
           | Description:
           p=cont.mdesc
     else
       for cont in missions
-        if cont.userID == user._id & cont.email!="operator"
+        if cont.userEmail == user.email 
           p="----------------------------------------------------------------------------------------------------------------------------------------------------------------------"
           | Posted On
           p=cont.mdatetime

@@ -15,7 +15,8 @@
             a.dropdown-toggle(href='#', data-toggle='dropdown') Missions
             ul.dropdown-menu
               li(class=(title == 'Contact') ? 'active' : undefined)
-                a(href='/contact') Add Missions
+                if user.profile.role!="Operator"
+                  a(href='/contact') Add Missions
               li.divider
               li 
                 a(href='/missions') View missions

@@ -4,6 +4,11 @@ const nodemailer = require('nodemailer');
 const passport = require('passport');
 const User = require('../models/User');
 
+
+
+
+
+
 /**
  * GET /login
  * Login page.
@@ -94,13 +99,14 @@ exports.postSignup = (req, res, next) => {
 
   const user = new User({
     email: req.body.email,
-    password: req.body.password,
-    name: req.body.name,
-    surname: req.body.surname,
-    username: req.body.username,
-    phonenumber: req.body.phonenumber,
-    role: req.body.role 
+    password: req.body.password 
   });
+
+  user.profile.name= req.body.name;
+    user.profile.surname= req.body.surname;
+    user.profile.username= req.body.username;
+    user.profile.phonenumber= req.body.phonenumber;
+    user.profile.role= req.body.role;
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
     if (existingUser) {

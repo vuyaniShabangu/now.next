@@ -1,8 +1,9 @@
 const Contact = require('../models/Contact');
+const User = require('../models/User');
 
 exports.getmissions = (req, res) => {
-  Contact.find((err, docs) => {
+Contact.find((err, docs) => {
     res.render('missions', { missions: docs });
-  });
+  });  
 };
 
