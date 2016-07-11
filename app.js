@@ -33,7 +33,7 @@ const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const addController = require('./controllers/add-drone');
 const manageController = require('./controllers/manage-drones');
-
+const editController = require('./controllers/edit-drone');
 /**
  * API keys and Passport configuration.
  */
@@ -119,6 +119,9 @@ app.get('/contact', contactController.getContact);
 app.get('/add-drone',passportConfig.isAuthenticated, addController.getAddDrone);
 app.post('/add-drone',passportConfig.isAuthenticated, addController.postNewDrone);
 app.get('/manage-drones',passportConfig.isAuthenticated, manageController.getMyDrones);
+app.delete('/manage-drones',manageController.deleteDrone);
+app.get('/edit-drone', passportConfig.isAuthenticated, editController.getDrone);
+app.post('/edit-drone',passportConfig.isAuthenticated, editController.postDrone);
 app.post('/contact', contactController.postContact);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);

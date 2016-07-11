@@ -1,15 +1,17 @@
 $(document).ready(function() {
 
+
+
+
   // Place JavaScript code here...
-
   //This is for the Google Map in the Create Mission Form:
-
 function initMap() {
 		document.getElementById('map').innerHTML = "dfsdfs";
 	  	var map = new google.maps.Map(document.getElementById('map'), {
 	    	center: {lat: -25.7545492, lng: 28.2314476},
 	    	zoom: 10
 	  	});
+
 
 		// This event listener calls addMarker() when the map is clicked.
 	  	/*google.maps.event.addListener(map, 'click', function(event) {
@@ -29,7 +31,7 @@ function initMap() {
 	      		zIndex: 1
 	    	}
 	  	});
-		
+
 	  	google.maps.event.addListener(drawingManager, "overlaycomplete", function(event){
                // overlayClickListener(event.overlay);
                // $('#missiondesc').html(event.overlay.getPath().getArray());
@@ -37,7 +39,7 @@ function initMap() {
                 console.log("done!");
                 console.log(event.overlay.getPath().getArray()[0].lat());
                 overlayPointsArray = event.overlay.getPath().getArray()
-    			
+
     			surveillanceRoute = Array();
 
     			for (var i = 0; i < overlayPointsArray.length; i++) {
@@ -48,7 +50,7 @@ function initMap() {
 
     			console.log(surveillanceRoute);
             });
-	  	
+
 
 	  drawingManager.setMap(map);
 	}
@@ -77,7 +79,29 @@ function initMap() {
     map: map
   });
 }
-
 	initMap();
 
 });
+
+var droneRemove;
+function setDrone(details)
+{
+	droneRemove = details;
+}
+
+/*function deleteDrone(){
+	Drone.remove({ _id: droneRemove }, function (err) {
+  if (err) return handleError(err);
+});
+	location.replace('manage-drones');
+}*/
+
+function deleteDrone(){
+	alert(droneRemove);
+	/*
+	$.ajax({
+		type: 'POST',
+		data: droneRemove
+		url: 'manage-drones'
+	});	*/
+}

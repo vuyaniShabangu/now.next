@@ -8,7 +8,7 @@ exports.getAddDrone = (req, res) => {
 };
 
 exports.postNewDrone = (req, res) => {
-    
+
 const dro = new Drone({
 	fManuc: req.body.manufac,
 	fModel: req.body.model,
@@ -22,7 +22,7 @@ const dro = new Drone({
 dro.save((err) => {
 	if (err) { return next(err); }
 		req.flash('success', { msg: 'You have successfully added a drone' });
-    return res.redirect('/manage-drones');   
+    return res.redirect('/manage-drones');
 });
-  
+
 };

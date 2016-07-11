@@ -1,4 +1,3 @@
-
 extends layout
 
 block content
@@ -7,13 +6,26 @@ block content
 
   .container
 
-    button.btn.btn-primary.btn-sm(type='button') Delete
     table.table.table-striped
       thead
         tr
-          th Drone
+          th My Drones
       tbody
+        for drone in drones
+          if drone.fUser == user.email
+            tr
+              td= drone.fManuc + " " + drone.fModel
+                button.btn.btn-primary.btn-sm(type='button', id= drone._id, onclick='window.location.href="/edit-drone?thisDrone="+id') Edit
+                button.btn.btn-primary.btn-sm(type='button', id= drone._id, data-toggle='modal', data-target='#dltModal' onclick='setDrone(this.id)') Delete
 
-    ul
-      for drone in drones
-        li= drone.fModel
+    #dltModal.modal.fade(role='dialog')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal') &times;
+            h4.modal-title Confirm delete
+          .modal-body
+            p Are you sure you want to delete this drone?
+          .modal-footer
+            button.btn.btn-primary.btn-sm(type='button', data-dismiss='modal') Close
+            button.btn.btn-danger(type='button', data-dismiss='modal' onclick='deleteDrone()') Delete
