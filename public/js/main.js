@@ -98,10 +98,16 @@ function setDrone(details)
 
 function deleteDrone(){
 	alert(droneRemove);
-	/*
+
 	$.ajax({
-		type: 'POST',
-		data: droneRemove
-		url: 'manage-drones'
-	});	*/
+		type: 'DELETE',
+		url: '/manage-drones/' + droneRemove
+	}).done(function(response){
+		if(response.msg === ''){
+
+		}
+		else {
+			alert('Error: ' + response.msg);
+		}
+	});
 }
