@@ -9,7 +9,7 @@ Contact.find((err, docs) => {
 
 exports.getmissionsbare = (req, res) => {
 Contact.find((err, docs) => {
-    res.send('send';
+    res.send('tata');
   });  
 };
 
