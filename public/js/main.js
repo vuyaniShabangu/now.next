@@ -97,7 +97,6 @@ function setDrone(details)
 }*/
 
 function deleteDrone(){
-	alert(droneRemove);
 
 	$.ajax({
 		type: 'DELETE',
