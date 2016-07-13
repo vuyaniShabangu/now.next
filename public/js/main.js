@@ -99,14 +99,12 @@ function setDrone(details)
 function deleteDrone(){
 
 	$.ajax({
-		type: 'DELETE',
-		url: '/manage-drones/' + droneRemove
-	}).done(function(response){
-		if(response.msg === ''){
-
-		}
-		else {
-			alert('Error: ' + response.msg);
+		type: 'GET',
+		url: '/delete-drone',
+		data: {id:droneRemove},
+		success: function(data){
+			alert(data);
+			window.location.reload(true);
 		}
 	});
 }

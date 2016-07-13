@@ -5,19 +5,21 @@ block content
     h3 Manage Drones
 
   .container
-
+  form.form-horizontal(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
     table.table.table-striped
       thead
         tr
           th My Drones
       tbody
+      .form-group
         for drone in drones
           if drone.fUser == user.email
             tr
               td= drone.fManuc + " " + drone.fModel
-                button.btn.btn-primary.btn-sm(type='button', id= drone._id, onclick='window.location.href="/edit-drone?thisDrone="+id') Edit
-                button.btn.btn-primary.btn-sm(type='button', id= drone._id, data-toggle='modal', data-target='#dltModal' onclick='setDrone(this.id)') Delete
-
+//        button.btn.btn-primary.btn-sm(type='submit') Edit
+//        button.btn.btn-primary.btn-sm(type='button', data-toggle='modal', data-target='#dltModal' onclick='setDrone()') Delete
+//
     #dltModal.modal.fade(role='dialog')
       .modal-dialog
         .modal-content

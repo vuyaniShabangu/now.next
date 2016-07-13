@@ -8,23 +8,23 @@ block content
 		input(type='hidden', name='_csrf', value=_csrf)
 		input(type='hidden', name='owner', value='#{user.email}')
 		.form-group
-			label(class='col-sm-2 control-label', for='manufac') Manufacturer:
+			label(class='col-sm-2 control-label', for='manufac' ) Manufacturer:
 			.col-sm-3
-				input.form-control(type='text', name='manufac', id='manufac' required)
+				input.form-control(type='text', name='manufac', id='manufac',value='#{drones.fManuc}' required)
 		.form-group
 			label(class='col-sm-2 control-label', for='model') Model:
 			.col-sm-3
-				input.form-control(type='text', name='model', id='model' required)
+				input.form-control(type='text', name='model', id='model', value='#{drones.fModel}' required)
 		.form-group
 			label(class='col-sm-2 control-label', for='flytime') Max Fly Time (Minutes):
 			.col-sm-2
-				input.form-control(type='text', name='flytime', id='flytime' required)
+				input.form-control(type='text', name='flytime', id='flytime', value='#{drones.fFlyTime}' required)
 		.form-group
 			label(class='col-sm-2 control-label') Capabilities:
 			label(class='col-sm-2 control-label', for='aerial') Aerial Photography
-				input(type='checkbox', name='aerial')
+				input(type='checkbox', name='aerial', value='#{drones.fAerial}')
 			label(class='col-sm-3 control-label') Video Recording
-				input(type='checkbox', name='video')
+				input(type='checkbox', name='video', value='#{drones.fVideo}')
 			label(class='col-sm-3 control-label') Orthophoto
 				input(type='checkbox', name='ortho')
 		.form-group
