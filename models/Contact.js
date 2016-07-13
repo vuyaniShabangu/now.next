@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   mtype: String,
   mdesc: String,
   mdatetime: String,
-  mbudget: String
+  mbudget: String,
+  mStatus: String
 });
 
 

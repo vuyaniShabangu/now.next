@@ -2,6 +2,96 @@ $(document).ready(function() {
 
   // Place JavaScript code here...
 
+
+
+
+  alert("ready to go!");
+
+  var table = $('#example').DataTable( {
+        "ajax": "/missionsbare",
+        "sAjaxDataProp": "missions",
+        "columns": [
+            { "data": "userEmail" },
+            { "data": "mtype" },
+            { "data": "mdesc" },
+            { "data": "mdatetime" },
+            { "data": "mbudget" },
+            {
+              "mData": null,
+              "bSortable": false,
+              "defaultContent": "<button class='btn btn-primary' id = 'delete'>Delete</button>"
+            },
+            {
+              "mData": null,
+              "bSortable": false,
+              "defaultContent": "<button class='btn btn-primary' id='edit'>Edit</button>"
+            }
+        ]
+    } );
+
+//This is the delete function.
+  $('#example tbody').on( 'click', 'button#delete', function () {
+            var data = table.row( $(this).parents('tr') ).data();
+            alert(data._id);
+
+            //send id to server for editing
+            $.ajax({
+
+              url : '/missionsdelete',
+              type : 'POST',
+              data : {
+                'mission_id' : data._id
+              },
+              dataType:'json',
+              success : function(data) {              
+                alert("I called him!");
+              },
+              error : function(request,error)
+              {
+                alert("Request: "+JSON.stringify(request));
+              }
+});
+          });
+
+//this is the edit function
+
+  $('#example tbody').on( 'click', 'button#edit', function () {
+            var data = table.row( $(this).parents('tr') ).data();
+            alert(data.userEmail);
+
+            //Lightbox will go here, which will output form with editable values
+            //after clicking save, you will be the ajax will be run
+
+            //send id to server for editing
+            $.ajax({
+
+              url : '/missionsedit',
+              type : 'POST',
+              data : {
+                'mission_id' : data._id,
+                'userEmail' : data.userEmail,
+                'mtype' : data.mtype,
+                'mdesc' : 'This has been changed papa!',
+                'mdatetime' : data.mdatetime,
+                'mbudget' : 10000
+              },
+              dataType:'json',
+              success : function(data) {              
+                alert("I called him!");
+              },
+              error : function(request,error)
+              {
+                alert("Request: "+JSON.stringify(request));
+              }
+});
+          });
+
+
+
+
+
+
+
   //This is for the Google Map in the Create Mission Form:
 
 function initMap() {
@@ -17,8 +107,14 @@ function initMap() {
     		addMarker(event.latLng, map);
   		});*/
 
+        map.addListener('mousemove', function() {
+          // 3 seconds after the center of the map has changed, pan back to the
+          // marker.
+            alert("papapapa");
+        });
+
 	  	var drawingManager = new google.maps.drawing.DrawingManager({
-	    	drawingMode: google.maps.drawing.OverlayType.POLYGON,
+	    	drawingMode: google.maps.drawing.OverlayType.POLYLINE,
 	    	drawingControl: false,
 	    	circleOptions: {
 	      		fillColor: '#ffff00',
@@ -29,8 +125,10 @@ function initMap() {
 	      		zIndex: 1
 	    	}
 	  	});
+
+
 		
-	  	google.maps.event.addListener(drawingManager, "overlaycomplete", function(event){
+	  	/*google.maps.event.addListener(drawingManager, "overlaycomplete", function(event){
                // overlayClickListener(event.overlay);
                // $('#missiondesc').html(event.overlay.getPath().getArray());
 
@@ -47,7 +145,11 @@ function initMap() {
     			}
 
     			console.log(surveillanceRoute);
-            });
+            });*/
+
+
+
+
 	  	
 
 	  drawingManager.setMap(map);
