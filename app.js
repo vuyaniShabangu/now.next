@@ -107,14 +107,10 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-<<<<<<< HEAD
   app.post('/missionsedit', missionController.postmissionsedit);
   app.post('/missionsdelete', missionController.postmissionsdelete);
   app.get('/missionsdt', missionController.getmissionsdt);
  app.get('/missionsbare', missionController.getmissionsbare);
-=======
- app.get('missionsbare', missionController.getmissionsbare);
->>>>>>> b260df0ea4223e217217635ad2915d77ce33d0d7
  app.get('/missions', missionController.getmissions);
  app.get('/people', peopleController.getpeople);
 app.get('/', homeController.index);
