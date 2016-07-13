@@ -29,7 +29,8 @@ const cont = new Contact({
     mtype: req.body.missiontype,
     mdesc: req.body.missiondesc,
     mdatetime: req.body.missiondate,
-    mbudget: req.body.budget
+    mbudget: req.body.budget,
+    mStatus: "pending"
   });
 
 cont.save((err) => {
