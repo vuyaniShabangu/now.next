@@ -32,24 +32,24 @@ $(document).ready(function() {
 //This is the delete function.
   $('#example tbody').on( 'click', 'button#delete', function () {
             var data = table.row( $(this).parents('tr') ).data();
-            alert(data._id);
-            
+            //alert(data._id);
+            //alert($('#_csrf').val());
             //send id to server for delete
             $.ajax({
 
               url : '/missionsdelete',
               type : 'POST',
               data : {
-              	 '_csrf': 's2mBr9IcKVTSxjMTj9I7Wmpe3cpEWQgZFUno4=', 
+              	 '_csrf':$('#_csrf').val(), 
               	 'mission_id' : data._id
               },
               dataType:'json',
               success : function(data) {              
-                alert("I called him!");
+                //alert("I called him!");
               },
               error : function(request,error)
               {
-                alert("Request: "+JSON.stringify(request));
+                //alert("Request: "+JSON.stringify(request));
               }
 });
           });
@@ -58,7 +58,7 @@ $(document).ready(function() {
 
   $('#example tbody').on( 'click', 'button#edit', function () {
             var data = table.row( $(this).parents('tr') ).data();
-            alert(data.userEmail);
+            //alert(data.userEmail);
 
             //Lightbox will go here, which will output form with editable values
             //after clicking save, you will be the ajax will be run
@@ -69,7 +69,7 @@ $(document).ready(function() {
               url : '/missionsedit',
               type : 'POST',
               data : {
-                '_csrf': 's2mBr9IcKVTSxjMTj9I7Wmpe3cpEWQgZFUno4=',
+                '_csrf':$('#_csrf').val(),
                 'mission_id' : data._id,
                 'userEmail' : data.userEmail,
                 'mtype' : data.mtype,
