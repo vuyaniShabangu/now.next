@@ -34,13 +34,14 @@ $(document).ready(function() {
             var data = table.row( $(this).parents('tr') ).data();
             alert(data._id);
 
-            //send id to server for editing
+            //send id to server for delete
             $.ajax({
 
               url : '/missionsdelete',
               type : 'POST',
               data : {
-                'mission_id' : data._id
+              	 '_csrf': _csrf, 
+              	 'mission_id' : data._id
               },
               dataType:'json',
               success : function(data) {              
