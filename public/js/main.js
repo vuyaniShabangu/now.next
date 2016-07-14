@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 
 
-  alert("ready to go!");
+  alert("ready to go! ");
 
   var table = $('#example').DataTable( {
         "ajax": "/missionsbare",
@@ -33,14 +33,14 @@ $(document).ready(function() {
   $('#example tbody').on( 'click', 'button#delete', function () {
             var data = table.row( $(this).parents('tr') ).data();
             alert(data._id);
-
+            
             //send id to server for delete
             $.ajax({
 
               url : '/missionsdelete',
               type : 'POST',
               data : {
-              	 '_csrf': _csrf, 
+              	 '_csrf': 's2mBr9IcKVTSxjMTj9I7Wmpe3cpEWQgZFUno4=', 
               	 'mission_id' : data._id
               },
               dataType:'json',
@@ -69,6 +69,7 @@ $(document).ready(function() {
               url : '/missionsedit',
               type : 'POST',
               data : {
+                '_csrf': 's2mBr9IcKVTSxjMTj9I7Wmpe3cpEWQgZFUno4=',
                 'mission_id' : data._id,
                 'userEmail' : data.userEmail,
                 'mtype' : data.mtype,
