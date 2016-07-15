@@ -1,0 +1,39 @@
+extends layout
+
+block content
+	.page-header
+		h3 Operator Availability
+		
+	form.form-horizontal(method='POST')
+		input(type='hidden', name='_csrf', value=_csrf)
+		input(type='hidden', name='owner', value='#{user.email}')
+		.form-group
+			label(class='col-sm-2 control-label') Days
+			label(class='col-sm-2 control-label', for='monday') Monday
+				input(type='checkbox', name='monday')
+			label(class='col-sm-2 control-label') Tuesday
+				input(type='checkbox', name='tuesday')
+			label(class='col-sm-2 control-label') Wednesday
+				input(type='checkbox', name='wednesday')
+			label(class='col-sm-2 control-label') Thursday
+				input(type='checkbox', name='thursday')
+			label(class='col-sm-2 control-label') Friday
+				input(type='checkbox', name='friday')
+
+		.form-group
+			label(class='col-sm-2 control-label') Number of hours
+			label(class='col-sm-1 control-label', for='mondayT') Monday
+				input(type='textbox', name='mondayT', style="width: 100px;", value='0')
+			label(class='col-sm-1 control-label') Tuesday
+				input(type='textbox', name='tuesdayT', style="width: 100px;", value='0')
+			label(class='col-sm-1 control-label') Wednesday
+				input(type='textbox', name='wednesdayT', style="width: 100px;", value='0')
+			label(class='col-sm-1 control-label') Thursday
+				input(type='textbox', name='thursdayT', style="width: 100px;", value='0')
+			label(class='col-sm-1 control-label') Friday
+				input(type='textbox', name='fridayT', style="width: 100px;", value='0')
+                        
+		.form-group
+			.col-sm-offset-2.col-sm-8
+				button.btn.btn-primary(type='submit')
+					| Submit
