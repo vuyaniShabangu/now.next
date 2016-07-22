@@ -9,6 +9,9 @@ html
     title #{title} - dronr
     link(rel='shortcut icon', href='/favicon.png')
     link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css')
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css')
 
   body
     include partials/header
@@ -21,7 +24,10 @@ html
 
     script(src='/js/lib/jquery-2.2.0.min.js')
     script(src='/js/lib/bootstrap.min.js')
+     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAWiEnhMjv7lLDyaoiwIHwEVYoMRN4nYKY&libraries=drawing')
     script(src='/js/main.js')
+    script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js')
+    script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js')
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.

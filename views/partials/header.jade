@@ -11,8 +11,14 @@
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         if user
-          li(class=(title == 'Contact') ? 'active' : undefined)
-            a(href='/contact') Missions
+          li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
+            a.dropdown-toggle(href='#', data-toggle='dropdown') Missions
+            ul.dropdown-menu
+              li(class=(title == 'Contact') ? 'active' : undefined)
+                  a(href='/contact') Add Missions
+              li.divider
+              li 
+                a(href='/missionsdt') View missions
         if user
           li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown') Operator Dashboard 
@@ -22,6 +28,12 @@
               li.divider
               li 
                 a(href='manage-drones') Manage Drones
+              li.divider
+              li 
+                a(href='operatormissions') Select Missions
+              li.divider
+              li
+                a(href='acceptedmissions') Accepted Missions
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)
