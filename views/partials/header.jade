@@ -15,11 +15,10 @@
             a.dropdown-toggle(href='#', data-toggle='dropdown') Missions
             ul.dropdown-menu
               li(class=(title == 'Contact') ? 'active' : undefined)
-                if user.profile.role!="Operator"
                   a(href='/contact') Add Missions
               li.divider
               li 
-                a(href='/missions') View missions
+                a(href='/missionsdt') View missions
         if user
           li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown') Operator Dashboard 
@@ -29,6 +28,12 @@
               li.divider
               li 
                 a(href='manage-drones') Manage Drones
+              li.divider
+              li 
+                a(href='operatormissions') Select Missions
+              li.divider
+              li
+                a(href='acceptedmissions') Accepted Missions
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)

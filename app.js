@@ -35,7 +35,6 @@ const contactController = require('./controllers/contact');
 const missionController = require('./controllers/missions');
 const addController = require('./controllers/add-drone');
 const manageController = require('./controllers/manage-drones');
-const timeController = require('./controllers/operator-times');
 
 /**
  * API keys and Passport configuration.
@@ -110,6 +109,10 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
+ app.get('/acceptedmissions', missionController.getacceptedmissions); 
+    app.post('/acceptmission', missionController.postacceptmission); 
+    app.get('/operatormissions', missionController.getoperatormissions);
+  app.get('/missionsemail', missionController.getuseremail);
   app.post('/missionsedit', missionController.postmissionsedit);
   app.post('/missionsdelete', missionController.postmissionsdelete);
   app.get('/missionsdt', missionController.getmissionsdt);
@@ -130,13 +133,12 @@ app.get('/contact', contactController.getContact);
 app.get('/add-drone',passportConfig.isAuthenticated, addController.getAddDrone);
 app.post('/add-drone',passportConfig.isAuthenticated, addController.postNewDrone);
 app.get('/manage-drones',passportConfig.isAuthenticated, manageController.getMyDrones);
-app.get('/operator-times', timeController.getOperatorTimes);
+app.get('/retrievedrones', manageController.getAllDrones);
 
 app.post('/contact', contactController.postContact);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
-app.get('/account/times', passportConfig.isAuthenticated, userController.postUpdateTimes);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 

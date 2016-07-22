@@ -1,14 +1,8 @@
-doctype html
-html
-  head
-  | 
-  meta(name='csrf-token', content=_csrf)
-  | &#x9;&#x9;
-  title DT test for dronr
-  | &#x9;&#x9;
-  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-  link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css')
-  link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css')
+extends layout
+
+block content
+  .page-header
+    h3 Select Missions to Perform
 
   | &#x9;
   body
@@ -63,11 +57,5 @@ html
             .modal-footer
               button.btn.btn-default(type='button', data-dismiss='modal') Close
 
-  | &#x9;
-  script(type='text/javascript', src='https://code.jquery.com/jquery-1.12.3.js')
-  | &#x9;
-  script(type='text/javascript', src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
-  script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js')
-  script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js')
-  script(src='/js/main.js')
+
 

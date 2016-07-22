@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
   mbudget: String,
   mStatus: String,
   operator: String,
-  drone: String
+  drone: String,
+  surveilenceArea: Array
 });
 
 
