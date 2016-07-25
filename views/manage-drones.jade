@@ -1,11 +1,9 @@
-html
-  head
-    meta(name='csrf-token', content=_csrf)
-    title Manage Drones
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-    link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css')
-    link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css')
+extends layout
 
+block content
+  .page-header
+    h3 Manage Drones
+    
   body
     input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
     table#operatordronesTable.display(cellspacing='0', width='100%')
@@ -24,10 +22,27 @@ html
           th Delete
           th Edit
 
-  | &#x9;
-  script(type='text/javascript', src='https://code.jquery.com/jquery-1.12.3.js')
-  | &#x9;
-  script(type='text/javascript', src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
-  script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js')
-  script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js')
-  script(src='/js/main.js')
+    #editDrone.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel2')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel2.modal-title Edit Drone
+            .modal-body
+              form.form-horizontal(method='POST')
+                .form-group
+                  label(class='col-sm-2 control-label', for='manufacturer') Manufacturer
+                  .col-sm-8
+                    input.form-control(name='manufacturer', id='manufacturer',  type="text"  )
+                .form-group
+                  label(class='col-sm-2 control-label', for='model') Model
+                  .col-sm-8
+                    input.form-control(type='text', name='model', id='model')
+                .form-group
+                  label(class='col-sm-2 control-label', for='flytime') Fly Time
+                  .col-sm-8
+                    input.form-control(type='text', name='flytime', id='flytime')
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') Close
+              button.btn.btn-primary(type='button', id='saveDrone') Save changes

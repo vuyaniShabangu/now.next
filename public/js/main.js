@@ -305,7 +305,7 @@ acceptedMissionTable
                   {
                     "mData": null,
                     "bSortable": false,
-                    "defaultContent": "<button type='button' class='btn btn-primary' id='editDrone'>Edit</button>"
+                    "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#editDrone' id='editButton'>Edit</button>"
                   },
                   {
                     "data":"dStatus",
@@ -316,9 +316,7 @@ acceptedMissionTable
                     "visible":false
                   }
               ]
-
           });
-          alert(currentUserEmail);
           droneTable
                     .columns( 2 )
                     .search( currentUserEmail )
@@ -350,43 +348,38 @@ acceptedMissionTable
                                         });
                                       });
 
-                                      $('#operatordronesTable tbody').on( 'click', 'button#editDrone', function () {
-                                                var data = table.row( $(this).parents('tr') ).data();
+/*  EDIT DRONE
+$('#operatordronesTable tbody').on( 'click', 'button#editDrone', function () {
+  var data = table.row( $(this).parents('tr') ).data();
+  $('#missiontype').val(data.mtype);
+  $('#missiondesc').val(data.mdesc);
+  $('#missiondate').val(data.mdatetime);
+  $('#budget').val(data.mbudget);
 
-
-                                                $('#missiontype').val(data.mtype);
-                                                $('#missiondesc').val(data.mdesc);
-                                                $('#missiondate').val(data.mdatetime);
-                                                $('#budget').val(data.mbudget);
-
-                                                //Lightbox will go here, which will output form with editable values
-                                                //after clicking save, you will be the ajax will be run
-
-                                                //send id to server for editing
-                                                $('#saveChange').click(function(){
-                                                $('#editForm').modal('toggle');
-                                                $.ajax({
-                                                  url : '/missionsedit',
-                                                  type : 'POST',
-                                                  data : {
-                                                    '_csrf': $('#_csrf').val(),
-                                                    'mission_id' : data._id,
-                                                    'userEmail' : data.userEmail,
-                                                    'mtype' : $('#missiontype').val(),
-                                                    'mdesc' : $('#missiondesc').val(),
-                                                    'mdatetime' : $('#missiondate').val(),
-                                                    'mbudget' : $('#budget').val()
-                                                  },
-                                                  dataType:'json',
-                                                  success : function(data) {
-                                                  },
-                                                  error : function(request,error)
-                                                  {
-                                                    alert("Request: "+JSON.stringify(request));
-                                                  }
-                                                });
-                                              });
-                                              });
+  $('#saveChange').click(function(){
+  $('#editForm').modal('toggle');
+  $.ajax({
+      url : '/missionsedit',
+      type : 'POST',
+      data : {
+      '_csrf': $('#_csrf').val(),
+      'mission_id' : data._id,
+      'userEmail' : data.userEmail,
+      'mtype' : $('#missiontype').val(),
+      'mdesc' : $('#missiondesc').val(),
+      'mdatetime' : $('#missiondate').val(),
+      'mbudget' : $('#budget').val()
+      },
+     dataType:'json',
+    success : function(data) {
+    },
+    error : function(request,error)
+    {
+          alert("Request: "+JSON.stringify(request));
+    }
+    });
+  });
+}); */
 
 
 //-----------------
