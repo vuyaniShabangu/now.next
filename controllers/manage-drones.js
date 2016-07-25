@@ -1,14 +1,32 @@
-const nodemailer = require('nodemailer');
 const Drone = require('../models/Drone');
 const User = require('../models/User');
-var express = require('express');
 
-exports.getMyDrones= (req, res) => {
-  Drone.find((err, docs) => {
-    res.render('manage-drones', { drones: docs });
+exports.getMyDrones = (req, res) => {
+  res.render('manage-drones', {
+    title: 'Manage Drones'
   });
 };
 
-exports.postDrone= (req, res) => {
+exports.getdronesbare = (req, res) => {
+	Drone.find((err, docs) => {
+    	res.send({ drones: docs });
+  	});
+};
 
-}
+exports.postdronedelete = (req, res) =>{
+	console.log(req.body.drone_id);
+
+	var id = req.body.drone_id;
+
+
+	Drone.findById(req.body.drone_id, (err, dron) => {
+	    dron.dStatus = 'deleted';
+
+	    dron.save((err) => {
+	      if(err)
+	      	console.log(util.inspect(err, false, null));
+      return res.redirect('/manage-drones');
+	    });
+	  });
+
+};

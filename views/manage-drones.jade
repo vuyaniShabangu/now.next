@@ -1,33 +1,33 @@
-extends layout
+html
+  head
+    meta(name='csrf-token', content=_csrf)
+    title Manage Drones
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css')
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css')
 
-block content
-  .page-header
-    h3 Manage Drones
-
-  .container
-  form.form-horizontal(method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    table.table.table-striped
+  body
+    input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
+    table#operatordronesTable.display(cellspacing='0', width='100%')
       thead
         tr
-          th My Drones
-      tbody
-      .form-group
-        for drone in drones
-          if drone.fUser == user.email
-            tr
-              td= drone.fManuc + " " + drone.fModel
-//        button.btn.btn-primary.btn-sm(type='submit') Edit
-//        button.btn.btn-primary.btn-sm(type='button', data-toggle='modal', data-target='#dltModal' onclick='setDrone()') Delete
-//
-    #dltModal.modal.fade(role='dialog')
-      .modal-dialog
-        .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal') &times;
-            h4.modal-title Confirm delete
-          .modal-body
-            p Are you sure you want to delete this drone?
-          .modal-footer
-            button.btn.btn-primary.btn-sm(type='button', data-dismiss='modal') Close
-            button.btn.btn-danger(type='button', data-dismiss='modal' onclick='deleteDrone()') Delete
+          th Manufacturer
+          th Model
+          th Owner
+          th Delete
+          th Edit
+      tfoot
+        tr
+          th Manufacturer
+          th Model
+          th Owner
+          th Delete
+          th Edit
+
+  | &#x9;
+  script(type='text/javascript', src='https://code.jquery.com/jquery-1.12.3.js')
+  | &#x9;
+  script(type='text/javascript', src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+  script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js')
+  script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js')
+  script(src='/js/main.js')
