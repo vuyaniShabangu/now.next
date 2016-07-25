@@ -13,6 +13,9 @@ exports.getdronesbare = (req, res) => {
   	});
 };
 
+exports.postdroneedit = (req,res) => {
+  
+};
 exports.postdronedelete = (req, res) =>{
 	console.log(req.body.drone_id);
 

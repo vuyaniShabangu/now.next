@@ -348,27 +348,24 @@ acceptedMissionTable
                                         });
                                       });
 
-/*  EDIT DRONE
-$('#operatordronesTable tbody').on( 'click', 'button#editDrone', function () {
-  var data = table.row( $(this).parents('tr') ).data();
-  $('#missiontype').val(data.mtype);
-  $('#missiondesc').val(data.mdesc);
-  $('#missiondate').val(data.mdatetime);
-  $('#budget').val(data.mbudget);
+//  EDIT DRONE
+$('#operatordronesTable tbody').on( 'click', 'button#editButton', function () {
+  var data = droneTable.row( $(this).parents('tr') ).data();
+  $('#manufacturer').val(data.fManuc);
+  $('#model').val(data.fModel);
+  $('#flytime').val(data.fFlyTime);
 
-  $('#saveChange').click(function(){
-  $('#editForm').modal('toggle');
+  $('#saveDrone').click(function(){
+  $('#editDrone').modal('toggle');
   $.ajax({
-      url : '/missionsedit',
+      url : '/dronesedit',
       type : 'POST',
       data : {
       '_csrf': $('#_csrf').val(),
-      'mission_id' : data._id,
-      'userEmail' : data.userEmail,
-      'mtype' : $('#missiontype').val(),
-      'mdesc' : $('#missiondesc').val(),
-      'mdatetime' : $('#missiondate').val(),
-      'mbudget' : $('#budget').val()
+      'drone_id' : data._id,
+      'fManuc' : $('#missiontype').val(),
+      'fModel' : $('#missiondesc').val(),
+      'fFlyTime' : $('#missiondate').val(),
       },
      dataType:'json',
     success : function(data) {
@@ -379,7 +376,7 @@ $('#operatordronesTable tbody').on( 'click', 'button#editDrone', function () {
     }
     });
   });
-}); */
+});
 
 
 //-----------------

@@ -114,6 +114,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
     app.get('/manage-drones',manageController.getMyDrones);
     app.post('/dronedelete', manageController.postdronedelete);
   app.get('/missionsemail', missionController.getuseremail);
+  app.post('/dronesedit',manageController.postdroneedit);
   app.post('/missionsedit', missionController.postmissionsedit);
   app.post('/missionsdelete', missionController.postmissionsdelete);
   app.get('/missionsdt', missionController.getmissionsdt);
