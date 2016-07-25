@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .page-header
+    h3 View missions
+
+
+
+
+  ul
+    if user.profile.role=="Operator"
+      for cont in missions
+        if cont.email!="operator"
+          p="----------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+          | Posted On
+          p=cont.mdatetime
+          p="By:  "+cont.userEmail
+          li=cont.mtype
+          | Description:
+          p=cont.mdesc
+    else
+      for cont in missions
+        if cont.userEmail == user.email 
+          p="----------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+          | Posted On
+          p=cont.mdatetime
+          p="By:  "+user.email
+          li=cont.mtype
+          | Description:
+          p=cont.mdesc
+
+
+
+
+

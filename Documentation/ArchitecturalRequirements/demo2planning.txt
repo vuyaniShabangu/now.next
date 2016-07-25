@@ -1,0 +1,39 @@
+powerpoint
+	update architectural spec SBU
+		tactics
+			pipes and filters
+			resource pulling
+			security (csrf)
+		architectural patterns
+			mvc
+			change in layered pattern
+	technology stack update AIDEN
+		.jade for templating
+		firebase
+		kue
+		datatables plugin
+		travis
+		logentries		
+	development cycle VUYANI
+		bi-weekly sprint meetings
+		daily scrum sessions
+		waffle kanban charts, burndown charts
+		git issues and milestones
+		git flow
+		peer reviewed pull requests
+		unit tests
+		continuous integration (integration tests)
+		continuous deployment (testing and production server)
+	demo SELLO
+		login
+		setup mission
+		view mission
+		accept mission
+		download file
+			contents of file
+		video
+	challenges BANZO
+		scheduling
+		client moving further away
+		drone not being easily accessible
+		drone is expensive and somewhat difficult to control
