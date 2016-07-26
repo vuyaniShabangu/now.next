@@ -5,9 +5,9 @@ $(document).ready(function() {
 
   var currentUserEmail;
   var table;
-//  alert("ready to go! ");
+  //alert("ready to go! ");
 
-   table = $('#example').DataTable( {
+   table = $('#exampleCrud').DataTable( {
         "ajax": "/missionsbare",
         "sAjaxDataProp": "missions",
         "columns": [
@@ -41,6 +41,7 @@ table
               url : '/missionsemail',
               type : 'GET',
               success : function(data) {
+               // alert("My email address is: "+data);
                 currentUserEmail = data;
                 table
                 .columns( 0 )
@@ -54,11 +55,13 @@ table
 
 
 
+
+
 //This is the delete function.
-  $('#example tbody').on( 'click', 'button#delete', function () {
+  $('#exampleCrud tbody').on( 'click', 'button#delete', function () {
 
             data = table.row( $(this).parents('tr') ).data();
-            alert(data._id);
+           // alert(data._id);
             //alert($('#_csrf').val());
             //send id to server for delete
             $.ajax({
@@ -82,7 +85,7 @@ table
 
 //this is the edit function
 
-  $('#example tbody').on( 'click', 'button#edit', function () {
+  $('#exampleCrud tbody').on( 'click', 'button#edit', function () {
             var data = table.row( $(this).parents('tr') ).data();
 
 
@@ -159,7 +162,7 @@ table
         {
           droneSelectionTable = $('#selectDroneTable').DataTable( {
               paging: false,
-              "ajax": "/retrieveMydrones",
+              "ajax": "/retrievedrones",
               "sAjaxDataProp": "drones",
               "columns": [
                   { "data": "fManuc" },
@@ -202,7 +205,7 @@ table
               success : function(data) {
                 if(data == 'accepted')
                 {
-                  alert("Mission succesfully accepted with drone "+droneData.fModel +" "+ droneData.fManuc);
+                  alert("Mission succeffully accepted with drone "+droneData.fModel +" "+ droneData.fManuc);
                   $('#selectDrone').modal('toggle');
                 }
                 else{
@@ -217,26 +220,6 @@ table
           });
 
       });
-       /*$.ajax({
-
-              url : '/acceptmission',
-              type : 'POST',
-              data : {
-                 '_csrf':$('#_csrf').val(),
-                 'mission_id' : data._id
-              },
-              dataType:'json',
-              success : function(data) {
-                //alert("I called him!");
-              },
-              error : function(request,error)
-              {
-                //alert("Request: "+JSON.stringify(request));
-              }
-            });*/
-
-
-
 
 
      });
@@ -254,12 +237,11 @@ table
             { "data": "mdesc" },
             { "data": "mdatetime" },
             { "data": "mbudget" },
-
             { "data": "mStatus"},
             {
               "mData": null,
               "bSortable": false,
-              "defaultContent": "<button type='button'   class='btn btn-primary' id='edit'>Download Mission File</button>"
+              "defaultContent": "<button type='button' class='btn btn-primary' id='downloadWP'>Download Mission File</button>"
             },
             { "data": "operator"}
             ],
@@ -270,7 +252,6 @@ table
                     "visible": false
                 }
               ]
-
 
     } );
 
@@ -472,7 +453,117 @@ function initMap() {
     map: map
   });
 }
+$('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
+  alert("jjjccv");
+    window.location = "../"
+});
 
-	//initMap();
+  $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAWiEnhMjv7lLDyaoiwIHwEVYoMRN4nYKY&libraries=drawing', function()
+  {
+                      //This is for the Google Map in the Create Mission Form:
+                      function initMap() {
+                        document.getElementById('map').innerHTML = "dfsdfs";
+                          var map = new google.maps.Map(document.getElementById('map'), {
+                            center: {lat: -25.7545492, lng: 28.2314476},
+                            mapTypeId: google.maps.MapTypeId.SATELLITE,
+                            zoom: 17
+                          });
+
+                        // This event listener calls addMarker() when the map is clicked.
+                          /*google.maps.event.addListener(map, 'click', function(event) {
+                            console.log("point");
+                            addMarker(event.latLng, map);
+                          });*/
+                          var drawingManager;
+
+
+
+                          drawingManager = new google.maps.drawing.DrawingManager({
+                            drawingMode: google.maps.drawing.OverlayType.POLYLINE,
+                            markerOptions: {
+                              draggable: true
+                            },
+                            polylineOptions: {
+                              editable: true,
+                              draggable: true
+                            },
+                            drawingControl: false,
+                            circleOptions: {
+                                fillColor: '#ffff00',
+                                fillOpacity: 1,
+                              strokeWeight: 5,
+                                clickable: false,
+                                editable: true,
+                                zIndex: 1
+                            }
+                          });
+
+                          var polylineOptions = drawingManager.get('polylineOptions');
+                          polylineOptions.strokeColor = '#1E90FF';
+                          drawingManager.set('polylineOptions', polylineOptions);
+
+                          google.maps.event.addListener(drawingManager, "overlaycomplete", function(event){
+                                   // overlayClickListener(event.overlay);
+                                   // $('#missiondesc').html(event.overlay.getPath().getArray());
+                                    drawingManager.setDrawingMode(null);
+                                    console.log("done!");
+                                    console.log(event.overlay.getPath().getArray()[0].lat());
+                                    overlayPointsArray = event.overlay.getPath().getArray()
+
+                              surveillanceRoute = Array();
+
+                              for (var i = 0; i < overlayPointsArray.length; i++) {
+                                surveillanceRoute[i] = Object();
+                                surveillanceRoute[i].lat = overlayPointsArray[i].lat();
+                                surveillanceRoute[i].lng = overlayPointsArray[i].lng();
+
+                                //marker:
+                                /*var marker = new google.maps.Marker({
+                                  position: {lat: overlayPointsArray[i].lat(), lng:overlayPointsArray[i].lng()},
+                                  map: map,
+                                  title: 'Hello World!'
+                                 });*/
+                                 $('#waypointData').append("<label class='fcol-sm-2 control-label'>Waypoint "+(i+1)+"</label>");
+                                 $('#waypointData').append("<input type='hidden' name='waypoint_"+i+"_lng' id='waypoint_"+i+"_lng' value="+surveillanceRoute[i].lng+">");
+                                 $('#waypointData').append("<input type='hidden' name='waypoint_"+i+"_lat' id='waypoint_"+i+"_lat' value="+surveillanceRoute[i].lat+">");
+                                 $('#waypointData').append("<select class='form-control' name='waypoint_"+i+"_type' id='waypoint_"+i+"_type' min=0 ><option disabled selected>Select WP Type</option><option value='TAKEOFF'>TAKEOFF</option><option value='WAYPOINT'>WAYPOINT</option><option value='LAND'>LAND</option></select>");
+                                 $('#waypointData').append("<input class='form-control' type='number' name='waypoint_"+i+"_alt' id='wwaypoint_"+i+"_alt' min=0 placeholder='Altitude for WP "+(i+1)+"' >");
+                                 $('#waypointData').append("</br>");
+                              }
+                              $('#waypointData').append("<input type='hidden' name='count' id='count' value="+surveillanceRoute.length+">");
+                              console.log(surveillanceRoute);
+                          });
+
+
+                        drawingManager.setMap(map);
+                      }
+
+                      function addMarker(location, map) {
+                          // Add the marker at the clicked location, and add the next-available label
+                          // from the array of alphabetical characters.
+                          var marker = new google.maps.Marker({
+                            position: location,
+                            map: map
+                          });
+                      }
+
+                      function addLatLng(event) {
+                        console.log("gf");
+                      //var path = poly.getPath();
+
+                      // Because path is an MVCArray, we can simply append a new coordinate
+                      // and it will automatically appear.
+                      //path.push(event.latLng);
+
+                      // Add a new marker at the new plotted point on the polyline.
+                      var marker = new google.maps.Marker({
+                        position: event.latLng,
+                        //title: '#' + path.getLength(),
+                        map: map
+                      });
+                    }
+
+                      initMap();
+  });
 
 });

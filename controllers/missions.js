@@ -55,12 +55,14 @@ exports.postmissionsedit = (req,res) => {
 	var id = req.body.mission_id;
 
 
+
 	Contact.findById(req.body.mission_id, (err, cont) => {
 	    cont.userEmail = req.body.userEmail;
 	    cont.mtype = req.body.mtype;
 	    cont.mdesc = req.body.mdesc;
 	    cont.mdatetime = req.body.mdatetime;
 	    cont.mbudget = req.body.mbudget;
+
 
 
 	    cont.save((err) => {
@@ -106,6 +108,7 @@ exports.postacceptmission = (req, res) => {
 	    cont.operator = req.user.email;
 	    cont.mStatus = 'accepted';
 	    cont.drone = req.body.drone_id;
+
 
 
 	    cont.save((err) => {
