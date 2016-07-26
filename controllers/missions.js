@@ -6,7 +6,7 @@ var util = require('util');
 exports.getmissions = (req, res) => {
 Contact.find((err, docs) => {
     res.render('missions', { missions: docs });
-  });  
+  });
 };
 
 exports.getmissionsbare = (req, res) => {
@@ -14,7 +14,7 @@ exports.getmissionsbare = (req, res) => {
 
 	Contact.find((err, docs) => {
     	res.send({ missions: docs });
-  	});  
+  	});
 };
 
 
@@ -27,10 +27,10 @@ exports.postmissionsdelete = (req, res) =>{
 
 	var id = req.body.mission_id;
 
-	
+
 	Contact.findById(req.body.mission_id, (err, cont) => {
 	    cont.mStatus = 'deleted';
-	    
+
 	    cont.save((err) => {
 	      if(err)
 	      {
@@ -54,14 +54,16 @@ exports.postmissionsedit = (req,res) => {
 	console.log("We editing now!");
 	var id = req.body.mission_id;
 
-	
+
+
 	Contact.findById(req.body.mission_id, (err, cont) => {
 	    cont.userEmail = req.body.userEmail;
 	    cont.mtype = req.body.mtype;
 	    cont.mdesc = req.body.mdesc;
 	    cont.mdatetime = req.body.mdatetime;
 	    cont.mbudget = req.body.mbudget;
-	    
+
+
 
 	    cont.save((err) => {
 	      if(err)
@@ -106,7 +108,8 @@ exports.postacceptmission = (req, res) => {
 	    cont.operator = req.user.email;
 	    cont.mStatus = 'accepted';
 	    cont.drone = req.body.drone_id;
-	    
+
+
 
 	    cont.save((err) => {
 	      if(err)

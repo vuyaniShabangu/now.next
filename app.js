@@ -35,7 +35,6 @@ const contactController = require('./controllers/contact');
 const missionController = require('./controllers/missions');
 const addController = require('./controllers/add-drone');
 const manageController = require('./controllers/manage-drones');
-
 /**
  * API keys and Passport configuration.
  */
@@ -85,7 +84,7 @@ app.use(flash());
 app.use((req, res, next) => {
   if (req.path === '/api/upload') {
     next();
-  } 
+  }
   else {
     lusca.csrf()(req, res, next);
   }
@@ -109,14 +108,18 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
- app.get('/acceptedmissions', missionController.getacceptedmissions); 
-    app.post('/acceptmission', missionController.postacceptmission); 
+ app.get('/acceptedmissions', missionController.getacceptedmissions);
+    app.post('/acceptmission', missionController.postacceptmission);
     app.get('/operatormissions', missionController.getoperatormissions);
+    app.get('/manage-drones',manageController.getMyDrones);
+    app.post('/dronedelete', manageController.postdronedelete);
   app.get('/missionsemail', missionController.getuseremail);
+  app.post('/dronesedit',manageController.postdroneedit);
   app.post('/missionsedit', missionController.postmissionsedit);
   app.post('/missionsdelete', missionController.postmissionsdelete);
   app.get('/missionsdt', missionController.getmissionsdt);
  app.get('/missionsbare', missionController.getmissionsbare);
+ app.get('/dronesbare',manageController.getdronesbare);
  app.get('/missions', missionController.getmissions);
  app.get('/people', peopleController.getpeople);
 app.get('/', homeController.index);
@@ -132,8 +135,6 @@ app.post('/signup', userController.postSignup);
 app.get('/contact', contactController.getContact);
 app.get('/add-drone',passportConfig.isAuthenticated, addController.getAddDrone);
 app.post('/add-drone',passportConfig.isAuthenticated, addController.postNewDrone);
-app.get('/manage-drones',passportConfig.isAuthenticated, manageController.getMyDrones);
-app.get('/retrievedrones', manageController.getAllDrones);
 
 app.post('/contact', contactController.postContact);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
