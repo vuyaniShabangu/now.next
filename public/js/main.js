@@ -363,9 +363,9 @@ $('#operatordronesTable tbody').on( 'click', 'button#editButton', function () {
       data : {
       '_csrf': $('#_csrf').val(),
       'drone_id' : data._id,
-      'fManuc' : $('#missiontype').val(),
-      'fModel' : $('#missiondesc').val(),
-      'fFlyTime' : $('#missiondate').val(),
+      'fManuc' : $('#manufacturer').val(),
+      'fModel' : $('#model').val(),
+      'fFlyTime' : $('#flytime').val(),
       },
      dataType:'json',
     success : function(data) {

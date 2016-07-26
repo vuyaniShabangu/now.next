@@ -14,8 +14,21 @@ exports.getdronesbare = (req, res) => {
 };
 
 exports.postdroneedit = (req,res) => {
-  
+  var id = req.body.drone_id;
+
+  Drone.findById(req.body.drone_id, (err, drone) => {
+      drone.fManuc = req.body.fManuc;
+      drone.fModel = req.body.fModel;
+      drone.fFlyTime = req.body.fFlyTime;
+
+      drone.save((err) => {
+        if(err)
+        {
+        }
+      });
+    });
 };
+
 exports.postdronedelete = (req, res) =>{
 	console.log(req.body.drone_id);
 
