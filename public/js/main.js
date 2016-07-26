@@ -341,9 +341,11 @@ acceptedMissionTable
                                           success : function(data) {
                                             $.ajax({url: '/manage-drones',
                                             type:'GET'});
+                                            location.reload();
                                           },
                                           error : function(request,error)
                                           {
+                                            location.reload();
                                           }
                                         });
                                       });
@@ -369,10 +371,11 @@ $('#operatordronesTable tbody').on( 'click', 'button#editButton', function () {
       },
      dataType:'json',
     success : function(data) {
+      location.reload();
     },
     error : function(request,error)
     {
-          alert("Request: "+JSON.stringify(request));
+          location.reload();
     }
     });
   });

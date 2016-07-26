@@ -25,6 +25,7 @@ exports.postdroneedit = (req,res) => {
         if(err)
         {
         }
+        return res.redirect('/manage-drones');
       });
     });
 };
