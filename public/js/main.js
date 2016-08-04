@@ -162,7 +162,7 @@ table
         {
           droneSelectionTable = $('#selectDroneTable').DataTable( {
               paging: false,
-              "ajax": "/retrievedrones",
+              "ajax": "/dronesbare",
               "sAjaxDataProp": "drones",
               "columns": [
                   { "data": "fManuc" },
@@ -172,11 +172,15 @@ table
                     "bSortable": false,
                     "defaultContent": "<button class='btn btn-primary' id = 'select'>Select Drone</button>"
                   },
-                  { "data": "fUser"}
+                  { "data": "fUser"},{"data":"dStatus"}
               ],
               "columnDefs": [
                 {
                     "targets": [ 3 ],
+                    "visible": false
+                },
+                {
+                    "targets": [ 4 ],
                     "visible": false
                 }
               ]
@@ -189,10 +193,10 @@ table
                 .columns( 3 )
                 .search( currentUserEmail )
                 .draw();
+      droneSelectionTable.columns(4).search('pending').draw();
 
       $('#selectDroneTable tbody').on( 'click', 'button#select', function () {
         var droneData = droneSelectionTable.row( $(this).parents('tr') ).data();
-        alert("You have selected drone: "+droneData._id);
         $.ajax({
               async: false,
               url : '/acceptmission',
@@ -205,7 +209,6 @@ table
               success : function(data) {
                 if(data == 'accepted')
                 {
-                  alert("Mission succeffully accepted with drone "+droneData.fModel +" "+ droneData.fManuc);
                   $('#selectDrone').modal('toggle');
                 }
                 else{
@@ -243,12 +246,17 @@ table
               "bSortable": false,
               "defaultContent": "<button type='button' class='btn btn-primary' id='downloadWP'>Download Mission File</button>"
             },
-            { "data": "operator"}
+            { "data": "operator"},
+            {
+              "mData": null,
+              "bSortable": false,
+              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#uploadFileMode' id='missComplete'>Complete Mission</button>"
+            }
             ],
 
             "columnDefs": [
                 {
-                    "targets": [ 7 ],
+                    "targets": [ 5,7 ],
                     "visible": false
                 }
               ]
