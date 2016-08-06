@@ -455,7 +455,27 @@ function initMap() {
 }
 $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
   alert("jjjccv");
-    window.location = "../"
+  alert("racist piece of code");
+  var acceptedMissionsObject = acceptedMissionTable.row( $(this).parents('tr') ).data();
+
+  alert(acceptedMissionsObject._id);
+      $.ajax({
+
+      url : '/generatemissionfile',
+      type : 'POST',
+      data : {
+        '_csrf':$('#_csrf').val(),
+        'mission_id': acceptedMissionsObject._id
+      },
+      success : function(data) {
+          alert(data);
+      },
+      error : function(request,error)
+      {
+                alert("we failed");
+                console.log(error);                            
+       }
+    });
 });
 
   $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAWiEnhMjv7lLDyaoiwIHwEVYoMRN4nYKY&libraries=drawing', function()

@@ -108,10 +108,12 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
+ app.post('/generatemissionfile', missionController.generatemissionfile);
  app.get('/acceptedmissions', missionController.getacceptedmissions);
     app.post('/acceptmission', missionController.postacceptmission);
     app.get('/operatormissions', missionController.getoperatormissions);
     app.get('/manage-drones',manageController.getMyDrones);
+    app.get('/retrievedrones', manageController.getAllDrones);
     app.post('/dronedelete', manageController.postdronedelete);
   app.get('/missionsemail', missionController.getuseremail);
   app.post('/dronesedit',manageController.postdroneedit);
