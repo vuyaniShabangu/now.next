@@ -14,9 +14,9 @@ const userSchema = new mongoose.Schema({
   drone: String,
   surveilenceArea: Array,
   cmdatetime: String,
-  cmbudget: String,
+  cmbudget  : String,
   cmcomments: String,
-  cmFile: String
+  cmFile    : String
 });
 
 

@@ -298,7 +298,7 @@ $('#uploadFileMode tbody').on( 'click', 'button#sendresult', function () {
 
 
 var resultdata;
-  $('#acceptedmissionsgrid tbody').on( 'click', 'button#missComplete', function () {
+  $('#acceptedmissionsgrid tbody').on( 'click', 'button#uploadFileMode', function () {
     resultdata   = acceptedMissionTable.row( $(this).parents('tr') ).data();
   });
 
@@ -307,7 +307,7 @@ $('#sendresult').click(function(){
   alert("OK");
 
     $.ajax({
-
+      async: false,
       url : '/missionscomplete',
       type : 'POST',
       data : {
@@ -334,16 +334,6 @@ $('#sendresult').click(function(){
 
   //$('#reportInfo').submit();
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
