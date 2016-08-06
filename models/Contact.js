@@ -11,7 +11,11 @@ const userSchema = new mongoose.Schema({
   mStatus: String,
   operator: String,
   drone: String,
-  surveilenceArea: Array
+  surveilenceArea: Array,
+  cmdatetime: String,
+  cmbudget: String,
+  cmcomments: String,
+  cmFile: String
 });
 
 

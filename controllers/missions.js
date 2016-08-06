@@ -64,7 +64,6 @@ exports.postmissionsedit = (req,res) => {
 	    cont.mbudget = req.body.mbudget;
 
 
-
 	    cont.save((err) => {
 	      if(err)
 	      {
@@ -83,7 +82,6 @@ exports.postmissionsedit = (req,res) => {
 
 
 exports.getuseremail = (req, res) =>{
-	//console.log(util.inspect(req.user.email, false, null));
 	res.send(req.user.email);
 };
 
@@ -127,3 +125,35 @@ exports.postacceptmission = (req, res) => {
 	  });
 
 };
+
+
+exports.postmissionscomplete = (req,res) => {
+
+	console.log("We CompletTing Mission now!");
+	var id = req.body.mission_id;
+
+
+	Contact.findById(req.body.mission_id, (err, cont) => {
+	    
+
+          cont.cmdatetime= req.body.datecompleted;  
+          cont.cmbudget  = req.body.budget;     
+          cont.cmcomments= req.body.comment;  
+          cont.cmFile    = req.body.resUpload;   
+
+	    cont.save((err) => {
+	      if(err)
+	      {
+	      	console.log(util.inspect(err, false, null));
+	      }
+	      else
+	      {
+	      	console.log("Mission complete! "+cont.userEmail);
+	      }
+	     // req.flash('success', { msg: 'Profile information has been updated.' });
+	    //  res.redirect('/account');
+	    });
+	  });
+
+};
+

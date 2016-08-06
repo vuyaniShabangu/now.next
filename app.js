@@ -108,6 +108,10 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
+
+app.post('/missionscomplete', missionController.postmissionscomplete);
+
+
  app.get('/acceptedmissions', missionController.getacceptedmissions);
     app.post('/acceptmission', missionController.postacceptmission);
     app.get('/operatormissions', missionController.getoperatormissions);
