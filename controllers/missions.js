@@ -1,6 +1,7 @@
 const Contact = require('../models/Contact');
 const User = require('../models/User');
 var util = require('util');
+var fs = require('fs');
 
 
 exports.getmissions = (req, res) => {
@@ -126,6 +127,7 @@ exports.postacceptmission = (req, res) => {
 
 };
 
+<<<<<<< HEAD
 
 exports.postmissionscomplete = (req,res) => {
 
@@ -140,6 +142,33 @@ exports.postmissionscomplete = (req,res) => {
           cont.cmbudget  = req.body.budget;     
           cont.cmcomments= req.body.comment;  
           cont.cmFile    = req.body.resUpload;   
+=======
+exports.generatemissionfile = (req, res) => {
+	console.log("Generating the file...");
+	
+
+	var mission_id = req.body.mission_id;
+
+	var fileContents = "QGC WPL 110\n";
+    
+	Contact.findById(req.body.mission_id, (err, cont) => {
+	   // cont.surveilenceArea
+	    console.log(req.body.mission_id);
+	    console.log(util.inspect(cont, false, null));
+	    var wp_val;
+	    fileContents += "0	1	0	16	0	0	0	0	"+cont.surveilenceArea[0].lng+"	"+cont.surveilenceArea[0].lat+"	"+cont.surveilenceArea[0].alt+"	1\n";
+	    for (var i = 1; i < cont.surveilenceArea.length; i++) {
+	    	cont.surveilenceArea[i]
+	    	if(cont.surveilenceArea[i].type == "WAYPOINT")
+	    		wp_val = 16;
+	    	else if(cont.surveilenceArea[i].type == "LAND")
+	    			wp_val = 21;
+
+	    	fileContents += "1	0	0	"+wp_val+"	0.000000	0.000000	0.000000	0.000000	"+cont.surveilenceArea[i].lng+"	"+cont.surveilenceArea[i].lat+"	"+cont.surveilenceArea[i].alt+"	1\n";
+		 }
+
+		console.log(fileContents);
+>>>>>>> d91a43668c5824022f0026f1f877c9fa459557ef
 
 	    cont.save((err) => {
 	      if(err)
@@ -148,12 +177,22 @@ exports.postmissionscomplete = (req,res) => {
 	      }
 	      else
 	      {
+<<<<<<< HEAD
 	      	console.log("Mission complete! "+cont.userEmail);
+=======
+	      	console.log("we are here nw:  "+cont.operator);
+	      	//res.send("accepted");
+	      	res.send(fileContents);
+>>>>>>> d91a43668c5824022f0026f1f877c9fa459557ef
 	      }
 	     // req.flash('success', { msg: 'Profile information has been updated.' });
 	    //  res.redirect('/account');
 	    });
 	  });
+<<<<<<< HEAD
 
 };
 
+=======
+};
+>>>>>>> d91a43668c5824022f0026f1f877c9fa459557ef
