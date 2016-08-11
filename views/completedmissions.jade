@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .page-header
+    h3 Completed Missions
+  body
+    table#completedmissionsgrid.display(cellspacing='0', width='100%')
+      thead
+        tr
+          th User Email
+          th Mission Type
+          th Mission Description
+          th Date and Time
+          th Mission Budget
+          th Status
+          th Download Result file
+          th operator
+      tfoot
+        tr
+          th User Email
+          th Mission Type
+          th Mission Description
+          th Date and Time
+          th Mission Budget
+          th Status
+          th Download Result file
+          th operator
+
+
+  | 
+
+  input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
