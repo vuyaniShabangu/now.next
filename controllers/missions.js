@@ -137,12 +137,13 @@ exports.postmissionscomplete = (req,res) => {
 
 
 	Contact.findById(req.body.mission_id, (err, cont) => {
-	    
 
-          cont.cmdatetime= req.body.datecompleted;  
-          cont.cmbudget  = req.body.budget;     
-          cont.cmcomments= req.body.comment;  
-          cont.cmFile    = req.body.resUpload;   
+
+          cont.cmdatetime= req.body.cmdatetime;
+          cont.cmbudget  = req.body.cmbudget;
+          cont.cmcomments= req.body.cmcomments;
+          cont.mStatus = "completed";
+//          cont.cmFile    = req.body.cmFile;
 
 	    cont.save((err) => {
 	      if(err)
@@ -151,7 +152,8 @@ exports.postmissionscomplete = (req,res) => {
 	      }
 	      else
 	      {
-	      	console.log("Mission complete! "+cont.userEmail);
+	      	console.log("Mission complete! "+cont.cmbudget);
+          res.send("YO");
 	      }
 	     // req.flash('success', { msg: 'Profile information has been updated.' });
 	    //  res.redirect('/account');
@@ -169,12 +171,12 @@ exports.postmissionscomplete = (req,res) => {
 // Generating mapFile
 exports.generatemissionfile = (req, res) => {
 	console.log("Generating the file...");
-	
+
 
 	var mission_id = req.body.mission_id;
 
 	var fileContents = "QGC WPL 110\n";
-    
+
 	Contact.findById(req.body.mission_id, (err, cont) => {
 	  // cont.surveilenceArea
 	   console.log(req.body.mission_id);

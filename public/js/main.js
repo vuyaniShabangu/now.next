@@ -282,11 +282,11 @@ $('#uploadFileMode tbody').on( 'click', 'button#sendresult', function () {
       type : 'POST',
       data : {
          '_csrf':$('#_csrf').val()
-         
+
           },
-      
+
       success : function(data) {
-          alert("DONE!");  
+          alert("DONE!");
       },
       error : function(request,error)
       {
@@ -298,35 +298,36 @@ $('#uploadFileMode tbody').on( 'click', 'button#sendresult', function () {
 
 
 var resultdata;
-  $('#acceptedmissionsgrid tbody').on( 'click', 'button#uploadFileMode', function () {
+  $('#acceptedmissionsgrid tbody').on( 'click', 'button#missComplete', function () {
     resultdata   = acceptedMissionTable.row( $(this).parents('tr') ).data();
+    console.log(resultdata);
   });
 
 
 $('#sendresult').click(function(){
   alert("OK");
-
+  console.log(resultdata);
     $.ajax({
       async: false,
       url : '/missionscomplete',
       type : 'POST',
       data : {
          '_csrf':$('#_csrf').val(),
-          'mission_id':resultdata._id, 
-          'cmdatetime':  $('#datecompleted').val(),  
-          'cmbudget'  :  $('#budget').val(),     
-          'cmcomments':  $('#comment').val(),  
-          'cmFile'    :  $('#resUpload').val()   
+          'mission_id':resultdata._id,
+          'cmdatetime':  Date(),
+          'cmbudget'  :  $('#budget').val(),
+          'cmcomments':  $('#comment').val(),
+          'cmFile'    :  $('#resUpload').val()
           },
-      
+
       success : function(data) {
-          alert("DONE!");  
-          //location.reload();
+          alert("DONE!");
+          location.reload();
       },
       error : function(request,error)
       {
         alert(error);
-        console.log(error); 
+        console.log(error);
         //location.reload();
       }
     });
@@ -545,7 +546,7 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
       error : function(request,error)
       {
                 alert("we failed");
-                console.log(error);                            
+                console.log(error);
        }
     });
 });
