@@ -19,6 +19,7 @@ const sass = require('node-sass-middleware');
 const multer = require('multer');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
+
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
@@ -35,6 +36,8 @@ const contactController = require('./controllers/contact');
 const missionController = require('./controllers/missions');
 const addController = require('./controllers/add-drone');
 const manageController = require('./controllers/manage-drones');
+
+
 /**
  * API keys and Passport configuration.
  */
@@ -127,6 +130,7 @@ app.get('/finishedmissions',passportConfig.isAuthenticated,missionController.get
  app.get('/missionsbare',passportConfig.isAuthenticated, missionController.getmissionsbare);
  app.get('/dronesbare',passportConfig.isAuthenticated,manageController.getdronesbare);
  app.get('/missions',passportConfig.isAuthenticated, missionController.getmissions);
+app.get('/trigger', missionController.gettriggerexpansion);
  app.get('/people', peopleController.getpeople);
 app.get('/', homeController.index);
 app.get('/login', userController.getLogin);

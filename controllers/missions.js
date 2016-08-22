@@ -94,6 +94,28 @@ exports.getuseremail = (req, res) =>{
 
 
 
+//Available Operators
+
+
+exports.gettriggerexpansion = (req,res) =>{
+	
+	//foo(req.body.mission_id);
+	
+var minutes =1;
+var the_interval =minutes*60*1000;
+
+setInterval(function(){
+
+console.log("Available operators Missions "+req.param('mission_id'));
+//we do our stuff here....
+
+},the_interval);
+};
+
+
+
+
+
 exports.getacceptedmissions = (req, res) => {
 	res.render('acceptedmissions');
 };
@@ -218,4 +240,5 @@ exports.generatemissionfile = (req, res) => {
 	   //  res.redirect('/account');
 	   });
 	 });
+
 };
