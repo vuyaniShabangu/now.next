@@ -109,25 +109,24 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * Primary app routes.
  */
 
-app.post('/missionscomplete', missionController.postmissionscomplete);
+app.post('/missionscomplete',passportConfig.isAuthenticated,upload.single('resUpload'), missionController.postmissionscomplete);
+app.get('/finishedmissions',passportConfig.isAuthenticated,missionController.getCompleted);
 
-
- app.post('/generatemissionfile', missionController.generatemissionfile);
-
- app.get('/acceptedmissions', missionController.getacceptedmissions);
-    app.post('/acceptmission', missionController.postacceptmission);
-    app.get('/operatormissions', missionController.getoperatormissions);
-    app.get('/manage-drones',manageController.getMyDrones);
-    app.get('/retrievedrones', manageController.getAllDrones);
-    app.post('/dronedelete', manageController.postdronedelete);
-  app.get('/missionsemail', missionController.getuseremail);
-  app.post('/dronesedit',manageController.postdroneedit);
-  app.post('/missionsedit', missionController.postmissionsedit);
-  app.post('/missionsdelete', missionController.postmissionsdelete);
-  app.get('/missionsdt', missionController.getmissionsdt);
- app.get('/missionsbare', missionController.getmissionsbare);
- app.get('/dronesbare',manageController.getdronesbare);
- app.get('/missions', missionController.getmissions);
+ app.post('/generatemissionfile',passportConfig.isAuthenticated, missionController.generatemissionfile);
+ app.get('/acceptedmissions',passportConfig.isAuthenticated, missionController.getacceptedmissions);
+    app.post('/acceptmission',passportConfig.isAuthenticated, missionController.postacceptmission);
+    app.get('/operatormissions',passportConfig.isAuthenticated, missionController.getoperatormissions);
+    app.get('/manage-drones',passportConfig.isAuthenticated,manageController.getMyDrones);
+    app.get('/retrievedrones',passportConfig.isAuthenticated, manageController.getAllDrones);
+    app.post('/dronedelete',passportConfig.isAuthenticated, manageController.postdronedelete);
+  app.get('/missionsemail', passportConfig.isAuthenticated,missionController.getuseremail);
+  app.post('/dronesedit',passportConfig.isAuthenticated,manageController.postdroneedit);
+  app.post('/missionsedit', passportConfig.isAuthenticated,missionController.postmissionsedit);
+  app.post('/missionsdelete',passportConfig.isAuthenticated, missionController.postmissionsdelete);
+  app.get('/missionsdt', passportConfig.isAuthenticated,missionController.getmissionsdt);
+ app.get('/missionsbare',passportConfig.isAuthenticated, missionController.getmissionsbare);
+ app.get('/dronesbare',passportConfig.isAuthenticated,manageController.getdronesbare);
+ app.get('/missions',passportConfig.isAuthenticated, missionController.getmissions);
  app.get('/people', peopleController.getpeople);
 app.get('/', homeController.index);
 app.get('/login', userController.getLogin);

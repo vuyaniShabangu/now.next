@@ -10,6 +10,12 @@ Contact.find((err, docs) => {
   });
 };
 
+exports.getCompleted = (req,res) => {
+  res.render('finishedmissions', {
+    title: 'Completed Missions'
+  });
+};
+
 exports.getmissionsbare = (req, res) => {
 	//console.log(req.params('mission_id'));
 
@@ -143,7 +149,7 @@ exports.postmissionscomplete = (req,res) => {
           cont.cmbudget  = req.body.cmbudget;
           cont.cmcomments= req.body.cmcomments;
           cont.mStatus = "completed";
-//          cont.cmFile    = req.body.cmFile;
+          cont.cmFile    = req.body.cmFile;
 
 	    cont.save((err) => {
 	      if(err)
@@ -153,7 +159,9 @@ exports.postmissionscomplete = (req,res) => {
 	      else
 	      {
 	      	console.log("Mission complete! "+cont.cmbudget);
-          res.send("YO");
+          console.log(util.inspect(req.body.cmFile, false, null));
+          console.log(req.file);
+          res.redirect('/acceptedmissions');
 	      }
 	     // req.flash('success', { msg: 'Profile information has been updated.' });
 	    //  res.redirect('/account');

@@ -210,6 +210,7 @@ table
                 if(data == 'accepted')
                 {
                   $('#selectDrone').modal('toggle');
+                  location.reload(true);
                 }
                 else{
                   alert("No: "+data)
@@ -272,29 +273,6 @@ acceptedMissionTable
                 .columns( 7 )
                 .search( currentUserEmail )
                 .draw();
-/*
-$('#uploadFileMode tbody').on( 'click', 'button#sendresult', function () {
-    alert($('#_csrf').val());
-    //send id to server for delete
-    $.ajax({
-
-      url : '/missionscomplete',
-      type : 'POST',
-      data : {
-         '_csrf':$('#_csrf').val()
-
-          },
-
-      success : function(data) {
-          alert("DONE!");
-      },
-      error : function(request,error)
-      {
-        location.reload();
-      }
-    });
-  });*/
-
 
 
 var resultdata;
@@ -305,7 +283,6 @@ var resultdata;
 
 
 $('#sendresult').click(function(){
-  alert("OK");
   console.log(resultdata);
     $.ajax({
       async: false,
