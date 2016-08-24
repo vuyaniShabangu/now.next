@@ -504,11 +504,11 @@ function initMap() {
   });
 }
 $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
-  alert("jjjccv");
+  //alert("jjjccv");
 
   var acceptedMissionsObject = acceptedMissionTable.row( $(this).parents('tr') ).data();
 
-  alert(acceptedMissionsObject._id);
+  //alert(acceptedMissionsObject._id);
       $.ajax({
 
       url : '/generatemissionfile',
