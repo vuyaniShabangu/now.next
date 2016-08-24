@@ -8,7 +8,7 @@ exports.getAddDrone = (req, res) => {
 };
 
 exports.postNewDrone = (req, res) => {
-    
+
 const dro = new Drone({
 	fManuc: req.body.manufac,
 	fModel: req.body.model,
@@ -16,13 +16,14 @@ const dro = new Drone({
 	fAerial: req.body.aerial,
 	fOrtho: req.body.ortho,
 	fVideo: req.body.video,
-	fUser: req.body.owner
+	fUser: req.body.owner,
+	dStatus: "pending"
 });
 
 dro.save((err) => {
 	if (err) { return next(err); }
 		req.flash('success', { msg: 'You have successfully added a drone' });
-    return res.redirect('/manage-drones');   
+    return res.redirect('/manage-drones');
 });
-  
+
 };

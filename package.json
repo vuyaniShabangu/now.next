@@ -3,13 +3,14 @@
   "version": "4.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/vuyaniShabangu/now.next.git"
   },
   "scripts": {
     "start": "node app.js",
     "test": "mocha --reporter spec --timeout 5000"
   },
   "dependencies": {
+    "socket.io": "latest",		
     "async": "^2.0.0-rc.4",
     "bcrypt-nodejs": "^0.0.3",
     "bitgo": "1.8.0",
@@ -57,6 +58,7 @@
     "twit": "^2.2.4",
     "validator": "^5.2.0",
     "yui": "^3.18.1"
+    
   },
   "devDependencies": {
     "chai": "^3.5.0",

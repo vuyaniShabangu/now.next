@@ -9,7 +9,8 @@ const droneSchema = new mongoose.Schema({
   fAerial: Boolean ,
   fOrtho: Boolean,
   fVideo: Boolean,
-  fUser: String
+  fUser: String,
+  dStatus: String
 });
 
 

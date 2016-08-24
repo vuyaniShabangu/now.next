@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 const userSchema = new mongoose.Schema({
   userEmail:String,
@@ -11,7 +12,11 @@ const userSchema = new mongoose.Schema({
   mStatus: String,
   operator: String,
   drone: String,
-  surveilenceArea: Array
+  surveilenceArea: Array,
+  cmdatetime: String,
+  cmbudget  : String,
+  cmcomments: String,
+  cmFile    : String
 });
 
 
