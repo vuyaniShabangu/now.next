@@ -518,7 +518,9 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
         'mission_id': acceptedMissionsObject._id
       },
       success : function(data) {
+
           alert(data);
+          
       },
       error : function(request,error)
       {
