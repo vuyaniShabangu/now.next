@@ -505,7 +505,7 @@ function initMap() {
 }
 $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
   alert("jjjccv");
-  alert("racist piece of code");
+
   var acceptedMissionsObject = acceptedMissionTable.row( $(this).parents('tr') ).data();
 
   alert(acceptedMissionsObject._id);
