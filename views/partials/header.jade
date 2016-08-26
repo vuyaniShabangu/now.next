@@ -17,23 +17,26 @@
               li(class=(title == 'Contact') ? 'active' : undefined)
                   a(href='/contact') Add Missions
               li.divider
-              li 
+              li
                 a(href='/missionsdt') View missions
         if user
           li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
-            a.dropdown-toggle(href='#', data-toggle='dropdown') Operator Dashboard 
+            a.dropdown-toggle(href='#', data-toggle='dropdown') Operator Dashboard
             ul.dropdown-menu
-              li 
+              li
                 a(href='/add-drone') Add Drone
               li.divider
-              li 
+              li
                 a(href='manage-drones') Manage Drones
               li.divider
-              li 
+              li
                 a(href='operatormissions') Select Missions
               li.divider
               li
                 a(href='acceptedmissions') Accepted Missions
+              li.divider
+              li
+                a(href='finishedmissions') Completed Missions
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)

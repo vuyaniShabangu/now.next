@@ -69,8 +69,8 @@ table
               url : '/missionsdelete',
               type : 'POST',
               data : {
-              	 '_csrf':$('#_csrf').val(),
-              	 'mission_id' : data._id
+                 '_csrf':$('#_csrf').val(),
+                 'mission_id' : data._id
               },
               dataType:'json',
               success : function(data) {
@@ -162,7 +162,7 @@ table
         {
           droneSelectionTable = $('#selectDroneTable').DataTable( {
               paging: false,
-              "ajax": "/retrievedrones",
+              "ajax": "/dronesbare",
               "sAjaxDataProp": "drones",
               "columns": [
                   { "data": "fManuc" },
@@ -172,11 +172,15 @@ table
                     "bSortable": false,
                     "defaultContent": "<button class='btn btn-primary' id = 'select'>Select Drone</button>"
                   },
-                  { "data": "fUser"}
+                  { "data": "fUser"},{"data":"dStatus"}
               ],
               "columnDefs": [
                 {
                     "targets": [ 3 ],
+                    "visible": false
+                },
+                {
+                    "targets": [ 4 ],
                     "visible": false
                 }
               ]
@@ -189,10 +193,10 @@ table
                 .columns( 3 )
                 .search( currentUserEmail )
                 .draw();
+      droneSelectionTable.columns(4).search('pending').draw();
 
       $('#selectDroneTable tbody').on( 'click', 'button#select', function () {
         var droneData = droneSelectionTable.row( $(this).parents('tr') ).data();
-        alert("You have selected drone: "+droneData._id);
         $.ajax({
               async: false,
               url : '/acceptmission',
@@ -205,8 +209,8 @@ table
               success : function(data) {
                 if(data == 'accepted')
                 {
-                  alert("Mission succeffully accepted with drone "+droneData.fModel +" "+ droneData.fManuc);
                   $('#selectDrone').modal('toggle');
+                  location.reload(true);
                 }
                 else{
                   alert("No: "+data)
@@ -243,12 +247,17 @@ table
               "bSortable": false,
               "defaultContent": "<button type='button' class='btn btn-primary' id='downloadWP'>Download Mission File</button>"
             },
-            { "data": "operator"}
+            { "data": "operator"},
+            {
+              "mData": null,
+              "bSortable": false,
+              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#uploadFileMode' id='missComplete'>Complete Mission</button>"
+            }
             ],
 
             "columnDefs": [
                 {
-                    "targets": [ 7 ],
+                    "targets": [ 5,7 ],
                     "visible": false
                 }
               ]
@@ -264,6 +273,47 @@ acceptedMissionTable
                 .columns( 7 )
                 .search( currentUserEmail )
                 .draw();
+
+
+var resultdata;
+  $('#acceptedmissionsgrid tbody').on( 'click', 'button#missComplete', function () {
+    resultdata   = acceptedMissionTable.row( $(this).parents('tr') ).data();
+    console.log(resultdata);
+  });
+
+
+$('#sendresult').click(function(){
+  console.log(resultdata);
+    $.ajax({
+      async: false,
+      url : '/missionscomplete',
+      type : 'POST',
+      data : {
+         '_csrf':$('#_csrf').val(),
+          'mission_id':resultdata._id,
+          'cmdatetime':  Date(),
+          'cmbudget'  :  $('#budget').val(),
+          'cmcomments':  $('#comment').val(),
+          'cmFile'    :  $('#resUpload').val()
+          },
+
+      success : function(data) {
+          alert("DONE!");
+          location.reload();
+      },
+      error : function(request,error)
+      {
+        alert(error);
+        console.log(error);
+        //location.reload();
+      }
+    });
+
+
+  //$('#reportInfo').submit();
+});
+
+
 
 
 
@@ -315,8 +365,8 @@ acceptedMissionTable
                                           url : '/dronedelete',
                                           type : 'POST',
                                           data : {
-                                          	 '_csrf':$('#_csrf').val(),
-                                          	 'drone_id' : dronedata._id
+                                             '_csrf':$('#_csrf').val(),
+                                             'drone_id' : dronedata._id
                                           },
                                           dataType:'json',
                                           success : function(data) {
@@ -369,17 +419,17 @@ $('#operatordronesTable tbody').on( 'click', 'button#editButton', function () {
   //This is for the Google Map in the Create Mission Form:
 
 function initMap() {
-		document.getElementById('map').innerHTML = "dfsdfs";
-	  	var map = new google.maps.Map(document.getElementById('map'), {
-	    	center: {lat: -25.7545492, lng: 28.2314476},
-	    	zoom: 10
-	  	});
+    document.getElementById('map').innerHTML = "dfsdfs";
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -25.7545492, lng: 28.2314476},
+        zoom: 10
+      });
 
-		// This event listener calls addMarker() when the map is clicked.
-	  	/*google.maps.event.addListener(map, 'click', function(event) {
-	  		console.log("point");
-    		addMarker(event.latLng, map);
-  		});*/
+    // This event listener calls addMarker() when the map is clicked.
+      /*google.maps.event.addListener(map, 'click', function(event) {
+        console.log("point");
+        addMarker(event.latLng, map);
+      });*/
 
         map.addListener('mousemove', function() {
           // 3 seconds after the center of the map has changed, pan back to the
@@ -387,22 +437,22 @@ function initMap() {
           //  alert("papapapa");
         });
 
-	  	var drawingManager = new google.maps.drawing.DrawingManager({
-	    	drawingMode: google.maps.drawing.OverlayType.POLYLINE,
-	    	drawingControl: false,
-	    	circleOptions: {
-	      		fillColor: '#ffff00',
-	      		fillOpacity: 1,
-	     		strokeWeight: 5,
-	      		clickable: false,
-	      		editable: true,
-	      		zIndex: 1
-	    	}
-	  	});
+      var drawingManager = new google.maps.drawing.DrawingManager({
+        drawingMode: google.maps.drawing.OverlayType.POLYLINE,
+        drawingControl: false,
+        circleOptions: {
+            fillColor: '#ffff00',
+            fillOpacity: 1,
+          strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+        }
+      });
 
 
 
-	  	/*google.maps.event.addListener(drawingManager, "overlaycomplete", function(event){
+      /*google.maps.event.addListener(drawingManager, "overlaycomplete", function(event){
                // overlayClickListener(event.overlay);
                // $('#missiondesc').html(event.overlay.getPath().getArray());
 
@@ -410,15 +460,15 @@ function initMap() {
                 console.log(event.overlay.getPath().getArray()[0].lat());
                 overlayPointsArray = event.overlay.getPath().getArray()
 
-    			surveillanceRoute = Array();
+          surveillanceRoute = Array();
 
-    			for (var i = 0; i < overlayPointsArray.length; i++) {
-    				surveillanceRoute[i] = Object();
-    				surveillanceRoute[i].lat = overlayPointsArray[i].lat();
-    				surveillanceRoute[i].lng = overlayPointsArray[i].lng();
-    			}
+          for (var i = 0; i < overlayPointsArray.length; i++) {
+            surveillanceRoute[i] = Object();
+            surveillanceRoute[i].lat = overlayPointsArray[i].lat();
+            surveillanceRoute[i].lng = overlayPointsArray[i].lng();
+          }
 
-    			console.log(surveillanceRoute);
+          console.log(surveillanceRoute);
             });*/
 
 
@@ -426,20 +476,20 @@ function initMap() {
 
 
 
-	  drawingManager.setMap(map)
-	}
+    drawingManager.setMap(map)
+  }
 
-	function addMarker(location, map) {
-  		// Add the marker at the clicked location, and add the next-available label
-  		// from the array of alphabetical characters.
-  		var marker = new google.maps.Marker({
-    		position: location,
-   	 		map: map
-  		});
-	}
+  function addMarker(location, map) {
+      // Add the marker at the clicked location, and add the next-available label
+      // from the array of alphabetical characters.
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map
+      });
+  }
 
-	function addLatLng(event) {
-		console.log("gf");
+  function addLatLng(event) {
+    console.log("gf");
   //var path = poly.getPath();
 
   // Because path is an MVCArray, we can simply append a new coordinate
@@ -454,11 +504,11 @@ function initMap() {
   });
 }
 $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
-  alert("jjjccv");
-  alert("racist piece of code");
+  //alert("jjjccv");
+
   var acceptedMissionsObject = acceptedMissionTable.row( $(this).parents('tr') ).data();
 
-  alert(acceptedMissionsObject._id);
+  //alert(acceptedMissionsObject._id);
       $.ajax({
 
       url : '/generatemissionfile',
@@ -468,12 +518,14 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
         'mission_id': acceptedMissionsObject._id
       },
       success : function(data) {
+
           alert(data);
+          
       },
       error : function(request,error)
       {
                 alert("we failed");
-                console.log(error);                            
+                console.log(error);
        }
     });
 });
