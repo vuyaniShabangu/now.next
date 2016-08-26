@@ -98,9 +98,9 @@ exports.getuseremail = (req, res) =>{
 
 
 exports.gettriggerexpansion = (req,res) =>{
-	
+
 	//foo(req.body.mission_id);
-	
+
 var minutes =1;
 var the_interval =minutes*60*1000;
 
@@ -158,20 +158,23 @@ exports.postacceptmission = (req, res) => {
 
 
 //MIssions completed
+exports.fileUpload = (req,res,next) =>{
+    req.flash('success', { msg: 'Results were uploaded successfully.' });
+    res.redirect('/acceptedmissions');
+};
 exports.postmissionscomplete = (req,res) => {
 
 	console.log("We CompletTing Mission now!");
-	var id = req.body.mission_id;
+	var id = req.body.missID;
 
 
-	Contact.findById(req.body.mission_id, (err, cont) => {
+	Contact.findById(id, (err, cont) => {
 
 
-          cont.cmdatetime= req.body.cmdatetime;
-          cont.cmbudget  = req.body.cmbudget;
-          cont.cmcomments= req.body.cmcomments;
+          cont.cmdatetime= Date();
+          cont.cmbudget  = req.body.budget;
+          cont.cmcomments= req.body.comments;
           cont.mStatus = "completed";
-          cont.cmFile    = req.body.cmFile;
 
 	    cont.save((err) => {
 	      if(err)
@@ -181,9 +184,7 @@ exports.postmissionscomplete = (req,res) => {
 	      else
 	      {
 	      	console.log("Mission complete! "+cont.cmbudget);
-          console.log(util.inspect(req.body.cmFile, false, null));
-          console.log(req.file);
-          res.redirect('/acceptedmissions');
+          res.ok();
 	      }
 	     // req.flash('success', { msg: 'Profile information has been updated.' });
 	    //  res.redirect('/account');

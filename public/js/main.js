@@ -251,7 +251,7 @@ table
             {
               "mData": null,
               "bSortable": false,
-              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#uploadFileMode' id='missComplete'>Complete Mission</button>"
+              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#fileOnlyLabel' id='missComplete'>Complete Mission</button>"
             }
             ],
 
@@ -278,45 +278,10 @@ acceptedMissionTable
 var resultdata;
   $('#acceptedmissionsgrid tbody').on( 'click', 'button#missComplete', function () {
     resultdata   = acceptedMissionTable.row( $(this).parents('tr') ).data();
+    $('#uploadForm')[0].reset();
+    $('#missID').val(resultdata._id);
     console.log(resultdata);
   });
-
-
-$('#sendresult').click(function(){
-  console.log(resultdata);
-    $.ajax({
-      async: false,
-      url : '/missionscomplete',
-      type : 'POST',
-      data : {
-         '_csrf':$('#_csrf').val(),
-          'mission_id':resultdata._id,
-          'cmdatetime':  Date(),
-          'cmbudget'  :  $('#budget').val(),
-          'cmcomments':  $('#comment').val(),
-          'cmFile'    :  $('#resUpload').val()
-          },
-
-      success : function(data) {
-          alert("DONE!");
-          location.reload();
-      },
-      error : function(request,error)
-      {
-        alert(error);
-        console.log(error);
-        //location.reload();
-      }
-    });
-
-
-  //$('#reportInfo').submit();
-});
-
-
-
-
-
 
 //TABLE FOR UNIQUE OPERATOR DRONES
  var droneTable;
@@ -520,7 +485,7 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
       success : function(data) {
 
           alert(data);
-          
+
       },
       error : function(request,error)
       {
