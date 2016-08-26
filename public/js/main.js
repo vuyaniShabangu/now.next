@@ -503,6 +503,18 @@ function initMap() {
     map: map
   });
 }
+
+
+function downloadInnerHtml(filename, elId, mimeType) {
+    var elHtml = document.getElementById(elId).innerHTML;
+    var link = document.createElement('a');
+    mimeType = mimeType || 'text/plain';
+
+    link.setAttribute('download', filename);
+    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
+    link.click(); 
+}
+
 $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
   //alert("jjjccv");
 
@@ -519,8 +531,10 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
       },
       success : function(data) {
 
-          alert(data);
-          
+          //console.log(data);
+          $('#fileContents').html(data);
+          //$('#downloadFileModal').modal('show');
+          downloadInnerHtml(acceptedMissionsObject._id+'.waypoints', 'fileContents','text/html');
       },
       error : function(request,error)
       {
@@ -529,6 +543,8 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
        }
     });
 });
+
+
 
   $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAWiEnhMjv7lLDyaoiwIHwEVYoMRN4nYKY&libraries=drawing', function()
   {

@@ -89,3 +89,18 @@ block content
               button.btn.btn-primary(type='button', data-dismiss='modal', id ='sendresult') Complete
               button.btn.btn-default(type='button', data-dismiss='modal') Close
 
+
+  #downloadFileModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='uploadLabel')
+    .modal-dialog.modal-lg(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button',data-dismiss='modal',aria-label='Close')
+            span(aria-hidden='true') x
+          h4#uploadLabel.modal-title Mission Waypoint File
+        .modal-body
+
+          #fileContents
+
+        .modal-footer
+          button.btn.btn-primary(type='button', data-dismiss='modal', id ='sendresult') Download
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
