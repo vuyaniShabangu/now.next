@@ -41,7 +41,7 @@ block content
             span(aria-hidden='true') x
           h4#fileOnly.modal-title Complete Mission
           .modal-body
-            form.form-horizontal(name='uploadForm', role='form', enctype='multipart/form-data', method='POST')
+            form.form-horizontal(name='uploadForm', role='form', enctype='multipart/form-data', method='get' action='uploadThis')
               input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
               .form-group
                 label(class='col-sm-2 control-label', for='myFile' ) Upload results:

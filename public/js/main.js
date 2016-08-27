@@ -2,7 +2,16 @@ $(document).ready(function() {
 
   // Place JavaScript code here...
 
+  var userLat, userLong;
+  function showPosition(position) {
+    userLat = position.coords.latitude;
+    userLong = position.coords.longitude;
+  alert( userLat+ ' '+userLong);
+  }
+  function showError(error){
 
+  }
+  navigator.geolocation.getCurrentPosition(showPosition,showError);
   var currentUserEmail;
   var table;
   //alert("ready to go! ");
@@ -209,7 +218,7 @@ table
               success : function(data) {
                 if(data == 'accepted')
                 {
-                  $('#selectDrone').modal('toggle');
+                  $('#selectDrone').modal('hide');
                   location.reload(true);
                 }
                 else{
