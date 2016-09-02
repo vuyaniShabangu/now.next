@@ -160,10 +160,11 @@ exports.postacceptmission = (req, res) => {
 //MIssions completed
 exports.postmissionscomplete = (req,res) => {
 
-	console.log("We CompletTing Mission now!");
 	var id = req.body.mission_id;
+	console.log("We CompletTing Mission now! "+id);
+	
 
-
+/*
 	Contact.findById(req.body.mission_id, (err, cont) => {
 
 
@@ -189,7 +190,7 @@ exports.postmissionscomplete = (req,res) => {
 	    //  res.redirect('/account');
 	    });
 	  });
-
+*/
 };
 
 
