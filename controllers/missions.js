@@ -16,6 +16,15 @@ exports.getCompleted = (req,res) => {
   });
 };
 
+
+
+exports.getUserCompleted = (req,res) => {
+  res.render('userfinishedmissions', {
+    title: 'Completed Missions'
+  });
+};
+
+
 exports.getmissionsbare = (req, res) => {
 	//console.log(req.params('mission_id'));
 
