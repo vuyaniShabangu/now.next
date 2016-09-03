@@ -100,7 +100,7 @@ userCompletedmissions
         });
 
 //-------------------------------------------
-  // Initialize Firebase
+  /*// Initialize Firebase
   var config = {
     apiKey: "AIzaSyCZ1Y3-M9hpEbq0JR4F_Y7RuEHpt4bM9cI",
     authDomain: "dronr-913d4.firebaseapp.com",
@@ -145,7 +145,7 @@ userCompletedmissions
 
 
   
-
+*/
   var currentUserEmail;
   var table;
   //alert("ready to go! ");
