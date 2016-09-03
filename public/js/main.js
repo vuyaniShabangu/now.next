@@ -10,10 +10,8 @@ $(document).ready(function() {
   }
   function showError(error){
 
-<<<<<<< HEAD
   }
   navigator.geolocation.getCurrentPosition(showPosition,showError);
-=======
 //FOR FINISHED MISSIONS
   var operatorCompletedmissions;
   //alert("ready to go! ");
@@ -157,7 +155,6 @@ userCompletedmissions
 
   
 */
->>>>>>> develop
   var currentUserEmail;
   var table;
   //alert("ready to go! ");
@@ -438,8 +435,7 @@ var resultdata;
     console.log(resultdata);
   });
 
-<<<<<<< HEAD
-=======
+
 
 $('#sendresult').click(function(){
   console.log(resultdata);
@@ -477,7 +473,6 @@ $('#sendresult').click(function(){
 
 
 
->>>>>>> develop
 //TABLE FOR UNIQUE OPERATOR DRONES
  var droneTable;
  droneTable = $('#operatordronesTable').DataTable( {
@@ -585,7 +580,7 @@ $('#operatordronesTable tbody').on( 'click', 'button#editButton', function () {
 function initMap() {
     document.getElementById('map').innerHTML = "dfsdfs";
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -25.7545492, lng: 28.2314476},
+        center: {lat: userLat, lng: userLong},
         zoom: 10
       });
 
@@ -694,16 +689,12 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
         'mission_id': acceptedMissionsObject._id
       },
       success : function(data) {
+          //alert(data);
 
-<<<<<<< HEAD
-          alert(data);
-
-=======
           //console.log(data);
           $('#fileContents').html(data);
           //$('#downloadFileModal').modal('show');
           downloadInnerHtml(acceptedMissionsObject._id+'.waypoints', 'fileContents','text/html');
->>>>>>> develop
       },
       error : function(request,error)
       {

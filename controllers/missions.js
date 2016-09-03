@@ -173,14 +173,9 @@ exports.fileUpload = (req,res,next) =>{
 };
 exports.postmissionscomplete = (req,res) => {
 
-<<<<<<< HEAD
-	console.log("We CompletTing Mission now!");
-	var id = req.body.missID;
-=======
+
 	var id = req.body.mission_id;
 	console.log("We CompletTing Mission now! "+id);
-	
->>>>>>> develop
 
 
 	Contact.findById(id, (err, cont) => {
@@ -199,13 +194,11 @@ exports.postmissionscomplete = (req,res) => {
 	      else
 	      {
 	      	console.log("Mission complete! "+cont.cmbudget);
-<<<<<<< HEAD
-          res.ok();
-=======
+
           console.log(util.inspect(req.body, false, null));
           //console.log(req.file);
           res.redirect('/acceptedmissions');
->>>>>>> develop
+
 	      }
 	     // req.flash('success', { msg: 'Profile information has been updated.' });
 	    //  res.redirect('/account');
