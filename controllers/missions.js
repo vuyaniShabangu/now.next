@@ -164,7 +164,7 @@ exports.postmissionscomplete = (req,res) => {
 	console.log("We CompletTing Mission now! "+id);
 	
 
-/*
+
 	Contact.findById(req.body.mission_id, (err, cont) => {
 
 
@@ -182,15 +182,15 @@ exports.postmissionscomplete = (req,res) => {
 	      else
 	      {
 	      	console.log("Mission complete! "+cont.cmbudget);
-          console.log(util.inspect(req.body.cmFile, false, null));
-          console.log(req.file);
+          console.log(util.inspect(req.body, false, null));
+          //console.log(req.file);
           res.redirect('/acceptedmissions');
 	      }
 	     // req.flash('success', { msg: 'Profile information has been updated.' });
 	    //  res.redirect('/account');
 	    });
 	  });
-*/
+
 };
 
 
