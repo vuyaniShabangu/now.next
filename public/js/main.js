@@ -2,7 +2,18 @@ $(document).ready(function() {
 
   // Place JavaScript code here...
 
+  var userLat, userLong;
+  function showPosition(position) {
+    userLat = position.coords.latitude;
+    userLong = position.coords.longitude;
+  alert( userLat+ ' '+userLong);
+  }
+  function showError(error){
 
+<<<<<<< HEAD
+  }
+  navigator.geolocation.getCurrentPosition(showPosition,showError);
+=======
 //FOR FINISHED MISSIONS
   var operatorCompletedmissions;
   //alert("ready to go! ");
@@ -146,6 +157,7 @@ userCompletedmissions
 
   
 */
+>>>>>>> develop
   var currentUserEmail;
   var table;
   //alert("ready to go! ");
@@ -352,7 +364,7 @@ table
               success : function(data) {
                 if(data == 'accepted')
                 {
-                  $('#selectDrone').modal('toggle');
+                  $('#selectDrone').modal('hide');
                   location.reload(true);
                 }
                 else{
@@ -394,7 +406,7 @@ table
             {
               "mData": null,
               "bSortable": false,
-              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#uploadFileMode' id='missComplete'>Complete Mission</button>"
+              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#fileOnlyLabel' id='missComplete'>Complete Mission</button>"
             }
             ],
 
@@ -421,9 +433,13 @@ acceptedMissionTable
 var resultdata;
   $('#acceptedmissionsgrid tbody').on( 'click', 'button#missComplete', function () {
     resultdata   = acceptedMissionTable.row( $(this).parents('tr') ).data();
+    $('#uploadForm')[0].reset();
+    $('#missID').val(resultdata._id);
     console.log(resultdata);
   });
 
+<<<<<<< HEAD
+=======
 
 $('#sendresult').click(function(){
   console.log(resultdata);
@@ -461,6 +477,7 @@ $('#sendresult').click(function(){
 
 
 
+>>>>>>> develop
 //TABLE FOR UNIQUE OPERATOR DRONES
  var droneTable;
  droneTable = $('#operatordronesTable').DataTable( {
@@ -678,10 +695,15 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
       },
       success : function(data) {
 
+<<<<<<< HEAD
+          alert(data);
+
+=======
           //console.log(data);
           $('#fileContents').html(data);
           //$('#downloadFileModal').modal('show');
           downloadInnerHtml(acceptedMissionsObject._id+'.waypoints', 'fileContents','text/html');
+>>>>>>> develop
       },
       error : function(request,error)
       {

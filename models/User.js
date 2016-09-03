@@ -26,7 +26,9 @@ const userSchema = new mongoose.Schema({
     gender: { type: String, default: '' },
     location: { type: String, default: '' },
     website: { type: String, default: '' },
-    picture: { type: String, default: '' }
+    picture: { type: String, default: '' },
+    longitude: {type: String, default: ''},
+    latitude: {type: String, default: ''}
   }
 }, { timestamps: true });
 
