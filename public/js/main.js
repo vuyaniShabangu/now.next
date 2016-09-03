@@ -10,8 +10,154 @@ $(document).ready(function() {
   }
   function showError(error){
 
+<<<<<<< HEAD
   }
   navigator.geolocation.getCurrentPosition(showPosition,showError);
+=======
+//FOR FINISHED MISSIONS
+  var operatorCompletedmissions;
+  //alert("ready to go! ");
+//OPERATOR FINISHED MISSIONS
+   operatorCompletedmissions = $('#exampleCrud1').DataTable( {
+        "ajax": "/missionsbare",
+        "sAjaxDataProp": "missions",
+        "columns": [
+            { "data": "userEmail" },
+            { "data": "mtype" },
+            { "data": "mdesc" },
+            { "data": "mdatetime"},
+            { "data": "cmbudget","defaultContent": "<i>Not set</i>"},
+            { "data": "cmcomments","defaultContent": "<i>Not set</i>"},
+            { "data":"cmFile","defaultContent": "<i>Not set</i>"},
+            { "data": "mStatus"},
+            { "data": "operator"}
+        ],
+"columnDefs": [
+                {
+                    "targets": [ 7,8 ],
+                    "visible": false
+                }
+              ]
+    } );
+
+operatorCompletedmissions
+                .columns( 7 )
+                .search( 'completed' )
+                .draw();
+
+
+    $.ajax({
+              async: false,
+              url : '/missionsemail',
+              type : 'GET',
+              success : function(data) {
+               // alert("My email address is: "+data);
+                currentUserEmail = data;
+                operatorCompletedmissions
+                .columns( 0 )
+                .search( data )
+                .draw();
+              },
+              error : function(request,error)
+              {
+              }
+        });
+
+//--------------------------------------------
+
+//USER FINISHED MISSIONS
+   userCompletedmissions = $('#exampleCrud2').DataTable( {
+        "ajax": "/missionsbare",
+        "sAjaxDataProp": "missions",
+        "columns": [
+            { "data": "userEmail" },
+            { "data": "mtype" },
+            { "data": "mdesc" },
+            { "data": "mdatetime"},
+            { "data": "cmbudget","defaultContent": "<i>Not set</i>"},
+            { "data": "cmcomments","defaultContent": "<i>Not set</i>"},
+            { "data":"cmFile","defaultContent": "<i>Not set</i>"},
+            { "data": "mStatus"},
+            { "data": "operator"}
+        ],
+"columnDefs": [
+                {
+                    "targets": [ 7 ],
+                    "visible": false
+                }
+              ]
+    } );
+
+userCompletedmissions
+                .columns( 7 )
+                .search( 'completed' )
+                .draw();
+
+    $.ajax({
+              async: false,
+              url : '/missionsemail',
+              type : 'GET',
+              success : function(data) {
+               // alert("My email address is: "+data);
+                currentUserEmail = data;
+                userCompletedmissions
+                .columns( 0 )
+                .search( data )
+                .draw();
+              },
+              error : function(request,error)
+              {
+              }
+        });
+
+//-------------------------------------------
+  /*// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCZ1Y3-M9hpEbq0JR4F_Y7RuEHpt4bM9cI",
+    authDomain: "dronr-913d4.firebaseapp.com",
+    databaseURL: "https://dronr-913d4.firebaseio.com",
+    storageBucket: "dronr-913d4.appspot.com",
+  };
+  firebase.initializeApp(config);
+
+  
+  var uploader = document.getElementById('uploader');
+  var fileButton = document.getElementById('resUpload');
+
+  //Listen fo file selection
+  fileButton.addEventListener('change',  function(e){
+    //Get the file
+    var file = e.target.files[0];
+
+    //Create reference
+    var storageRef = firebase.storage().ref('missionReportFiles/' + file.name);
+
+    //Upload file
+    var task = storageRef.put(file);
+
+    //update progress
+    task.on('state_changed', 
+
+            function progress(snapshot){
+                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+                uploader.value = percentage;
+            },
+
+            function error(err){
+
+            },
+
+            function complete(){
+
+            }
+
+      );
+  });
+
+
+  
+*/
+>>>>>>> develop
   var currentUserEmail;
   var table;
   //alert("ready to go! ");
@@ -292,6 +438,46 @@ var resultdata;
     console.log(resultdata);
   });
 
+<<<<<<< HEAD
+=======
+
+$('#sendresult').click(function(){
+  console.log(resultdata);
+    $.ajax({
+      async: false,
+      url : '/missionscomplete',
+      type : 'POST',
+      data : {
+         '_csrf':$('#_csrf').val(),
+          'mission_id':resultdata._id,
+          'cmdatetime':  Date(),
+          'cmbudget'  :  $('#budget').val(),
+          'cmcomments':  $('#comment').val(),
+          'cmFile'    :  $('#filePath').val()
+          },
+
+      success : function(data) {
+          alert("DONE!");
+          location.reload();
+      },
+      error : function(request,error)
+      {
+        alert(error);
+        console.log(error);
+        //location.reload();
+      }
+    });
+
+
+  //$('#reportInfo').submit();
+});
+
+
+
+
+
+
+>>>>>>> develop
 //TABLE FOR UNIQUE OPERATOR DRONES
  var droneTable;
  droneTable = $('#operatordronesTable').DataTable( {
@@ -387,6 +573,10 @@ $('#operatordronesTable tbody').on( 'click', 'button#editButton', function () {
 });
 
 
+
+//-----------------MISSION COMPLETED, FILE UPLOAD-------------
+
+
 //-----------------
 
 
@@ -477,6 +667,18 @@ function initMap() {
     map: map
   });
 }
+
+
+function downloadInnerHtml(filename, elId, mimeType) {
+    var elHtml = document.getElementById(elId).innerHTML;
+    var link = document.createElement('a');
+    mimeType = mimeType || 'text/plain';
+
+    link.setAttribute('download', filename);
+    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
+    link.click(); 
+}
+
 $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
   //alert("jjjccv");
 
@@ -493,8 +695,15 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
       },
       success : function(data) {
 
+<<<<<<< HEAD
           alert(data);
 
+=======
+          //console.log(data);
+          $('#fileContents').html(data);
+          //$('#downloadFileModal').modal('show');
+          downloadInnerHtml(acceptedMissionsObject._id+'.waypoints', 'fileContents','text/html');
+>>>>>>> develop
       },
       error : function(request,error)
       {
@@ -503,6 +712,8 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
        }
     });
 });
+
+
 
   $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAWiEnhMjv7lLDyaoiwIHwEVYoMRN4nYKY&libraries=drawing', function()
   {
