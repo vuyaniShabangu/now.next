@@ -6,7 +6,7 @@ $(document).ready(function() {
   function showPosition(position) {
     userLat = position.coords.latitude;
     userLong = position.coords.longitude;
-  alert( userLat+ ' '+userLong);
+  console.log( userLat+ ' '+userLong);
   }
   function showError(error){
 
