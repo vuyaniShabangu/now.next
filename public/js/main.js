@@ -1,6 +1,152 @@
 $(document).ready(function() {
 
   // Place JavaScript code here...
+<<<<<<< HEAD
+
+
+
+    $.ajax({
+              async: false,
+              url : '/missionsemail',
+              type : 'GET',
+              success : function(data) {
+               // alert("My email address is: "+data);
+                currentUserEmail = data;
+                userCompletedmissions
+                .columns( 0 )
+                .search( data )
+                .draw();
+              },
+              error : function(request,error)
+              {
+              }
+        });
+
+//-------------------------------------------
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCZ1Y3-M9hpEbq0JR4F_Y7RuEHpt4bM9cI",
+    authDomain: "dronr-913d4.firebaseapp.com",
+    databaseURL: "https://dronr-913d4.firebaseio.com",
+    storageBucket: "dronr-913d4.appspot.com",
+  };
+  firebase.initializeApp(config);
+
+  
+  var uploader = document.getElementById('uploader');
+  var fileButton = document.getElementById('resUpload');
+
+  //Listen fo file selection
+  fileButton.addEventListener('change',  function(e){
+    //Get the file
+    var file = e.target.files[0];
+
+    //Create reference
+    var storageRef = firebase.storage().ref('missionReportFiles/' + file.name);
+
+    //Upload file
+    var task = storageRef.put(file);
+
+    //update progress
+    task.on('state_changed', 
+
+            function progress(snapshot){
+                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+                uploader.value = percentage;
+            },
+
+            function error(err){
+
+            },
+
+            function complete(){
+
+            }
+
+      );
+  });
+
+
+  
+//FOR FINISHED MISSIONS
+  var operatorCompletedmissions;
+  //alert("ready to go! ");
+//OPERATOR FINISHED MISSIONS
+   operatorCompletedmissions = $('#exampleCrud1').DataTable( {
+        "ajax": "/missionsbare",
+        "sAjaxDataProp": "missions",
+        "columns": [
+            { "data": "userEmail" },
+            { "data": "mtype" },
+            { "data": "mdesc" },
+            { "data": "mdatetime"},
+            { "data": "cmbudget","defaultContent": "<i>Not set</i>"},
+            { "data": "cmcomments","defaultContent": "<i>Not set</i>"},
+            { "data":"cmFile","defaultContent": "<i>Not set</i>"},
+            { "data": "mStatus"},
+            { "data": "operator"}
+        ],
+"columnDefs": [
+                {
+                    "targets": [ 7,8 ],
+                    "visible": false
+                }
+              ]
+    } );
+
+operatorCompletedmissions
+                .columns( 7 )
+                .search( 'completed' )
+                .draw();
+
+
+    $.ajax({
+              async: false,
+              url : '/missionsemail',
+              type : 'GET',
+              success : function(data) {
+               // alert("My email address is: "+data);
+                currentUserEmail = data;
+                operatorCompletedmissions
+                .columns( 0 )
+                .search( data )
+                .draw();
+              },
+              error : function(request,error)
+              {
+              }
+        });
+
+//--------------------------------------------
+
+//USER FINISHED MISSIONS
+   userCompletedmissions = $('#exampleCrud2').DataTable( {
+        "ajax": "/missionsbare",
+        "sAjaxDataProp": "missions",
+        "columns": [
+            { "data": "userEmail" },
+            { "data": "mtype" },
+            { "data": "mdesc" },
+            { "data": "mdatetime"},
+            { "data": "cmbudget","defaultContent": "<i>Not set</i>"},
+            { "data": "cmcomments","defaultContent": "<i>Not set</i>"},
+            { "data":"cmFile","defaultContent": "<i>Not set</i>"},
+            { "data": "mStatus"},
+            { "data": "operator"}
+        ],
+"columnDefs": [
+                {
+                    "targets": [ 7 ],
+                    "visible": false
+                }
+              ]
+    } );
+
+userCompletedmissions
+                .columns( 7 )
+                .search( 'completed' )
+                .draw();
+
   var currentUserEmail;
   var table;
   //alert("ready to go! ");
