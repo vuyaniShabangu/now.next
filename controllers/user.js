@@ -22,7 +22,6 @@ exports.registerLoc = (req, res) =>
   if(req.user.id)
     uId = req.user.id;
   else return;
-  console.log(uId);
   User.findById(uId, (err, usr) => {
     if(err) { return; }
     else {
