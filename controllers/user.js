@@ -74,7 +74,7 @@ exports.getSignup = (req, res) => {
  * Create a new local account.
  */
 exports.postSignup = (req, res, next) => {
-  
+
   req.assert('name', 'Please Enter valid name').len(1);
   req.assert('surname', 'Please Enter valid surname').len(1);
   req.assert('username', 'Please Enter valid username').len(1);
@@ -99,7 +99,7 @@ exports.postSignup = (req, res, next) => {
     surname: req.body.surname,
     username: req.body.username,
     phonenumber: req.body.phonenumber,
-    role: req.body.role 
+    role: req.body.role
   });
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
@@ -153,8 +153,6 @@ exports.postUpdateProfile = (req, res, next) => {
     user.profile.phonenumber = req.body.phonenumber || '';
     user.profile.role = req.body.role || '';
     user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
