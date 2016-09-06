@@ -22,7 +22,7 @@ $(document).ready(function() {
         ],
 "columnDefs": [
                 {
-                    "targets": [ 7,8 ],
+                    "targets": [ 4,5,6,7,8 ],
                     "visible": false
                 }
               ]
@@ -109,7 +109,7 @@ userCompletedmissions
   };
   firebase.initializeApp(config);
 
-  
+
   var uploader = document.getElementById('uploader');
   var fileButton = document.getElementById('resUpload');
 
@@ -125,7 +125,7 @@ userCompletedmissions
     var task = storageRef.put(file);
 
     //update progress
-    task.on('state_changed', 
+    task.on('state_changed',
 
             function progress(snapshot){
                 var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
@@ -652,7 +652,7 @@ function downloadInnerHtml(filename, elId, mimeType) {
 
     link.setAttribute('download', filename);
     link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
-    link.click(); 
+    link.click();
 }
 
 $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
