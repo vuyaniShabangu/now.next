@@ -16,9 +16,16 @@ $(document).ready(function() {
             { "data": "mdatetime"},
             { "data": "cmbudget","defaultContent": "<i>Not set</i>"},
             { "data": "cmcomments","defaultContent": "<i>Not set</i>"},
-            { "data":"cmFile","defaultContent": "<i>Not set</i>"},
+            { "data":"cmFile"},
             { "data": "mStatus"},
-            { "data": "operator"}
+            { "data": "operator"},
+            {
+              "mData": null,
+              "bSortable": false,
+              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#droneResults' id='missResults'>Retrieve</button>"
+            },
+            { "data": "_id",
+              "visible": false}
         ],
 "columnDefs": [
                 {
@@ -33,6 +40,13 @@ operatorCompletedmissions
                 .search( 'completed' )
                 .draw();
 
+       $('#exampleCrud1 tbody').on( 'click', 'button#missResults', function () {
+        var data = operatorCompletedmissions.row( $(this).parents('tr') ).data();
+         $('#usern').val(data.userEmail);
+         $('#description').val(data.mdesc);
+         $('#comments').val(data.cmcomments);
+         $('#date').val(data.mdatetime);
+       });
 
     $.ajax({
               async: false,
