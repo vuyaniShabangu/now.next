@@ -2,6 +2,16 @@ $(document).ready(function() {
 
   // Place JavaScript code here...
 
+  var userLat, userLong;
+  function showPosition(position) {
+    userLat = position.coords.latitude;
+    userLong = position.coords.longitude;
+  console.log( userLat+ ' '+userLong);
+  }
+  function showError(error){
+
+  }
+  navigator.geolocation.getCurrentPosition(showPosition,showError);
 //FOR FINISHED MISSIONS
   var operatorCompletedmissions;
   //alert("ready to go! ");
@@ -95,7 +105,6 @@ userCompletedmissions
                 .search( 'completed' )
                 .draw();
 
-
     $.ajax({
               async: false,
               url : '/missionsemail',
@@ -114,7 +123,7 @@ userCompletedmissions
         });
 
 //-------------------------------------------
-  // Initialize Firebase
+  /*// Initialize Firebase
   var config = {
     apiKey: "AIzaSyCZ1Y3-M9hpEbq0JR4F_Y7RuEHpt4bM9cI",
     authDomain: "dronr-913d4.firebaseapp.com",
@@ -157,6 +166,9 @@ userCompletedmissions
       );
   });
 
+
+  
+*/
   var currentUserEmail;
   var table;
   //alert("ready to go! ");
@@ -363,7 +375,7 @@ table
               success : function(data) {
                 if(data == 'accepted')
                 {
-                  $('#selectDrone').modal('toggle');
+                  $('#selectDrone').modal('hide');
                   location.reload(true);
                 }
                 else{
@@ -405,7 +417,7 @@ table
             {
               "mData": null,
               "bSortable": false,
-              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#uploadFileMode' id='missComplete'>Complete Mission</button>"
+              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#fileOnlyLabel' id='missComplete'>Complete Mission</button>"
             }
             ],
 
@@ -432,8 +444,11 @@ acceptedMissionTable
 var resultdata;
   $('#acceptedmissionsgrid tbody').on( 'click', 'button#missComplete', function () {
     resultdata   = acceptedMissionTable.row( $(this).parents('tr') ).data();
+    $('#uploadForm')[0].reset();
+    $('#missID').val(resultdata._id);
     console.log(resultdata);
   });
+
 
 
 $('#sendresult').click(function(){
@@ -448,7 +463,7 @@ $('#sendresult').click(function(){
           'cmdatetime':  Date(),
           'cmbudget'  :  $('#budget').val(),
           'cmcomments':  $('#comment').val(),
-          'cmFile'    :  $('#resUpload').val()
+          'cmFile'    :  $('#filePath').val()
           },
 
       success : function(data) {
@@ -567,6 +582,10 @@ $('#operatordronesTable tbody').on( 'click', 'button#editButton', function () {
 });
 
 
+
+//-----------------MISSION COMPLETED, FILE UPLOAD-------------
+
+
 //-----------------
 
 
@@ -575,7 +594,7 @@ $('#operatordronesTable tbody').on( 'click', 'button#editButton', function () {
 function initMap() {
     document.getElementById('map').innerHTML = "dfsdfs";
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -25.7545492, lng: 28.2314476},
+        center: {lat: userLat, lng: userLong},
         zoom: 10
       });
 
@@ -684,6 +703,7 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
         'mission_id': acceptedMissionsObject._id
       },
       success : function(data) {
+          //alert(data);
 
           //console.log(data);
           $('#fileContents').html(data);

@@ -1,5 +1,4 @@
 extends layout
-
 block content
   .page-header
     h3 Accepted Missions
@@ -33,43 +32,41 @@ block content
 
   input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
 
-
-  #selectDrone.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-              h4#myModalLabel.modal-title Select drone
-            .modal-body
-              table#selectDroneTable.display(cellspacing='0', width='100%')
-                thead
-                  tr
-                    th Manufactor
-                    th Model
-                    th Select
-                    th Owner
-                tfoot
-                  tr
-                    th Manufactor
-                    th Model
-                    th Select
-                    th Owner
-
-            .modal-footer
-              button.btn.btn-default(type='button', data-dismiss='modal') Close
-
-  #uploadFileMode.modal.fade(tabindex='-1', role='dialog', aria-labelledby='uploadLabel')
+  #fileOnlyLabel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='fileOnly')
     .modal-dialog(role='document')
       .modal-content
         .modal-header
           button.close(type='button',data-dismiss='modal',aria-label='Close')
             span(aria-hidden='true') x
+<<<<<<< HEAD
+          h4#fileOnly.modal-title Complete Mission
+          .modal-body
+            form.form-horizontal(name='uploadForm', role='form', enctype='multipart/form-data', method='get' action='uploadThis')
+              input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
+              .form-group
+                label(class='col-sm-2 control-label', for='myFile' ) Upload results:
+                .col-sm-8
+                  input.form-control(type='file', name='myFile', id='myFile' required)
+                  .modal-footer
+                    button.btn.btn-primary(type='submit') Submit
+=======
           h4#uploadLabel.modal-title Complete Mission
         .modal-body
           form.form-horizontal( id='reportInfo', role='form', enctype='multipart/form-data' method='POST')
             input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
-            
+            input(type='text', name='filePath', id='filePath')
+            .form-group
+              label(class='col-sm-2 control-label', for='datecompleted') Date Completed:
+              .col-sm-8
+                input.form-control(name='datecompleted', id='datecompleted',  type='text')
+            .form-group
+              label(class='col-sm-2 control-label', for='budget', min=0) Budget:
+              .col-sm-8
+                input.form-control(name='budget', id='budget',  type='number'  required)
+            .form-group
+              label(class='col-sm-2 control-label', for='comment') Comments:
+              .col-sm-8
+                input.form-control(name='comment', id='comment',  type='text' required )
             .form-group
               label(class='col-sm-2 control-label', for='resUpload') Upload Results: (zip file)
               .col-sm-8
@@ -94,3 +91,5 @@ block content
         .modal-footer
           button.btn.btn-primary(type='button', data-dismiss='modal', id ='sendresult') Download
           button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+>>>>>>> develop
