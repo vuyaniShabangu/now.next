@@ -24,7 +24,7 @@ block content
     .form-group
       label.col-sm-3.control-label(for='phonenumber') Phone Number
       .col-sm-7
-        input.form-control(type='text', name='phonenumber', id='phonenumber', placeholder='Phone Number', autofocus, required)
+        input#phonenumber.form-control(type='number', pattern='.{5,10}', maxlength='10', name='phonenumber', placeholder='Phone Number', autofocus='autofocus', required='required')
 
     .form-group
       label.col-sm-3.control-label(for='role') Role

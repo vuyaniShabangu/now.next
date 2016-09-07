@@ -19,7 +19,10 @@
               li.divider
               li
                 a(href='/missionsdt') View missions
-        if user
+              li.divider
+              li
+                a(href='/userfinishedmissions') My Completed Missions
+        if user && user.profile.role == 'Operator'
           li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown') Operator Dashboard
             ul.dropdown-menu

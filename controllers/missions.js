@@ -16,6 +16,15 @@ exports.getCompleted = (req,res) => {
   });
 };
 
+
+
+exports.getUserCompleted = (req,res) => {
+  res.render('userfinishedmissions', {
+    title: 'Completed Missions'
+  });
+};
+
+
 exports.getmissionsbare = (req, res) => {
 	//console.log(req.params('mission_id'));
 
@@ -164,8 +173,9 @@ exports.fileUpload = (req,res,next) =>{
 };
 exports.postmissionscomplete = (req,res) => {
 
-	console.log("We CompletTing Mission now!");
-	var id = req.body.missID;
+
+	var id = req.body.mission_id;
+	console.log("We CompletTing Mission now! "+id);
 
 
 	Contact.findById(id, (err, cont) => {
@@ -184,7 +194,11 @@ exports.postmissionscomplete = (req,res) => {
 	      else
 	      {
 	      	console.log("Mission complete! "+cont.cmbudget);
-          res.ok();
+
+          console.log(util.inspect(req.body, false, null));
+          //console.log(req.file);
+          res.redirect('/acceptedmissions');
+
 	      }
 	     // req.flash('success', { msg: 'Profile information has been updated.' });
 	    //  res.redirect('/account');

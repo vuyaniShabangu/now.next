@@ -173,8 +173,6 @@ exports.postUpdateProfile = (req, res, next) => {
     user.profile.phonenumber = req.body.phonenumber || '';
     user.profile.role = req.body.role || '';
     user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
