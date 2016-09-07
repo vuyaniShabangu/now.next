@@ -509,6 +509,11 @@ exports.isAuthenticated = (req, res, next) => {
   res.redirect('/login');
 };
 
+exports.isOperator = (req,res,next) => {
+  if(req.user.profile.role == 'Operator')
+    return next();
+  else res.redirect('/');
+};
 /**
  * Authorization Required middleware.
  */

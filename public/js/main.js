@@ -26,13 +26,20 @@ $(document).ready(function() {
             { "data": "mdatetime"},
             { "data": "cmbudget","defaultContent": "<i>Not set</i>"},
             { "data": "cmcomments","defaultContent": "<i>Not set</i>"},
-            { "data":"cmFile","defaultContent": "<i>Not set</i>"},
+            { "data":"cmFile"},
             { "data": "mStatus"},
-            { "data": "operator"}
+            { "data": "operator"},
+            {
+              "mData": null,
+              "bSortable": false,
+              "defaultContent": "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#droneResults' id='missResults'>Retrieve</button>"
+            },
+            { "data": "_id",
+              "visible": false}
         ],
 "columnDefs": [
                 {
-                    "targets": [ 7,8 ],
+                    "targets": [ 4,5,6,7,8 ],
                     "visible": false
                 }
               ]
@@ -43,6 +50,13 @@ operatorCompletedmissions
                 .search( 'completed' )
                 .draw();
 
+       $('#exampleCrud1 tbody').on( 'click', 'button#missResults', function () {
+        var data = operatorCompletedmissions.row( $(this).parents('tr') ).data();
+         $('#usern').val(data.userEmail);
+         $('#description').val(data.mdesc);
+         $('#comments').val(data.cmcomments);
+         $('#date').val(data.mdatetime);
+       });
 
     $.ajax({
               async: false,
@@ -118,7 +132,7 @@ userCompletedmissions
   };
   firebase.initializeApp(config);
 
-  
+
   var uploader = document.getElementById('uploader');
   var fileButton = document.getElementById('resUpload');
 
@@ -134,7 +148,7 @@ userCompletedmissions
     var task = storageRef.put(file);
 
     //update progress
-    task.on('state_changed', 
+    task.on('state_changed',
 
             function progress(snapshot){
                 var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
@@ -671,7 +685,7 @@ function downloadInnerHtml(filename, elId, mimeType) {
 
     link.setAttribute('download', filename);
     link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
-    link.click(); 
+    link.click();
 }
 
 $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {

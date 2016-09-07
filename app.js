@@ -115,13 +115,14 @@ app.post('/textreport',passportConfig.isAuthenticated,missionController.postmiss
 app.get('/uploadThis', upload.single('myFile'), apiController.postFileUpload);
 app.get('/userfinishedmissions',passportConfig.isAuthenticated, missionController.getUserCompleted);
 app.post('/missionscomplete',passportConfig.isAuthenticated,upload.single('resUpload'), missionController.postmissionscomplete);
-app.get('/finishedmissions',passportConfig.isAuthenticated,missionController.getCompleted);
-app.post('/acceptedmissions', upload.single('myFile'), missionController.fileUpload);
+app.get('/finishedmissions',passportConfig.isAuthenticated,passportConfig.isOperator,missionController.getCompleted);
+
  app.post('/generatemissionfile',passportConfig.isAuthenticated, missionController.generatemissionfile);
- app.get('/acceptedmissions', missionController.getacceptedmissions);
+ app.get('/acceptedmissions',passportConfig.isAuthenticated, passportConfig.isOperator,missionController.getacceptedmissions);
+app.post('/acceptedmissions', upload.single('myFile'), missionController.fileUpload);
     app.post('/acceptmission',passportConfig.isAuthenticated, missionController.postacceptmission);
-    app.get('/operatormissions',passportConfig.isAuthenticated, missionController.getoperatormissions);
-    app.get('/manage-drones',passportConfig.isAuthenticated,manageController.getMyDrones);
+    app.get('/operatormissions',passportConfig.isAuthenticated, passportConfig.isOperator,missionController.getoperatormissions);
+    app.get('/manage-drones',passportConfig.isAuthenticated,passportConfig.isOperator,manageController.getMyDrones);
     app.get('/retrievedrones',passportConfig.isAuthenticated, manageController.getAllDrones);
     app.post('/dronedelete',passportConfig.isAuthenticated, manageController.postdronedelete);
   app.get('/missionsemail', passportConfig.isAuthenticated,missionController.getuseremail);
@@ -145,7 +146,7 @@ app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/contact', contactController.getContact);
-app.get('/add-drone',passportConfig.isAuthenticated, addController.getAddDrone);
+app.get('/add-drone',passportConfig.isAuthenticated, passportConfig.isOperator,addController.getAddDrone);
 app.post('/add-drone',passportConfig.isAuthenticated, addController.postNewDrone);
 
 app.post('/contact', contactController.postContact);
