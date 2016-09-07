@@ -112,6 +112,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * Primary app routes.
  */
 app.post('/textreport',passportConfig.isAuthenticated,missionController.postmissionscomplete);
+app.get('/location',userController.registerLoc);
 app.get('/uploadThis', upload.single('myFile'), apiController.postFileUpload);
 app.get('/userfinishedmissions',passportConfig.isAuthenticated, missionController.getUserCompleted);
 app.post('/missionscomplete',passportConfig.isAuthenticated,upload.single('resUpload'), missionController.postmissionscomplete);

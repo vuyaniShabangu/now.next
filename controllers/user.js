@@ -16,7 +16,28 @@ exports.getLogin = (req, res) => {
     title: 'Login'
   });
 };
-
+  var uId;
+exports.registerLoc = (req, res) =>
+{
+  if(req.user.id)
+    uId = req.user.id;
+  else return;
+  User.findById(uId, (err, usr) => {
+    if(err) { return; }
+    else {
+    usr.profile.longitude = req.query.longi;
+    usr.profile.latitude = req.query.lat;
+      usr.save((err) => {
+        if(err)
+          console.log(err);
+        else
+        {
+          return res.send();
+        }
+      });
+     }
+    });
+};
 /**
  * POST /login
  * Sign in using email and password.
@@ -25,7 +46,6 @@ exports.postLogin = (req, res, next) => {
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('password', 'Password cannot be blank').notEmpty();
   req.sanitize('email').normalizeEmail({ remove_dots: false });
-
   const errors = req.validationErrors();
 
   if (errors) {
@@ -143,7 +163,7 @@ exports.postUpdateProfile = (req, res, next) => {
     req.flash('errors', errors);
     return res.redirect('/account');
   }
-
+  uId = req.user.id;
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
     user.email = req.body.email || '';

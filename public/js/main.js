@@ -6,7 +6,23 @@ $(document).ready(function() {
   function showPosition(position) {
     userLat = position.coords.latitude;
     userLong = position.coords.longitude;
-  console.log( userLat+ ' '+userLong);
+
+
+    $.ajax({
+              async: false,
+              url : '/location',
+              type : 'GET',
+              data : {
+                 'lat': userLat,
+                 'longi': userLong
+              },
+              dataType:'json',
+              success : function(data) {
+              },
+              error : function(request,error)
+              {
+              }
+        });
   }
   function showError(error){
 
@@ -167,7 +183,7 @@ userCompletedmissions
   });
 
 
-  
+
 */
   var currentUserEmail;
   var table;
@@ -726,7 +742,7 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
                       function initMap() {
                         document.getElementById('map').innerHTML = "dfsdfs";
                           var map = new google.maps.Map(document.getElementById('map'), {
-                            center: {lat: -25.7545492, lng: 28.2314476},
+                            center: {lat: Number(userLat), lng: Number(userLong)},
                             mapTypeId: google.maps.MapTypeId.SATELLITE,
                             zoom: 17
                           });
