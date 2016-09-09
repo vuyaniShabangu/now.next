@@ -19,9 +19,11 @@ $(document).ready(function() {
               },
               dataType:'json',
               success : function(data) {
+                initMap();
               },
               error : function(request,error)
               {
+                initMap();
               }
         });
   }
@@ -844,7 +846,7 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
                       });
                     }
 
-                      initMap();
+                    //  initMap();
   });
 
 });
