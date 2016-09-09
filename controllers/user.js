@@ -115,11 +115,13 @@ exports.postSignup = (req, res, next) => {
   const user = new User({
     email: req.body.email,
     password: req.body.password,
-    name: req.body.name,
-    surname: req.body.surname,
-    username: req.body.username,
-    phonenumber: req.body.phonenumber,
-    role: req.body.role
+	  profile : {
+	  	name : req.body.name,
+		  surname: req.body.surname,
+		  username: req.body.username,
+		  phonenumber: req.body.phonenumber,
+		  role: req.body.role	
+		}
   });
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
