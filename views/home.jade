@@ -3,17 +3,15 @@ extends layout
 
 block content
   input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
-  h1.intro.hs9-h1.text-black
-    | DRONR
 
-    link(rel='stylesheet', href='../css/style.css', media='screen')
+  link(rel='stylesheet', href='../css/style.css', media='screen')
   style(media='screen').
     .containerT {
     width: 600px;
     height: 300px;
     position: relative;
     margin: 0 auto 40px;
-    border: 1px solid #CCC;
+    border-style: hidden;
     -webkit-perspective: 1100px;
     -moz-perspective: 1100px;
     -o-perspective: 1100px;
@@ -44,7 +42,7 @@ block content
     display: block;
     position: absolute;
     width: 500px;
-    height: 450px;
+    height: 480px;
     left: 10px;
     top: 10px;
     border: 2px solid black;
@@ -61,40 +59,45 @@ block content
     transition: opacity 1s, transform 1s;
     }
   body
-    h1 Carousel 2 - dynamic
     section.containerT
       #carousel
-        figure 1
-        figure 2
-        figure 3
-        figure 4
-        figure 5
-        figure 6
-        figure 7
-        figure 8
-        figure 9
-        figure 10
-        figure 11
-        figure 12
-        figure 13
-        figure 14
-        figure 15
-        figure 16
-        figure 17
-        figure 18
-        figure 19
-        figure 20
+        figure
+          p
+            img(src='nn.svg', style='width:90%;height:90%')
+            h1 presents:
+          p
+            img(src='lg.svg', style='width:100%;height:100%')
+        figure
+            img(src='drone.jpg', style='width:100%;height:100%')
+        figure
+          p
+            h3 Plan
+            p Plan Plan a mission to be performed by a drone
+            h3 Execute
+            p Your Your planned mission will be executed by one of our operators
+            h3 Report
+            p Get Get all your mission data and media reported directly you
+        figure
+          p
+            h3 Record videos
+            h3 Count objects
+            h3 Take photographs
+        figure
+          p
+            h2 Also available on:
+            img(src='Android_robot.svg.png', style='width:100px;height:100px')
+          p
+            img(src='Apple_logo_black.svg.png', style='width:100px;height:100px')
     section#options
       p
-        label(for='panel-count') panels
-        input#panel-count(type='range', value='9', min='3', max='20')
+        input#panel-count(type='hidden', value='5')
       p#navigation
-        button#previous(data-increment='-1') Previous
-        button#next(data-increment='1') Next
+        button#previous(data-increment='-1',style="display:none") Previous
+        button#next(data-increment='1',style="display:none") Next
       p
-        button#toggle-axis Toggle Carousel Axis
+        button#toggle-axis(style="display:none")
       p
-        button#toggle-backface-visibility Toggle Backface Visibility
+        button#toggle-backface-visibility(style="display:none")
     script(src='../js/utils.js')
     script.
       var transformProp = Modernizr.prefixed('transform');
@@ -118,7 +121,7 @@ block content
       panel = this.element.children[i];
       angle = this.theta * i;
       panel.style.opacity = 1;
-      panel.style.backgroundColor = 'hsla(' + angle + ', 100%, 50%, 0.8)';
+      panel.style.backgroundColor = 'hsla(203, 67%, 82%, 0.7)';
       // rotate panel, then push it out in 3D space
       panel.style[ transformProp ] = this.rotateFn + '(' + angle + 'deg) translateZ(' + this.radius + 'px)';
       }
@@ -142,13 +145,19 @@ block content
       panelCountInput = document.getElementById('panel-count'),
       axisButton = document.getElementById('toggle-axis'),
       navButtons = document.querySelectorAll('#navigation button'),
-      onNavButtonClick = function( event ){
-      var increment = parseInt( event.target.getAttribute('data-increment') );
+      onNavButtonClick = function(){
+      var increment = 1;
       carousel.rotation += carousel.theta * increment * -1;
       carousel.transform();
       };
+      var carousel = new Carousel3D( document.getElementById('carousel') );
+      setInterval(function(){
+        var increment = 1;
+        carousel.rotation += carousel.theta * increment * -1;
+        carousel.transform();
+      },3000);
       // populate on startup
-      carousel.panelCount = parseInt( panelCountInput.value, 10);
+      carousel.panelCount = 5;
       carousel.modify();
       axisButton.addEventListener( 'click', function(){
       carousel.isHorizontal = !carousel.isHorizontal;
@@ -169,6 +178,3 @@ block content
       }, 0);
       };
       window.addEventListener( 'DOMContentLoaded', init, false);
-
-
-
