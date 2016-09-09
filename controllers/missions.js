@@ -182,8 +182,8 @@ exports.postmissionscomplete = (req,res) => {
 
 
           cont.cmdatetime= Date();
-          cont.cmbudget  = req.body.budget;
-          cont.cmcomments= req.body.comments;
+          cont.cmbudget  = req.body.cmbudget;
+          cont.cmcomments= req.body.cmcomments;
           cont.mStatus = "completed";
 
 	    cont.save((err) => {
