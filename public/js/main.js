@@ -7,6 +7,7 @@ $(document).ready(function() {
     userLat = position.coords.latitude;
     userLong = position.coords.longitude;
 
+    console.log("I got position.");
 
     $.ajax({
               async: false,
@@ -28,6 +29,7 @@ $(document).ready(function() {
 
   }
   navigator.geolocation.getCurrentPosition(showPosition,showError);
+  
 //FOR FINISHED MISSIONS
   var operatorCompletedmissions;
   //alert("ready to go! ");
@@ -740,6 +742,7 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
   {
                       //This is for the Google Map in the Create Mission Form:
                       function initMap() {
+                        console.log(userLat);
                         document.getElementById('map').innerHTML = "dfsdfs";
                           var map = new google.maps.Map(document.getElementById('map'), {
                             center: {lat: Number(userLat), lng: Number(userLong)},
