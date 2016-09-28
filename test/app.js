@@ -105,39 +105,21 @@ describe('GET /retrievedrones', () => {
 });
 
 
-describe('POST /generatemissionfile', () => {
-  it('should return 302 Found', (done) => {
-    request(app)
-      .get('/generatemissionfile')
-      .expect(302, done);
-  });
-});
-
-
-describe('GET /missionscomplete', () => {
-  it('should return 200 OK', (done) => {
-    request(app)
-      .get('/missionscomplete')
-      .expect(200, done);
-  });
-});
-
-
 describe('GET /userfinishedmissions', () => {
-  it('should return 200 OK', (done) => {
+  it('should return 302 OK', (done) => {
     request(app)
-      .get('/missionscomplete')
-      .expect(200, done);
+      .get('/userfinishedmissions')
+      .expect(302, done);
   });
 });
 
 
 
 describe('GET /finishedmissions', () => {
-  it('should return 200 OK', (done) => {
+  it('should return 302 OK', (done) => {
     request(app)
       .get('/finishedmissions')
-      .expect(200, done);
+      .expect(302, done);
   });
 });
 
@@ -160,20 +142,11 @@ describe('GET /uploadThis', () => {
 
 
 
-describe('GET /textreport', () => {
-  it('should return 302 Found', (done) => {
-    request(app)
-      .get('/textreport')
-      .expect(302, done);
-  });
-});
-
-
 describe('GET /manage-drones', () => {
   it('should return 302 Found', (done) => {
     request(app)
       .get('/manage-drones')
-      .expect(200, done);
+      .expect(302, done);
   });
 });
 
