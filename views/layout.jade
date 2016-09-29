@@ -12,10 +12,14 @@ html
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
     link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css')
     link(rel='stylesheet', href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css')
-    <link href="https://fonts.googleapis.com/css?family=Abel|Lato" rel="stylesheet">
+    link(href="https://fonts.googleapis.com/css?family=Abel|Lato" rel="stylesheet")
+    link(href='css/freelancer.min.css', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic', rel='stylesheet', type='text/css')
 
   body
     include partials/header
+    br
 
     .container
       include partials/flash
@@ -27,6 +31,7 @@ html
     script(src='/js/lib/bootstrap.min.js')
      script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAWiEnhMjv7lLDyaoiwIHwEVYoMRN4nYKY&libraries=drawing')
     script(src='/js/main.js')
+    script(src="js/freelancer.min.js")
     script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js')
     script(type='text/javascript', src='https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js')
     script(type='text/javascript', src='https://www.gstatic.com/firebasejs/3.3.0/firebase.js')
