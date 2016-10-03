@@ -1,4 +1,13 @@
 extends layout
 
-body
-  input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
+block content
+
+  body
+    header(style='width:100%;')
+      .container
+        .row
+          .col-lg-12
+            img.img-responsive(src='DRONR-01.svg', alt='')
+            .intro-text
+//              hr.star-light
+//              span.skills Web Developer - Graphic Artist - User Experience Designer
