@@ -31,29 +31,29 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top.navbar-custom
             a.dropdown-toggle(href='#', data-toggle='dropdown') Missions
               ul.dropdown-menu
                 li(class=(title == 'Contact') ? 'active' : undefined)
-                  a(href='/contact') Add Missions
+                  a.bluelink(href='/addMission') Add Missions
                 li.divider
                 li
-                  a(href='/missionsdt') View missions
+                  a.bluelink(href='/missionsdt') View missions
                 li.divider
                 li
-                  a(href='/userfinishedmissions') My Completed Missions
+                  a.bluelink(href='/userfinishedmissions') My Completed Missions
       if user && user.profile.role == 'Operator'
         ul.nav.navbar-nav.navbar-left
           li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown') Operator Dashboard
               ul.dropdown-menu
                 li
-                  a(href='/add-drone') Add Drone
+                  a.bluelink(href='/add-drone') Add Drone
                 li.divider
                 li
-                  a(href='manage-drones') Manage Drones
+                  a.bluelink(href='manage-drones') Manage Drones
                 li.divider
                 li
-                  a(href='operatormissions') Select Missions
+                  a.bluelink(href='operatormissions') Select Missions
                 li.divider
                 li
-                  a(href='acceptedmissions') Accepted Missions
+                  a.bluelink(href='acceptedmissions') Accepted Missions
                 li.divider
                 li
-                  a(href='finishedmissions') Completed Missions
+                  a.bluelink(href='finishedmissions') Completed Missions
