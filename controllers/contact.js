@@ -15,8 +15,8 @@ const transporter = nodemailer.createTransport({
  * Contact form page.
  */
 exports.getContact = (req, res) => {
-  res.render('contact', {
-    title: 'Contact'
+  res.render('addMission', {
+    title: 'Add Mission'
   });
 };
 
@@ -69,9 +69,9 @@ exports.postContact = (req, res) => {
 cont.save((err) => {
       if (err) { return next(err); }
       req.flash('success', { msg: 'You have successfully added mission' });
-        return res.redirect('/');   
+        return res.redirect('/');
     });
-  
 
-  
+
+
 };

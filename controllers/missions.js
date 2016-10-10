@@ -16,6 +16,15 @@ exports.getCompleted = (req,res) => {
   });
 };
 
+
+
+exports.getUserCompleted = (req,res) => {
+  res.render('userfinishedmissions', {
+    title: 'Completed Missions'
+  });
+};
+
+
 exports.getmissionsbare = (req, res) => {
 	//console.log(req.params('mission_id'));
 
@@ -98,9 +107,9 @@ exports.getuseremail = (req, res) =>{
 
 
 exports.gettriggerexpansion = (req,res) =>{
-	
+
 	//foo(req.body.mission_id);
-	
+
 var minutes =1;
 var the_interval =minutes*60*1000;
 
@@ -158,20 +167,24 @@ exports.postacceptmission = (req, res) => {
 
 
 //MIssions completed
+exports.fileUpload = (req,res,next) =>{
+    req.flash('success', { msg: 'Results were uploaded successfully.' });
+    res.redirect('/acceptedmissions');
+};
 exports.postmissionscomplete = (req,res) => {
 
-	console.log("We CompletTing Mission now!");
+
 	var id = req.body.mission_id;
+	console.log("We CompletTing Mission now! "+id);
 
 
-	Contact.findById(req.body.mission_id, (err, cont) => {
+	Contact.findById(id, (err, cont) => {
 
 
-          cont.cmdatetime= req.body.cmdatetime;
+          cont.cmdatetime= Date();
           cont.cmbudget  = req.body.cmbudget;
           cont.cmcomments= req.body.cmcomments;
           cont.mStatus = "completed";
-          cont.cmFile    = req.body.cmFile;
 
 	    cont.save((err) => {
 	      if(err)
@@ -181,9 +194,11 @@ exports.postmissionscomplete = (req,res) => {
 	      else
 	      {
 	      	console.log("Mission complete! "+cont.cmbudget);
-          console.log(util.inspect(req.body.cmFile, false, null));
-          console.log(req.file);
+
+          console.log(util.inspect(req.body, false, null));
+          //console.log(req.file);
           res.redirect('/acceptedmissions');
+
 	      }
 	     // req.flash('success', { msg: 'Profile information has been updated.' });
 	    //  res.redirect('/account');

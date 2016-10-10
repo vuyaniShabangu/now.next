@@ -1,0 +1,30 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Vision}{1}{section.2}
+\contentsline {section}{\numberline {3}Background}{1}{section.3}
+\contentsline {section}{\numberline {4}Architecture Requirements}{2}{section.4}
+\contentsline {subsection}{\numberline {4.1}Architectural Scope}{2}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Quality Requirements}{2}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Stability}{2}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Performance}{2}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Privacy}{2}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.4}Security}{2}{subsubsection.4.2.4}
+\contentsline {subsubsection}{\numberline {4.2.5}Scalability}{3}{subsubsection.4.2.5}
+\contentsline {subsubsection}{\numberline {4.2.6}Integration}{3}{subsubsection.4.2.6}
+\contentsline {subsection}{\numberline {4.3}Integration and Access Channel Requirements}{3}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Integration}{3}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Access Channels}{3}{subsubsection.4.3.2}
+\contentsline {subsection}{\numberline {4.4}Architectural Constraints }{3}{subsection.4.4}
+\contentsline {section}{\numberline {5}Architectural patterns}{4}{section.5}
+\contentsline {section}{\numberline {6}Architectural Tactics}{5}{section.6}
+\contentsline {subsection}{\numberline {6.1}Scalability/Performance }{5}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Increase Processing Power}{5}{subsubsection.6.1.1}
+\contentsline {subsection}{\numberline {6.2}Security}{5}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Authentication}{5}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Authorisation}{5}{subsubsection.6.2.2}
+\contentsline {subsection}{\numberline {6.3}Integrability}{5}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Support Standard Communication Protocals}{6}{subsubsection.6.3.1}
+\contentsline {section}{\numberline {7}Access and Integration channels}{6}{section.7}
+\contentsline {subsection}{\numberline {7.1}Integration Channels}{6}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Access Channels}{6}{subsection.7.2}
+\contentsline {section}{\numberline {8}Frameworks}{6}{section.8}
+\contentsline {section}{\numberline {9}Technologies}{6}{section.9}

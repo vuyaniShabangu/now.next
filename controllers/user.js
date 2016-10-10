@@ -16,7 +16,28 @@ exports.getLogin = (req, res) => {
     title: 'Login'
   });
 };
-
+  var uId;
+exports.registerLoc = (req, res) =>
+{
+  if(req.user.id)
+    uId = req.user.id;
+  else return;
+  User.findById(uId, (err, usr) => {
+    if(err) { return; }
+    else {
+    usr.profile.longitude = req.query.longi;
+    usr.profile.latitude = req.query.lat;
+      usr.save((err) => {
+        if(err)
+          console.log(err);
+        else
+        {
+          return res.send();
+        }
+      });
+     }
+    });
+};
 /**
  * POST /login
  * Sign in using email and password.
@@ -25,7 +46,6 @@ exports.postLogin = (req, res, next) => {
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('password', 'Password cannot be blank').notEmpty();
   req.sanitize('email').normalizeEmail({ remove_dots: false });
-
   const errors = req.validationErrors();
 
   if (errors) {
@@ -41,7 +61,6 @@ exports.postLogin = (req, res, next) => {
     }
     req.logIn(user, (err) => {
       if (err) { return next(err); }
-      req.flash('success', { msg: 'Success! You are logged in.' });
       res.redirect(req.session.returnTo || '/');
     });
   })(req, res, next);
@@ -74,7 +93,7 @@ exports.getSignup = (req, res) => {
  * Create a new local account.
  */
 exports.postSignup = (req, res, next) => {
-  
+
   req.assert('name', 'Please Enter valid name').len(1);
   req.assert('surname', 'Please Enter valid surname').len(1);
   req.assert('username', 'Please Enter valid username').len(1);
@@ -95,11 +114,13 @@ exports.postSignup = (req, res, next) => {
   const user = new User({
     email: req.body.email,
     password: req.body.password,
-    name: req.body.name,
-    surname: req.body.surname,
-    username: req.body.username,
-    phonenumber: req.body.phonenumber,
-    role: req.body.role 
+	  profile : {
+	  	name : req.body.name,
+		  surname: req.body.surname,
+		  username: req.body.username,
+		  phonenumber: req.body.phonenumber,
+		  role: req.body.role
+		}
   });
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
@@ -143,7 +164,7 @@ exports.postUpdateProfile = (req, res, next) => {
     req.flash('errors', errors);
     return res.redirect('/account');
   }
-
+  uId = req.user.id;
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
     user.email = req.body.email || '';
@@ -153,8 +174,6 @@ exports.postUpdateProfile = (req, res, next) => {
     user.profile.phonenumber = req.body.phonenumber || '';
     user.profile.role = req.body.role || '';
     user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
