@@ -2,20 +2,24 @@ extends ../layout
 
 block content
   .page-header
-    h3 Sign in
-  form.form-horizontal(method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label.col-sm-3.control-label(for='email') Email
-      .col-sm-7
-        input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
-    .form-group
-      label.col-sm-3.control-label(for='password') Password
-      .col-sm-7
-        input.form-control(type='password', name='password', id='password', placeholder='Password', required)
-    .form-group
-      .col-sm-offset-3.col-sm-7
-        button.col-sm-3.btn.btn-primary(type='submit')
-          i.fa.fa-user
-          | Login
-        a.btn.btn-link(href='/forgot') Forgot your password?
+    h3 Login
+  section#contact
+    .container
+      .row
+        .col-lg-8.col-lg-offset-2
+          form#contactForm(name='sentMessage', novalidate='',method='POST')
+            input(type='hidden', name='_csrf', value=_csrf)
+            .row.control-group
+              .form-group.col-xs-12.floating-label-form-group.controls
+                label Email Address
+                input#email.form-control(type='email', placeholder='Email Address', name='email', required='', data-validation-required-message='Please enter your email address.')
+                p.help-block.text-danger
+            .row.control-group
+              .form-group.col-xs-12.floating-label-form-group.controls
+                label Password
+                input#name.form-control(type='password', placeholder='Password', name='password', required='', data-validation-required-message='Please enter your password.')
+                p.help-block.text-danger
+                br
+                .row
+                  .form-group.col-xs-12
+                    button.btn.btn-primary(type='submit') Login

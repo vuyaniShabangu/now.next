@@ -61,7 +61,6 @@ exports.postLogin = (req, res, next) => {
     }
     req.logIn(user, (err) => {
       if (err) { return next(err); }
-      req.flash('success', { msg: 'Success! You are logged in.' });
       res.redirect(req.session.returnTo || '/');
     });
   })(req, res, next);
@@ -120,7 +119,7 @@ exports.postSignup = (req, res, next) => {
 		  surname: req.body.surname,
 		  username: req.body.username,
 		  phonenumber: req.body.phonenumber,
-		  role: req.body.role	
+		  role: req.body.role
 		}
   });
 

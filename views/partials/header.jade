@@ -1,63 +1,59 @@
-.navbar.navbar-default.navbar-fixed-top
+nav#mainNav.navbar.navbar-default.navbar-fixed-top.navbar-custom
   .container
-    .navbar-header
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+    .navbar-header.page-scroll
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
         span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand(href='/')
-        img(src='logo.jpg', alt='logo' style='width:100%;height:100%')
-    .collapse.navbar-collapse
-      ul.nav.navbar-nav
-        if user
-          li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
-            a.dropdown-toggle(href='#', data-toggle='dropdown') Missions
-            ul.dropdown-menu
-              li(class=(title == 'Contact') ? 'active' : undefined)
-                  a(href='/contact') Add Missions
-              li.divider
-              li
-                a(href='/missionsdt') View missions
-              li.divider
-              li
-                a(href='/userfinishedmissions') My Completed Missions
-        if user && user.profile.role == 'Operator'
-          li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
-            a.dropdown-toggle(href='#', data-toggle='dropdown') Operator Dashboard
-            ul.dropdown-menu
-              li
-                a(href='/add-drone') Add Drone
-              li.divider
-              li
-                a(href='manage-drones') Manage Drones
-              li.divider
-              li
-                a(href='operatormissions') Select Missions
-              li.divider
-              li
-                a(href='acceptedmissions') Accepted Missions
-              li.divider
-              li
-                a(href='finishedmissions') Completed Missions
-      ul.nav.navbar-nav.navbar-right
-        if !user
-          li(class=(title == 'Login') ? 'active' : undefined)
+        |  Menu
+        i.fa.fa-bars
+      a.navbar-brand(href='/') LOGO
+
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      if !user
+        ul.nav.navbar-nav.navbar-right
+          li.page-scroll
+            a(href='/signup') Sign Up
+          li.page-scroll
             a(href='/login') Login
-          li(class=(title == 'Create Account') ? 'active' : undefined)
-            a(href='/signup') Create Account
-        else
+      else
+        ul.nav.navbar-nav.navbar-right
           li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')
-              if user.profile.picture
-                img(src='#{user.profile.picture}')
-              else
-                img(src='#{user.gravatar(60)}')
-              | #{user.profile.name || user.email || user.id}&nbsp;
-              i.caret
+              | User: #{user.profile.name || user.email || user.id}&nbsp;
             ul.dropdown-menu
               li
                 a(href='/account') My Account
               li.divider
               li
                 a(href='/logout') Logout
+      if user
+        ul.nav.navbar-nav.navbar-left
+          li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
+            a.dropdown-toggle(href='#', data-toggle='dropdown') Missions
+              ul.dropdown-menu
+                li(class=(title == 'Contact') ? 'active' : undefined)
+                  a.bluelink(href='/addMission') Add Missions
+                li.divider
+                li
+                  a.bluelink(href='/missionsdt') View missions
+                li.divider
+                li
+                  a.bluelink(href='/userfinishedmissions') My Completed Missions
+      if user && user.profile.role == 'Operator'
+        ul.nav.navbar-nav.navbar-left
+          li.dropdown(class=(title == 'Operators') ? 'active' : undefined)
+            a.dropdown-toggle(href='#', data-toggle='dropdown') Operator Dashboard
+              ul.dropdown-menu
+                li
+                  a.bluelink(href='/add-drone') Add Drone
+                li.divider
+                li
+                  a.bluelink(href='manage-drones') Manage Drones
+                li.divider
+                li
+                  a.bluelink(href='operatormissions') Select Missions
+                li.divider
+                li
+                  a.bluelink(href='acceptedmissions') Accepted Missions
+                li.divider
+                li
+                  a.bluelink(href='finishedmissions') Completed Missions

@@ -31,7 +31,7 @@ $(document).ready(function() {
 
   }
   navigator.geolocation.getCurrentPosition(showPosition,showError);
-  
+
 //FOR FINISHED MISSIONS
   var operatorCompletedmissions;
   //alert("ready to go! ");
@@ -661,6 +661,7 @@ function initPage(){
                       function initMap() {
                         console.log(userLat);
                         document.getElementById('map').innerHTML = "dfsdfs";
+                        document.getElementById('map').style.position = "relative";
                           var map = new google.maps.Map(document.getElementById('map'), {
                             center: {lat: Number(userLat), lng: Number(userLong)},
                             mapTypeId: google.maps.MapTypeId.SATELLITE,
