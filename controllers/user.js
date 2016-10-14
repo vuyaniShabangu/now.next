@@ -306,6 +306,8 @@ exports.postReset = (req, res, next) => {
         });
     },
     function (user, done) {
+      done();
+       /*
       const transporter = nodemailer.createTransport({
         service: 'SendGrid',
         auth: {
@@ -322,7 +324,7 @@ exports.postReset = (req, res, next) => {
       transporter.sendMail(mailOptions, (err) => {
         req.flash('success', { msg: 'Success! Your password has been changed.' });
         done(err);
-      });
+      }); */
     }
   ], (err) => {
     if (err) { return next(err); }
@@ -382,14 +384,14 @@ exports.postForgot = (req, res, next) => {
       const transporter = nodemailer.createTransport({
         service: 'SendGrid',
         auth: {
-          user: process.env.SENDGRID_USER,
-          pass: process.env.SENDGRID_PASSWORD
+          user: 'dronrapp',
+          pass: 'dronrapp8'
         }
       });
       const mailOptions = {
         to: user.email,
-        from: 'hackathon@starter.com',
-        subject: 'Reset your password on Hackathon Starter',
+        from: 'dronr@gmail.com',
+        subject: 'Reset your password on Dronr',
         text: `You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n
           Please click on the following link, or paste this into your browser to complete the process:\n\n
           http://${req.headers.host}/reset/${token}\n\n

@@ -8,25 +8,25 @@ block content
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       label(class='col-sm-2 control-label', for='missiontype') Mission Type
-      .col-sm-8
+      .col-sm-5
         select.form-control(type='text', name='missiontype', id='missiontype', autofocus=true)
           option(value='Video Recording') Video Recording
-          option(value='Photograph Surveilance') Photograph Surveilance
-          option(value='Object Point Cloud') object Point Cloud
+          option(value='Photographs') Photographs
+          option(value='Object Point Cloud') Object Point Cloud
           option(value='Orthophoto') Orthophoto
           option(value='Count objects') Count Objects
     .form-group
       label(class='col-sm-2 control-label', for='missiondesc') Mission Description
-      .col-sm-8
+      .col-sm-5
         textarea.form-control(rows='7',type='text', name='missiondesc', id='missiondesc')
     .form-group
-      label(class='col-sm-2 control-label', for='missiondate') date/time
-      .col-sm-8
-        input.form-control(name='missiondate', id='missiondate',  type="datetime-local"  )
+      label(class='col-sm-2 control-label', for='missiondate') Date
+      .col-sm-3
+        input.form-control(name='missiondate', id='missiondate',  type="date", min="2016-10-11", value="2016-10-10" )
     .form-group
       label(class='col-sm-2 control-label', for='budget') Budget (in Rands)
-      .col-sm-8
-        input.form-control(type='text', name='budget', id='budget')
+      .col-sm-2
+        input.form-control(type='number', name='budget', id='budget', min=0)
 
 
 
