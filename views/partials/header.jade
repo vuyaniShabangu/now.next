@@ -1,11 +1,8 @@
 nav#mainNav.navbar.navbar-default.navbar-fixed-top.navbar-custom
   .container
     .navbar-header.page-scroll
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-        span.sr-only Toggle navigation
-        |  Menu
-        i.fa.fa-bars
-      a.navbar-brand(href='/') LOGO
+      a.navbar-brand(href='/') DRONR
+      //  img(src='DRONR-home.svg',style="width:80%;height:80%;")
 
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       if !user
@@ -21,10 +18,10 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top.navbar-custom
               | User: #{user.profile.name || user.email || user.id}&nbsp;
             ul.dropdown-menu
               li
-                a(href='/account') My Account
+                a.bluelink(href='/account') My Account
               li.divider
               li
-                a(href='/logout') Logout
+                a.bluelink(href='/logout') Logout
       if user
         ul.nav.navbar-nav.navbar-left
           li.dropdown(class=(title == 'Operators') ? 'active' : undefined)

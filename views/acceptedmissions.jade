@@ -44,11 +44,7 @@ block content
             input(type='hidden', name='_csrf', id='_csrf',value=_csrf)
             input(type='text', name='filePath', id='filePath' hidden)
             .form-group
-              label(class='col-sm-2 control-label', for='datecompleted') Date Completed:
-              .col-sm-8
-                input.form-control(name='datecompleted', id='datecompleted',  type='text')
-            .form-group
-              label(class='col-sm-2 control-label', for='budget', min=0) Budget:
+              label(class='col-sm-2 control-label', for='budget', min=0) Cost:
               .col-sm-8
                 input.form-control(name='budget', id='budget',  type='number'  required)
             .form-group
@@ -79,4 +75,3 @@ block content
         .modal-footer
           button.btn.btn-primary(type='button', data-dismiss='modal', id ='sendresult') Download
           button.btn.btn-default(type='button', data-dismiss='modal') Close
-
