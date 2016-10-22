@@ -21,6 +21,12 @@ block content
 				input.form-control(type='text', name='flytime', id='flytime' required)
 		.form-group
 			label(class='col-sm-2 control-label') Capabilities:
+			label(class='col-sm-2 control-label', for='aerial') Aerial Photography
+				input(type='checkbox', name='aerial')
+			label(class='col-sm-2 control-label') Video Recording
+				input(type='checkbox', name='video')
+			label(class='col-sm-2 control-label') Orthophoto
+				input(type='checkbox', name='ortho')
 		.form-group
 			.col-sm-offset-2.col-sm-8
 				button.btn.btn-primary(type='submit')

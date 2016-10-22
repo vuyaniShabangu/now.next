@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
   // Place JavaScript code here...
-
   var userLat, userLong;
   function showPosition(position) {
     userLat = position.coords.latitude;
