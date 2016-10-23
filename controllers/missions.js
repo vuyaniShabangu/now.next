@@ -56,12 +56,10 @@ exports.postmissionsdelete = (req, res) =>{
 	      {
 	      	console.log("we good! "+cont.userEmail);
 	      }
-	     // req.flash('success', { msg: 'Profile information has been updated.' });
-	    //  res.redirect('/account');
+	      req.flash('success', { msg: 'Mission has been deleted.' });
+	      res.redirect('/missionsdt');
 	    });
 	  });
-
-
 };
 
 
@@ -89,8 +87,8 @@ exports.postmissionsedit = (req,res) => {
 	      {
 	      	console.log("we good! "+cont.userEmail);
 	      }
-	     // req.flash('success', { msg: 'Profile information has been updated.' });
-	    //  res.redirect('/account');
+	      req.flash('success', { msg: 'Mission has been edited.' });
+	      res.redirect('/missionsdt');
 	    });
 	  });
 
@@ -168,7 +166,6 @@ exports.postacceptmission = (req, res) => {
 
 //MIssions completed
 exports.fileUpload = (req,res,next) =>{
-    req.flash('success', { msg: 'Results were uploaded successfully.' });
     res.redirect('/acceptedmissions');
 };
 exports.postmissionscomplete = (req,res) => {
