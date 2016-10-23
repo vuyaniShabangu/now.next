@@ -60,8 +60,6 @@ exports.postmissionsdelete = (req, res) =>{
 	      res.redirect('/missionsdt');
 	    });
 	  });
-
-
 };
 
 

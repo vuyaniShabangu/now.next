@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
   // Place JavaScript code here...
-  $("#missiondate").min = Date();
   var userLat, userLong;
   function showPosition(position) {
     userLat = position.coords.latitude;
@@ -28,10 +27,15 @@ $(document).ready(function() {
         });
   }
   function showError(error){
-
   }
   navigator.geolocation.getCurrentPosition(showPosition,showError);
-
+  var today = new Date();
+  var ye = "2016";
+  var d = today.getDate();
+  var mo = "10";
+  var output = ye+"-"+mo+"-"+d;
+  document.getElementById("missiondate").min = output;
+  document.getElementById("missiondate").defaultValue = output;
 //FOR FINISHED MISSIONS
   var operatorCompletedmissions;
   //console.log("ready to go! ");
