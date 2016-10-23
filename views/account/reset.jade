@@ -1,9 +1,10 @@
 extends ../layout
 
 block content
+  .page-header
+    h3 Reset Password
   .col-sm-8.col-sm-offset-2
     form(method='POST')
-      legend Reset Password
       input(type='hidden', name='_csrf', value=_csrf)
       .form-group
         label(for='password') New Password

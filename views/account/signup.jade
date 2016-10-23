@@ -8,43 +8,43 @@ block content
 
     .form-group
       label.col-sm-3.control-label(for='name') Name
-      .col-sm-7
+      .col-sm-3
         input.form-control(type='text', name='name', id='name', placeholder='Name', autofocus, required)
 
     .form-group
       label.col-sm-3.control-label(for='surname') Surname
-      .col-sm-7
+      .col-sm-3
         input.form-control(type='text', name='surname', id='surname', placeholder='Surname', autofocus, required)
 
     .form-group
       label.col-sm-3.control-label(for='username') User name
-      .col-sm-7
+      .col-sm-3
         input.form-control(type='text', name='username', id='username', placeholder='User name', autofocus, required)
 
     .form-group
       label.col-sm-3.control-label(for='phonenumber') Phone Number
-      .col-sm-7
+      .col-sm-3
         input#phonenumber.form-control(type='number', pattern='.{5,10}', maxlength='10', name='phonenumber', placeholder='Phone Number', autofocus='autofocus', required='required')
 
     .form-group
       label.col-sm-3.control-label(for='role') Role
-      .col-sm-7
+      .col-sm-3
         select#role.form-control(type='text', name='role', placeholder='Role', required='')
-          option(value='Normal')  Normal User 
-          option(value='Operator')  Drone Operator 
+          option(value='Normal')  User
+          option(value='Operator')  Drone Operator
 
     .form-group
       label.col-sm-3.control-label(for='email') Email
-      .col-sm-7
+      .col-sm-3
         input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
 
     .form-group
       label.col-sm-3.control-label(for='password') Password
-      .col-sm-7
+      .col-sm-3
         input.form-control(type='password', name='password', id='password', placeholder='Password', required)
     .form-group
       label.col-sm-3.control-label(for='confirmPassword') Confirm Password
-      .col-sm-7
+      .col-sm-3
         input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', required)
     .form-group
       .col-sm-offset-3.col-sm-7

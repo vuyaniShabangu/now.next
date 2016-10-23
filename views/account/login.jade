@@ -12,7 +12,7 @@ block content
             .row.control-group
               .form-group.col-xs-12.floating-label-form-group.controls
                 label Email Address
-                input#email.form-control(type='email', placeholder='Email Address', name='email', required='', data-validation-required-message='Please enter your email address.')
+                input#email.form-control(type='email', placeholder='Email Address', name='email', autofocus, required='', data-validation-required-message='Please enter your email address.')
                 p.help-block.text-danger
             .row.control-group
               .form-group.col-xs-12.floating-label-form-group.controls
@@ -23,3 +23,4 @@ block content
                 .row
                   .form-group.col-xs-12
                     button.btn.btn-primary(type='submit') Login
+                    a.btn.btn-link(href='/forgot') Forgot Password?

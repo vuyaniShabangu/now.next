@@ -1,13 +1,13 @@
 $(document).ready(function() {
 
   // Place JavaScript code here...
-
   var userLat, userLong;
   function showPosition(position) {
     userLat = position.coords.latitude;
     userLong = position.coords.longitude;
 
     console.log("I got position.");
+  //  initPage();
 
     $.ajax({
               async: false,
@@ -28,13 +28,12 @@ $(document).ready(function() {
         });
   }
   function showError(error){
-
   }
   navigator.geolocation.getCurrentPosition(showPosition,showError);
 
 //FOR FINISHED MISSIONS
   var operatorCompletedmissions;
-  //alert("ready to go! ");
+  //console.log("ready to go! ");
 //OPERATOR FINISHED MISSIONS
    operatorCompletedmissions = $('#exampleCrud1').DataTable( {
         "ajax": "/missionsbare",
@@ -83,7 +82,7 @@ operatorCompletedmissions
               url : '/missionsemail',
               type : 'GET',
               success : function(data) {
-               // alert("My email address is: "+data);
+               // console.log("My email address is: "+data);
                 currentUserEmail = data;
                 operatorCompletedmissions
                 .columns( 0 )
@@ -107,7 +106,7 @@ operatorCompletedmissions
             { "data": "mdesc" },
             { "data": "mdatetime"},
             { "data": "cmbudget","defaultContent": "<i>Not set</i>"},
-            { "data": "cmcomments","defaultContent": "<i>Not set</i>"},
+            { "data": "cmcomments","defaultContent": "<i>Not set</i>","visible":false},
             { "data":"cmFile","defaultContent": "<i>Not set</i>"},
             { "data": "mStatus"},
             { "data": "operator"}
@@ -130,7 +129,7 @@ userCompletedmissions
               url : '/missionsemail',
               type : 'GET',
               success : function(data) {
-               // alert("My email address is: "+data);
+               // console.log("My email address is: "+data);
                 currentUserEmail = data;
                 userCompletedmissions
                 .columns( 0 )
@@ -191,7 +190,7 @@ userCompletedmissions
 */
   var currentUserEmail;
   var table;
-  //alert("ready to go! ");
+  //console.log("ready to go! ");
 
    table = $('#exampleCrud').DataTable( {
         "ajax": "/missionsbare",
@@ -212,7 +211,7 @@ userCompletedmissions
               "bSortable": false,
               "defaultContent": "<button type='button' data-toggle='modal' data-target='#editForm' class='btn btn-primary' id='edit'>Edit</button>"
             },
-            { "data": "mStatus"}
+            { "data": "mStatus","visible":false}
         ]
     } );
 
@@ -227,7 +226,7 @@ table
               url : '/missionsemail',
               type : 'GET',
               success : function(data) {
-               // alert("My email address is: "+data);
+               // console.log("My email address is: "+data);
                 currentUserEmail = data;
                 table
                 .columns( 0 )
@@ -247,8 +246,8 @@ table
   $('#exampleCrud tbody').on( 'click', 'button#delete', function () {
 
             data = table.row( $(this).parents('tr') ).data();
-           // alert(data._id);
-            //alert($('#_csrf').val());
+           // console.log(data._id);
+            //console.log($('#_csrf').val());
             //send id to server for delete
             $.ajax({
 
@@ -260,11 +259,11 @@ table
               },
               dataType:'json',
               success : function(data) {
-                //alert("I called him!");
+                //console.log("I called him!");
               },
               error : function(request,error)
               {
-                //alert("Request: "+JSON.stringify(request));
+                //console.log("Request: "+JSON.stringify(request));
               }
             });
           });
@@ -303,7 +302,7 @@ table
               },
               error : function(request,error)
               {
-                alert("Request: "+JSON.stringify(request));
+              //  console.log("Request: "+JSON.stringify(request));
               }
             });
           });
@@ -330,7 +329,7 @@ table
               "bSortable": false,
               "defaultContent": "<button class='btn btn-primary' data-toggle='modal' data-target='#selectDrone' id = 'accept'>Accept</button>"
             },
-            { "data": "mStatus"}
+            { "data": "mStatus","visible":false}
         ]
     } );
 
@@ -399,13 +398,13 @@ table
                   location.reload(true);
                 }
                 else{
-                  alert("No: "+data)
+              //    console.log("No: "+data)
                 }
               },
               error : function(request,error)
               {
-                //alert("Request: "+JSON.stringify(request));
-                alert("error: "+error);
+                //console.log("Request: "+JSON.stringify(request));
+              //  console.log("error: "+error);
               }
           });
 
@@ -487,12 +486,12 @@ $('#sendresult').click(function(){
           },
 
       success : function(data) {
-          alert("DONE!");
+      //    console.log("DONE!");
           location.reload();
       },
       error : function(request,error)
       {
-        alert(error);
+      //  console.log(error);
         console.log(error);
         //location.reload();
       }
@@ -547,7 +546,7 @@ $('#sendresult').click(function(){
                               .draw();
                               $('#operatordronesTable tbody').on( 'click', 'button#deleteDrone', function () {
                                         var dronedata = droneTable.row( $(this).parents('tr') ).data();
-                                        //alert($('#_csrf').val());
+                                        //console.log($('#_csrf').val());
                                         //send id to server for delete
                                         $.ajax({
 
@@ -624,11 +623,11 @@ function downloadInnerHtml(filename, elId, mimeType) {
 }
 
 $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
-  //alert("jjjccv");
+  //console.log("jjjccv");
 
   var acceptedMissionsObject = acceptedMissionTable.row( $(this).parents('tr') ).data();
 
-  //alert(acceptedMissionsObject._id);
+  //console.log(acceptedMissionsObject._id);
       $.ajax({
 
       url : '/generatemissionfile',
@@ -638,7 +637,7 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
         'mission_id': acceptedMissionsObject._id
       },
       success : function(data) {
-          //alert(data);
+          //console.log(data);
 
           //console.log(data);
           $('#fileContents').html(data);
@@ -647,7 +646,7 @@ $('#acceptedmissionsgrid tbody').on( 'click', 'button#downloadWP', function () {
       },
       error : function(request,error)
       {
-                alert("we failed");
+                console.log("we failed");
                 console.log(error);
        }
     });
@@ -658,6 +657,13 @@ function initPage(){
   $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAWiEnhMjv7lLDyaoiwIHwEVYoMRN4nYKY&libraries=drawing', function()
   {
                       //This is for the Google Map in the Create Mission Form:
+                      var today = new Date();
+                      var ye = "2016";
+                      var d = today.getDate();
+                      var mo = "10";
+                      var output = ye+"-"+mo+"-"+d;
+                      document.getElementById("missiondate").min = output;
+                      document.getElementById("missiondate").defaultValue = output;
                       function initMap() {
                         console.log(userLat);
                         document.getElementById('map').innerHTML = "dfsdfs";
@@ -710,8 +716,22 @@ function initPage(){
                                     overlayPointsArray = event.overlay.getPath().getArray()
 
                               surveillanceRoute = Array();
+                              var wayCount;
+                              surveillanceRoute[0] = Object();
+                              surveillanceRoute[0].lat = overlayPointsArray[0].lat();
+                              surveillanceRoute[0].lng = overlayPointsArray[0].lng();
+                              var i = 0;
+                              $('#waypointData').append("<label class='fcol-sm-3 control-label'>Waypoint "+(i+1)+"</label>");
+                              $('#waypointData').append("<input type='hidden' name='waypoint_"+i+"_lng' id='waypoint_"+i+"_lng' value="+surveillanceRoute[i].lng+">");
+                              $('#waypointData').append("<input type='hidden' name='waypoint_"+i+"_lat' id='waypoint_"+i+"_lat' value="+surveillanceRoute[i].lat+">");
+                              $('#waypointData').append("<select disabled class='form-control' name='waypoint_"+i+"_type' id='waypoint_"+i+"_type' min=0 ><option selected value='TAKEOFF'>TAKEOFF</option></select>");
+                              $('#waypointData').append("<input disabled class='form-control' type='number' name='waypoint_"+i+"_alt' id='wwaypoint_"+i+"_alt' min=0 value='0' >");
 
-                              for (var i = 0; i < overlayPointsArray.length; i++) {
+                              for (i = 1; i < overlayPointsArray.length; i++) {
+                                if(i == overlayPointsArray.length-1){
+                                  wayCount = i;
+                                  break;
+                                }
                                 surveillanceRoute[i] = Object();
                                 surveillanceRoute[i].lat = overlayPointsArray[i].lat();
                                 surveillanceRoute[i].lng = overlayPointsArray[i].lng();
@@ -722,13 +742,23 @@ function initPage(){
                                   map: map,
                                   title: 'Hello World!'
                                  });*/
-                                 $('#waypointData').append("<label class='fcol-sm-2 control-label'>Waypoint "+(i+1)+"</label>");
+                                 $('#waypointData').append("<label class='fcol-sm-3 control-label'>Waypoint "+(i+1)+"</label>");
                                  $('#waypointData').append("<input type='hidden' name='waypoint_"+i+"_lng' id='waypoint_"+i+"_lng' value="+surveillanceRoute[i].lng+">");
                                  $('#waypointData').append("<input type='hidden' name='waypoint_"+i+"_lat' id='waypoint_"+i+"_lat' value="+surveillanceRoute[i].lat+">");
-                                 $('#waypointData').append("<select class='form-control' name='waypoint_"+i+"_type' id='waypoint_"+i+"_type' min=0 ><option disabled selected>Select WP Type</option><option value='TAKEOFF'>TAKEOFF</option><option value='WAYPOINT'>WAYPOINT</option><option value='LAND'>LAND</option></select>");
+                                 $('#waypointData').append("<select disabled class='form-control' name='waypoint_"+i+"_type' id='waypoint_"+i+"_type' min=0 ><option disabled selected value='WAYPOINT'>WAYPOINT</option></select>");
                                  $('#waypointData').append("<input class='form-control' type='number' name='waypoint_"+i+"_alt' id='wwaypoint_"+i+"_alt' min=0 placeholder='Altitude for WP "+(i+1)+"' >");
-                                 $('#waypointData').append("</br>");
+                              //   $('#waypointData').append("</br>");
                               }
+                              surveillanceRoute[wayCount] = Object();
+                              surveillanceRoute[wayCount].lat = overlayPointsArray[i].lat();
+                              surveillanceRoute[wayCount].lng = overlayPointsArray[i].lng();
+                              i = wayCount;
+                              $('#waypointData').append("<label class='fcol-sm-3 control-label'>Waypoint "+(i+1)+"</label>");
+                              $('#waypointData').append("<input type='hidden' name='waypoint_"+i+"_lng' id='waypoint_"+i+"_lng' value="+surveillanceRoute[i].lng+">");
+                              $('#waypointData').append("<input type='hidden' name='waypoint_"+i+"_lat' id='waypoint_"+i+"_lat' value="+surveillanceRoute[i].lat+">");
+                              $('#waypointData').append("<select disabled class='form-control' name='waypoint_"+i+"_type' id='waypoint_"+i+"_type' min=0 ><option selected value='LAND'>LAND</option></select>");
+                              $('#waypointData').append("<input disabled class='form-control' type='number' name='waypoint_"+i+"_alt' id='wwaypoint_"+i+"_alt' min=0 value='0' >");
+
                               $('#waypointData').append("<input type='hidden' name='count' id='count' value="+surveillanceRoute.length+">");
                               console.log(surveillanceRoute);
                           });
