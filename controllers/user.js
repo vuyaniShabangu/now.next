@@ -167,13 +167,10 @@ exports.postUpdateProfile = (req, res, next) => {
   uId = req.user.id;
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
-    user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
-    user.profile.surname = req.body.surname|| '';
-    user.profile.username = req.body.username || '';
-    user.profile.phonenumber = req.body.phonenumber || '';
-    user.profile.role = req.body.role || '';
-    user.profile.gender = req.body.gender || '';
+    user.email = req.body.email;
+    user.profile.name = req.body.name;
+//    user.profile.phonenumber = req.body.phonenumber;
+    user.profile.gender = req.body.gender;
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {

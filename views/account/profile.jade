@@ -8,25 +8,21 @@ block content
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       label.col-sm-3.control-label(for='email') Email
-      .col-sm-7
-        input.form-control(type='email', name='email', id='email', value='#{user.email}')
+      .col-sm-3
+        input.form-control(type='email', name='email', id='email', value='#{user.email}',required='')
     .form-group
       label.col-sm-3.control-label(for='name') Name
-      .col-sm-7
-        input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
+      .col-sm-3
+        input.form-control(type='text', name='name', id='name', value='#{user.profile.name}',required='')
     .form-group
       label.col-sm-3.control-label(for='gender') Gender
-      .col-sm-6
+      .col-sm-5
         label.radio.col-sm-3
-          input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
+          input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio',required='')
           span Male
         label.radio.col-sm-3
           input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
           span Female
-    .form-group
-      label.col-sm-3.control-label(for='gravatar') Gravatar
-      .col-sm-4
-        img(src="#{user.gravatar()}", class='profile', width='100', height='100')
     .form-group
       .col-sm-offset-3.col-sm-4
         button.btn.btn.btn-primary(type='submit')
@@ -40,12 +36,12 @@ block content
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       label.col-sm-3.control-label(for='password') New Password
-      .col-sm-7
-        input.form-control(type='password', name='password', id='password')
+      .col-sm-3
+        input.form-control(type='password', name='password', id='password',required='')
     .form-group
       label.col-sm-3.control-label(for='confirmPassword') Confirm Password
-      .col-sm-7
-        input.form-control(type='password', name='confirmPassword', id='confirmPassword')
+      .col-sm-3
+        input.form-control(type='password', name='confirmPassword', id='confirmPassword',required='')
     .form-group
       .col-sm-offset-3.col-sm-4
         button.btn.btn-primary(type='submit')
