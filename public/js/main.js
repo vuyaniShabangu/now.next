@@ -7,6 +7,7 @@ $(document).ready(function() {
     userLong = position.coords.longitude;
 
     console.log("I got position.");
+  //  initPage();
 
     $.ajax({
               async: false,
@@ -29,13 +30,7 @@ $(document).ready(function() {
   function showError(error){
   }
   navigator.geolocation.getCurrentPosition(showPosition,showError);
-  var today = new Date();
-  var ye = "2016";
-  var d = today.getDate();
-  var mo = "10";
-  var output = ye+"-"+mo+"-"+d;
-  document.getElementById("missiondate").min = output;
-  document.getElementById("missiondate").defaultValue = output;
+
 //FOR FINISHED MISSIONS
   var operatorCompletedmissions;
   //console.log("ready to go! ");
@@ -111,7 +106,7 @@ operatorCompletedmissions
             { "data": "mdesc" },
             { "data": "mdatetime"},
             { "data": "cmbudget","defaultContent": "<i>Not set</i>"},
-            { "data": "cmcomments","defaultContent": "<i>Not set</i>"},
+            { "data": "cmcomments","defaultContent": "<i>Not set</i>","visible":false},
             { "data":"cmFile","defaultContent": "<i>Not set</i>"},
             { "data": "mStatus"},
             { "data": "operator"}
@@ -216,7 +211,7 @@ userCompletedmissions
               "bSortable": false,
               "defaultContent": "<button type='button' data-toggle='modal' data-target='#editForm' class='btn btn-primary' id='edit'>Edit</button>"
             },
-            { "data": "mStatus"}
+            { "data": "mStatus","visible":false}
         ]
     } );
 
@@ -334,7 +329,7 @@ table
               "bSortable": false,
               "defaultContent": "<button class='btn btn-primary' data-toggle='modal' data-target='#selectDrone' id = 'accept'>Accept</button>"
             },
-            { "data": "mStatus"}
+            { "data": "mStatus","visible":false}
         ]
     } );
 
@@ -662,6 +657,13 @@ function initPage(){
   $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAWiEnhMjv7lLDyaoiwIHwEVYoMRN4nYKY&libraries=drawing', function()
   {
                       //This is for the Google Map in the Create Mission Form:
+                      var today = new Date();
+                      var ye = "2016";
+                      var d = today.getDate();
+                      var mo = "10";
+                      var output = ye+"-"+mo+"-"+d;
+                      document.getElementById("missiondate").min = output;
+                      document.getElementById("missiondate").defaultValue = output;
                       function initMap() {
                         console.log(userLat);
                         document.getElementById('map').innerHTML = "dfsdfs";
